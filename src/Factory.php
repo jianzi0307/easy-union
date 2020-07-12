@@ -170,9 +170,9 @@ class Factory
         }
         if ($name == "suning") {
             $c = new SuNing();
-            $c->setAppkey($config['app_key'])  ;
-            $c->setAppSecret($config['app_secret'])  ;
-            $c->setFormat(isset($config['format']) ? $config['format'] : 'json')  ;
+            $c->setAppkey($config['app_key']);
+            $c->setAppSecret($config['app_secret']);
+            $c->setFormat(isset($config['format']) ? $config['format'] : 'json');
             return $c;
         }
     }

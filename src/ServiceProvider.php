@@ -24,7 +24,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
-        $this->setupConfig ();
+        $this->setupConfig();
     }
 
     /**
@@ -34,13 +34,12 @@ class ServiceProvider extends LaravelServiceProvider
      */
     protected function setupConfig()
     {
-        $source = realpath (__DIR__ . '/config.php');
-        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole ()) {
-            $this->publishes ([$source => config_path ('easytbk.php')]);
+        $source = realpath(__DIR__ . '/config.php');
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
+            $this->publishes([$source => config_path('easytbk.php')]);
         } elseif ($this->app instanceof LumenApplication) {
-            $this->app->configure ('easytbk');
+            $this->app->configure('easytbk');
         }
-        $this->mergeConfigFrom ($source, 'easytbk');
+        $this->mergeConfigFrom($source, 'easytbk');
     }
-
 }
