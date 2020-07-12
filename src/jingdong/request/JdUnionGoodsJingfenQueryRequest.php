@@ -50,6 +50,18 @@ class JdUnionGoodsJingfenQueryRequest implements RequestInterface
     private $pageIndex;
 
     /**
+     * 联盟id_应用id_推广位id，三段式
+     * @var
+     */
+    private $pid;
+
+    /**
+     * 支持出参数据筛选，逗号','分隔，目前可用：videoInfo,documentInfo
+     * @var
+     */
+    private $fields;
+
+    /**
      * @return mixed
      */
     public function getSort()
@@ -114,6 +126,38 @@ class JdUnionGoodsJingfenQueryRequest implements RequestInterface
     }
 
     /**
+     * @return string
+     */
+    public function getPid(): string
+    {
+        return $this->pid;
+    }
+
+    /**
+     * @param string $pid
+     */
+    public function setPid(string $pid): void
+    {
+        $this->pid = $pid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFields(): string
+    {
+        return $this->fields;
+    }
+
+    /**
+     * @param string $fields
+     */
+    public function setFields(string $fields): void
+    {
+        $this->fields = $fields;
+    }
+
+    /**
      * @return mixed
      */
     public function getPageIndex()
@@ -136,7 +180,7 @@ class JdUnionGoodsJingfenQueryRequest implements RequestInterface
     {
         return $this->method;
     }
-    
+
     /**
      * @return mixed
      */
@@ -147,11 +191,13 @@ class JdUnionGoodsJingfenQueryRequest implements RequestInterface
             'pageSize' => $this->pageSize,
             'eliteId' => $this->eliteId,
             'sortName' => $this->sortName,
-            'pageIndex' => $this->pageIndex
+            'pageIndex' => $this->pageIndex,
+            'pid' => $this->pid,
+            'fields' => $this->fields
         ];
 
-        return json_encode ([
-            'goodsReq' => array_filter ($params, function ($val) {
+        return json_encode([
+            'goodsReq' => array_filter($params, function ($val) {
                 return $val != null;
             })
         ]);
