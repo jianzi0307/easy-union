@@ -4,7 +4,6 @@ namespace NiuGengYun\EasyTBK\JingDong\Request;
 
 use NiuGengYun\EasyTBK\JingDong\RequestInterface;
 
-
 /**
  * Class JdUnionCategoryGoodsGetRequest
  * @package NiuGengYun\EasyTBK\JingDong\Request
@@ -30,13 +29,32 @@ class JdUnionCategoryGoodsGetRequest implements RequestInterface
      */
     private $grade;
 
-
     /**
      * @return string
      */
     public function getMethod()
     {
         return $this->method;
+    }
+
+    public function getParentId()
+    {
+        return $this->parentId;
+    }
+
+    public function getGrade()
+    {
+        return $this->grade;
+    }
+
+    public function setParentId($value)
+    {
+        $this->parentId = $value;
+    }
+
+    public function setGrade($value)
+    {
+        $this->grade = $value;
     }
 
     /**
@@ -50,7 +68,7 @@ class JdUnionCategoryGoodsGetRequest implements RequestInterface
         ];
 
         return json_encode([
-            'req' => array_filter ($params, function ($val) {
+            'req' => array_filter($params, function ($val) {
                 return $val != null;
             })
         ]);
