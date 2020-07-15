@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.sc.coupon.realtime.recommend request
  *
@@ -43,15 +44,20 @@ class TbkScCouponRealtimeRecommendRequest
 
     private $apiParas = array();
 
+    public function getAdzoneId()
+    {
+        return $this->adzoneId;
+    }
+
     public function setAdzoneId($adzoneId)
     {
         $this->adzoneId = $adzoneId;
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getChannel()
     {
-        return $this->adzoneId;
+        return $this->channel;
     }
 
     public function setChannel($channel)
@@ -60,9 +66,9 @@ class TbkScCouponRealtimeRecommendRequest
         $this->apiParas["channel"] = $channel;
     }
 
-    public function getChannel()
+    public function getPageNo()
     {
-        return $this->channel;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -71,9 +77,9 @@ class TbkScCouponRealtimeRecommendRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -82,9 +88,9 @@ class TbkScCouponRealtimeRecommendRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getPlatform()
     {
-        return $this->pageSize;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
@@ -93,20 +99,15 @@ class TbkScCouponRealtimeRecommendRequest
         $this->apiParas["platform"] = $platform;
     }
 
-    public function getPlatform()
+    public function getSiteId()
     {
-        return $this->platform;
+        return $this->siteId;
     }
 
     public function setSiteId($siteId)
     {
         $this->siteId = $siteId;
         $this->apiParas["site_id"] = $siteId;
-    }
-
-    public function getSiteId()
-    {
-        return $this->siteId;
     }
 
     public function getApiMethodName()
@@ -122,8 +123,8 @@ class TbkScCouponRealtimeRecommendRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->adzoneId, "adzoneId");
-        RequestCheckUtil::checkNotNull ($this->siteId, "siteId");
+        RequestCheckUtil::checkNotNull($this->adzoneId, "adzoneId");
+        RequestCheckUtil::checkNotNull($this->siteId, "siteId");
     }
 
     public function putOtherTextParam($key, $value)

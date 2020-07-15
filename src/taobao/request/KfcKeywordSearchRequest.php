@@ -1,8 +1,10 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.kfc.keyword.search request
  *
@@ -33,15 +35,20 @@ class KfcKeywordSearchRequest
 
     private $apiParas = array();
 
+    public function getApply()
+    {
+        return $this->apply;
+    }
+
     public function setApply($apply)
     {
         $this->apply = $apply;
         $this->apiParas["apply"] = $apply;
     }
 
-    public function getApply()
+    public function getContent()
     {
-        return $this->apply;
+        return $this->content;
     }
 
     public function setContent($content)
@@ -50,20 +57,15 @@ class KfcKeywordSearchRequest
         $this->apiParas["content"] = $content;
     }
 
-    public function getContent()
+    public function getNick()
     {
-        return $this->content;
+        return $this->nick;
     }
 
     public function setNick($nick)
     {
         $this->nick = $nick;
         $this->apiParas["nick"] = $nick;
-    }
-
-    public function getNick()
-    {
-        return $this->nick;
     }
 
     public function getApiMethodName()
@@ -78,8 +80,7 @@ class KfcKeywordSearchRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->content, "content");
+        RequestCheckUtil::checkNotNull($this->content, "content");
     }
 
     public function putOtherTextParam($key, $value)

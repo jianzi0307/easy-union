@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.sc.optimus.material request
  *
@@ -63,15 +64,20 @@ class TbkScOptimusMaterialRequest
 
     private $apiParas = array();
 
+    public function getAdzoneId()
+    {
+        return $this->adzoneId;
+    }
+
     public function setAdzoneId($adzoneId)
     {
         $this->adzoneId = $adzoneId;
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getContentId()
     {
-        return $this->adzoneId;
+        return $this->contentId;
     }
 
     public function setContentId($contentId)
@@ -80,9 +86,9 @@ class TbkScOptimusMaterialRequest
         $this->apiParas["content_id"] = $contentId;
     }
 
-    public function getContentId()
+    public function getContentSource()
     {
-        return $this->contentId;
+        return $this->contentSource;
     }
 
     public function setContentSource($contentSource)
@@ -91,9 +97,9 @@ class TbkScOptimusMaterialRequest
         $this->apiParas["content_source"] = $contentSource;
     }
 
-    public function getContentSource()
+    public function getDeviceEncrypt()
     {
-        return $this->contentSource;
+        return $this->deviceEncrypt;
     }
 
     public function setDeviceEncrypt($deviceEncrypt)
@@ -102,9 +108,9 @@ class TbkScOptimusMaterialRequest
         $this->apiParas["device_encrypt"] = $deviceEncrypt;
     }
 
-    public function getDeviceEncrypt()
+    public function getDeviceType()
     {
-        return $this->deviceEncrypt;
+        return $this->deviceType;
     }
 
     public function setDeviceType($deviceType)
@@ -113,9 +119,9 @@ class TbkScOptimusMaterialRequest
         $this->apiParas["device_type"] = $deviceType;
     }
 
-    public function getDeviceType()
+    public function getDeviceValue()
     {
-        return $this->deviceType;
+        return $this->deviceValue;
     }
 
     public function setDeviceValue($deviceValue)
@@ -124,9 +130,9 @@ class TbkScOptimusMaterialRequest
         $this->apiParas["device_value"] = $deviceValue;
     }
 
-    public function getDeviceValue()
+    public function getMaterialId()
     {
-        return $this->deviceValue;
+        return $this->materialId;
     }
 
     public function setMaterialId($materialId)
@@ -135,9 +141,9 @@ class TbkScOptimusMaterialRequest
         $this->apiParas["material_id"] = $materialId;
     }
 
-    public function getMaterialId()
+    public function getPageNo()
     {
-        return $this->materialId;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -146,9 +152,9 @@ class TbkScOptimusMaterialRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -157,20 +163,15 @@ class TbkScOptimusMaterialRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getSiteId()
     {
-        return $this->pageSize;
+        return $this->siteId;
     }
 
     public function setSiteId($siteId)
     {
         $this->siteId = $siteId;
         $this->apiParas["site_id"] = $siteId;
-    }
-
-    public function getSiteId()
-    {
-        return $this->siteId;
     }
 
     public function getApiMethodName()
@@ -186,10 +187,10 @@ class TbkScOptimusMaterialRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->adzoneId, "adzoneId");
-        RequestCheckUtil::checkMaxValue ($this->pageSize, 100, "pageSize");
-        RequestCheckUtil::checkMinValue ($this->pageSize, 1, "pageSize");
-        RequestCheckUtil::checkNotNull ($this->siteId, "siteId");
+        RequestCheckUtil::checkNotNull($this->adzoneId, "adzoneId");
+        RequestCheckUtil::checkMaxValue($this->pageSize, 100, "pageSize");
+        RequestCheckUtil::checkMinValue($this->pageSize, 1, "pageSize");
+        RequestCheckUtil::checkNotNull($this->siteId, "siteId");
     }
 
     public function putOtherTextParam($key, $value)

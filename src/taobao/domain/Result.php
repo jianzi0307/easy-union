@@ -1,6 +1,6 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Domain;
+namespace com\pv138\easyUnion\taobao\domain;
 
 /**
  * result
@@ -8,25 +8,23 @@ namespace NiuGengYun\EasyTBK\TaoBao\Domain;
  */
 class Result
 {
-	
-	/** 
-	 * model
-	 **/
-	public $model;
-	
-	/** 
-	 * msgCode
-	 **/
-	public $msg_code;
-	
-	/** 
-	 * msgInfo
-	 **/
-	public $msg_info;
-	
-	/** 
-	 * success
-	 **/
-	public $success;	
+    /**
+     * model
+     **/
+    public $model;
+
+    /**
+     * msgCode
+     **/
+    public $msg_code;
+
+    /**
+     * msgInfo
+     **/
+    public $msg_info;
+
+    /**
+     * success
+     **/
+    public $success;
 }
-?>

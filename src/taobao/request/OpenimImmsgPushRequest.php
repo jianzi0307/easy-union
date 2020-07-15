@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.openim.immsg.push request
  *
@@ -18,15 +17,15 @@ class OpenimImmsgPushRequest
 
     private $apiParas = array();
 
+    public function getImmsg()
+    {
+        return $this->immsg;
+    }
+
     public function setImmsg($immsg)
     {
         $this->immsg = $immsg;
         $this->apiParas["immsg"] = $immsg;
-    }
-
-    public function getImmsg()
-    {
-        return $this->immsg;
     }
 
     public function getApiMethodName()

@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.dg.item.coupon.get request
  *
@@ -43,15 +44,20 @@ class TbkDgItemCouponGetRequest
 
     private $apiParas = array();
 
+    public function getAdzoneId()
+    {
+        return $this->adzoneId;
+    }
+
     public function setAdzoneId($adzoneId)
     {
         $this->adzoneId = $adzoneId;
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getCat()
     {
-        return $this->adzoneId;
+        return $this->cat;
     }
 
     public function setCat($cat)
@@ -60,9 +66,9 @@ class TbkDgItemCouponGetRequest
         $this->apiParas["cat"] = $cat;
     }
 
-    public function getCat()
+    public function getPageNo()
     {
-        return $this->cat;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -71,9 +77,9 @@ class TbkDgItemCouponGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -82,9 +88,9 @@ class TbkDgItemCouponGetRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getPlatform()
     {
-        return $this->pageSize;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
@@ -93,20 +99,15 @@ class TbkDgItemCouponGetRequest
         $this->apiParas["platform"] = $platform;
     }
 
-    public function getPlatform()
+    public function getQ()
     {
-        return $this->platform;
+        return $this->q;
     }
 
     public function setQ($q)
     {
         $this->q = $q;
         $this->apiParas["q"] = $q;
-    }
-
-    public function getQ()
-    {
-        return $this->q;
     }
 
     public function getApiMethodName()
@@ -121,9 +122,8 @@ class TbkDgItemCouponGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->adzoneId, "adzoneId");
-        RequestCheckUtil::checkMaxLength ($this->cat, 10, "cat");
+        RequestCheckUtil::checkNotNull($this->adzoneId, "adzoneId");
+        RequestCheckUtil::checkMaxLength($this->cat, 10, "cat");
     }
 
     public function putOtherTextParam($key, $value)

@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.tribe.sendmsg request
  *
@@ -28,15 +29,20 @@ class OpenimTribeSendmsgRequest
 
     private $apiParas = array();
 
+    public function getMsg()
+    {
+        return $this->msg;
+    }
+
     public function setMsg($msg)
     {
         $this->msg = $msg;
         $this->apiParas["msg"] = $msg;
     }
 
-    public function getMsg()
+    public function getTribeId()
     {
-        return $this->msg;
+        return $this->tribeId;
     }
 
     public function setTribeId($tribeId)
@@ -45,20 +51,15 @@ class OpenimTribeSendmsgRequest
         $this->apiParas["tribe_id"] = $tribeId;
     }
 
-    public function getTribeId()
+    public function getUser()
     {
-        return $this->tribeId;
+        return $this->user;
     }
 
     public function setUser($user)
     {
         $this->user = $user;
         $this->apiParas["user"] = $user;
-    }
-
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function getApiMethodName()
@@ -73,8 +74,7 @@ class OpenimTribeSendmsgRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->tribeId, "tribeId");
+        RequestCheckUtil::checkNotNull($this->tribeId, "tribeId");
     }
 
     public function putOtherTextParam($key, $value)

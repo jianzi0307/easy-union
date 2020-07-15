@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.uatm.event.get request
  *
@@ -28,15 +29,20 @@ class TbkUatmEventGetRequest
 
     private $apiParas = array();
 
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
     public function setFields($fields)
     {
         $this->fields = $fields;
         $this->apiParas["fields"] = $fields;
     }
 
-    public function getFields()
+    public function getPageNo()
     {
-        return $this->fields;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -45,20 +51,15 @@ class TbkUatmEventGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
         $this->apiParas["page_size"] = $pageSize;
-    }
-
-    public function getPageSize()
-    {
-        return $this->pageSize;
     }
 
     public function getApiMethodName()
@@ -74,7 +75,7 @@ class TbkUatmEventGetRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->fields, "fields");
+        RequestCheckUtil::checkNotNull($this->fields, "fields");
     }
 
     public function putOtherTextParam($key, $value)

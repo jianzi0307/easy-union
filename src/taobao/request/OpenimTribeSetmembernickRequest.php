@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.tribe.setmembernick request
  *
@@ -33,15 +34,20 @@ class OpenimTribeSetmembernickRequest
 
     private $apiParas = array();
 
+    public function getMember()
+    {
+        return $this->member;
+    }
+
     public function setMember($member)
     {
         $this->member = $member;
         $this->apiParas["member"] = $member;
     }
 
-    public function getMember()
+    public function getNick()
     {
-        return $this->member;
+        return $this->nick;
     }
 
     public function setNick($nick)
@@ -50,9 +56,9 @@ class OpenimTribeSetmembernickRequest
         $this->apiParas["nick"] = $nick;
     }
 
-    public function getNick()
+    public function getTribeId()
     {
-        return $this->nick;
+        return $this->tribeId;
     }
 
     public function setTribeId($tribeId)
@@ -61,20 +67,15 @@ class OpenimTribeSetmembernickRequest
         $this->apiParas["tribe_id"] = $tribeId;
     }
 
-    public function getTribeId()
+    public function getUser()
     {
-        return $this->tribeId;
+        return $this->user;
     }
 
     public function setUser($user)
     {
         $this->user = $user;
         $this->apiParas["user"] = $user;
-    }
-
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function getApiMethodName()
@@ -89,9 +90,8 @@ class OpenimTribeSetmembernickRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->nick, "nick");
-        RequestCheckUtil::checkNotNull ($this->tribeId, "tribeId");
+        RequestCheckUtil::checkNotNull($this->nick, "nick");
+        RequestCheckUtil::checkNotNull($this->tribeId, "tribeId");
     }
 
     public function putOtherTextParam($key, $value)

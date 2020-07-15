@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.wireless.share.tpwd.query request
  *
@@ -18,15 +19,15 @@ class WirelessShareTpwdQueryRequest
 
     private $apiParas = array();
 
+    public function getPasswordContent()
+    {
+        return $this->passwordContent;
+    }
+
     public function setPasswordContent($passwordContent)
     {
         $this->passwordContent = $passwordContent;
         $this->apiParas["password_content"] = $passwordContent;
-    }
-
-    public function getPasswordContent()
-    {
-        return $this->passwordContent;
     }
 
     public function getApiMethodName()
@@ -42,7 +43,7 @@ class WirelessShareTpwdQueryRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->passwordContent, "passwordContent");
+        RequestCheckUtil::checkNotNull($this->passwordContent, "passwordContent");
     }
 
     public function putOtherTextParam($key, $value)

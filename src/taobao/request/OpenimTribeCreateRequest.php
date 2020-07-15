@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.tribe.create request
  *
@@ -38,15 +39,20 @@ class OpenimTribeCreateRequest
 
     private $apiParas = array();
 
+    public function getMembers()
+    {
+        return $this->members;
+    }
+
     public function setMembers($members)
     {
         $this->members = $members;
         $this->apiParas["members"] = $members;
     }
 
-    public function getMembers()
+    public function getNotice()
     {
-        return $this->members;
+        return $this->notice;
     }
 
     public function setNotice($notice)
@@ -55,9 +61,9 @@ class OpenimTribeCreateRequest
         $this->apiParas["notice"] = $notice;
     }
 
-    public function getNotice()
+    public function getTribeName()
     {
-        return $this->notice;
+        return $this->tribeName;
     }
 
     public function setTribeName($tribeName)
@@ -66,9 +72,9 @@ class OpenimTribeCreateRequest
         $this->apiParas["tribe_name"] = $tribeName;
     }
 
-    public function getTribeName()
+    public function getTribeType()
     {
-        return $this->tribeName;
+        return $this->tribeType;
     }
 
     public function setTribeType($tribeType)
@@ -77,20 +83,15 @@ class OpenimTribeCreateRequest
         $this->apiParas["tribe_type"] = $tribeType;
     }
 
-    public function getTribeType()
+    public function getUser()
     {
-        return $this->tribeType;
+        return $this->user;
     }
 
     public function setUser($user)
     {
         $this->user = $user;
         $this->apiParas["user"] = $user;
-    }
-
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function getApiMethodName()
@@ -105,10 +106,9 @@ class OpenimTribeCreateRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->notice, "notice");
-        RequestCheckUtil::checkNotNull ($this->tribeName, "tribeName");
-        RequestCheckUtil::checkNotNull ($this->tribeType, "tribeType");
+        RequestCheckUtil::checkNotNull($this->notice, "notice");
+        RequestCheckUtil::checkNotNull($this->tribeName, "tribeName");
+        RequestCheckUtil::checkNotNull($this->tribeType, "tribeType");
     }
 
     public function putOtherTextParam($key, $value)

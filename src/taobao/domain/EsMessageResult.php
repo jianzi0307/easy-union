@@ -1,6 +1,6 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Domain;
+namespace com\pv138\easyUnion\taobao\domain;
 
 /**
  * 应用消息查询结果
@@ -8,15 +8,13 @@ namespace NiuGengYun\EasyTBK\TaoBao\Domain;
  */
 class EsMessageResult
 {
-	
-	/** 
-	 * 消息序列
-	 **/
-	public $messages;
-	
-	/** 
-	 * nextkey
-	 **/
-	public $next_key;	
+    /**
+     * 消息序列
+     **/
+    public $messages;
+
+    /**
+     * nextkey
+     **/
+    public $next_key;
 }
-?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Domain;
+namespace com\pv138\easyUnion\taobao\domain;
 
 /**
  * 扩展属性
@@ -8,10 +8,8 @@ namespace NiuGengYun\EasyTBK\TaoBao\Domain;
  */
 class Extend
 {
-	
-	/** 
-	 * empty
-	 **/
-	public $empty;	
+    /**
+     * empty
+     **/
+    public $empty;
 }
-?>

@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.sc.newuser.order.sum request
  *
@@ -43,15 +44,20 @@ class TbkScNewuserOrderSumRequest
 
     private $apiParas = array();
 
+    public function getActivityId()
+    {
+        return $this->activityId;
+    }
+
     public function setActivityId($activityId)
     {
         $this->activityId = $activityId;
         $this->apiParas["activity_id"] = $activityId;
     }
 
-    public function getActivityId()
+    public function getAdzoneId()
     {
-        return $this->activityId;
+        return $this->adzoneId;
     }
 
     public function setAdzoneId($adzoneId)
@@ -60,9 +66,9 @@ class TbkScNewuserOrderSumRequest
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getPageNo()
     {
-        return $this->adzoneId;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -71,9 +77,9 @@ class TbkScNewuserOrderSumRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -82,9 +88,9 @@ class TbkScNewuserOrderSumRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getSettleMonth()
     {
-        return $this->pageSize;
+        return $this->settleMonth;
     }
 
     public function setSettleMonth($settleMonth)
@@ -93,20 +99,15 @@ class TbkScNewuserOrderSumRequest
         $this->apiParas["settle_month"] = $settleMonth;
     }
 
-    public function getSettleMonth()
+    public function getSiteId()
     {
-        return $this->settleMonth;
+        return $this->siteId;
     }
 
     public function setSiteId($siteId)
     {
         $this->siteId = $siteId;
         $this->apiParas["site_id"] = $siteId;
-    }
-
-    public function getSiteId()
-    {
-        return $this->siteId;
     }
 
     public function getApiMethodName()
@@ -122,11 +123,11 @@ class TbkScNewuserOrderSumRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->activityId, "activityId");
-        RequestCheckUtil::checkNotNull ($this->pageNo, "pageNo");
-        RequestCheckUtil::checkNotNull ($this->pageSize, "pageSize");
-        RequestCheckUtil::checkMaxValue ($this->pageSize, 100, "pageSize");
-        RequestCheckUtil::checkMinValue ($this->pageSize, 1, "pageSize");
+        RequestCheckUtil::checkNotNull($this->activityId, "activityId");
+        RequestCheckUtil::checkNotNull($this->pageNo, "pageNo");
+        RequestCheckUtil::checkNotNull($this->pageSize, "pageSize");
+        RequestCheckUtil::checkMaxValue($this->pageSize, 100, "pageSize");
+        RequestCheckUtil::checkMinValue($this->pageSize, 1, "pageSize");
     }
 
     public function putOtherTextParam($key, $value)

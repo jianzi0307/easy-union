@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.uatm.favorites.get request
  *
@@ -33,15 +34,20 @@ class TbkUatmFavoritesGetRequest
 
     private $apiParas = array();
 
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
     public function setFields($fields)
     {
         $this->fields = $fields;
         $this->apiParas["fields"] = $fields;
     }
 
-    public function getFields()
+    public function getPageNo()
     {
-        return $this->fields;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -50,9 +56,9 @@ class TbkUatmFavoritesGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -61,20 +67,15 @@ class TbkUatmFavoritesGetRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getType()
     {
-        return $this->pageSize;
+        return $this->type;
     }
 
     public function setType($type)
     {
         $this->type = $type;
         $this->apiParas["type"] = $type;
-    }
-
-    public function getType()
-    {
-        return $this->type;
     }
 
     public function getApiMethodName()
@@ -90,7 +91,7 @@ class TbkUatmFavoritesGetRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->fields, "fields");
+        RequestCheckUtil::checkNotNull($this->fields, "fields");
     }
 
     public function putOtherTextParam($key, $value)

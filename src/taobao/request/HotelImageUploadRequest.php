@@ -1,8 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
 
 /**
  * TOP API: taobao.hotel.image.upload request
@@ -12,59 +12,59 @@ use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
  */
 class HotelImageUploadRequest
 {
-	/**
-	 * 酒店id
-	 **/
-	private $hid;
+    /**
+     * 酒店id
+     **/
+    private $hid;
 
-	/**
-	 * 上传的图片
-	 **/
-	private $pic;
+    /**
+     * 上传的图片
+     **/
+    private $pic;
 
-	private $apiParas = array();
+    private $apiParas = array();
 
-	public function setHid($hid)
-	{
-		$this->hid = $hid;
-		$this->apiParas["hid"] = $hid;
-	}
+    public function getHid()
+    {
+        return $this->hid;
+    }
 
-	public function getHid()
-	{
-		return $this->hid;
-	}
+    public function setHid($hid)
+    {
+        $this->hid = $hid;
+        $this->apiParas["hid"] = $hid;
+    }
 
-	public function setPic($pic)
-	{
-		$this->pic = $pic;
-		$this->apiParas["pic"] = $pic;
-	}
+    public function getPic()
+    {
+        return $this->pic;
+    }
 
-	public function getPic()
-	{
-		return $this->pic;
-	}
+    public function setPic($pic)
+    {
+        $this->pic = $pic;
+        $this->apiParas["pic"] = $pic;
+    }
 
-	public function getApiMethodName()
-	{
-		return "taobao.hotel.image.upload";
-	}
+    public function getApiMethodName()
+    {
+        return "taobao.hotel.image.upload";
+    }
 
-	public function getApiParas()
-	{
-		return $this->apiParas;
-	}
+    public function getApiParas()
+    {
+        return $this->apiParas;
+    }
 
-	public function check()
-	{
+    public function check()
+    {
+        RequestCheckUtil::checkNotNull($this->hid, "hid");
+        RequestCheckUtil::checkNotNull($this->pic, "pic");
+    }
 
-		RequestCheckUtil::checkNotNull($this->hid,"hid");
-		RequestCheckUtil::checkNotNull($this->pic,"pic");
-	}
-
-	public function putOtherTextParam($key, $value) {
-		$this->apiParas[$key] = $value;
-		$this->$key = $value;
-	}
+    public function putOtherTextParam($key, $value)
+    {
+        $this->apiParas[$key] = $value;
+        $this->$key = $value;
+    }
 }

@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.tpwd.create request
  *
@@ -38,15 +39,20 @@ class TbkTpwdCreateRequest
 
     private $apiParas = array();
 
+    public function getExt()
+    {
+        return $this->ext;
+    }
+
     public function setExt($ext)
     {
         $this->ext = $ext;
         $this->apiParas["ext"] = $ext;
     }
 
-    public function getExt()
+    public function getLogo()
     {
-        return $this->ext;
+        return $this->logo;
     }
 
     public function setLogo($logo)
@@ -55,9 +61,9 @@ class TbkTpwdCreateRequest
         $this->apiParas["logo"] = $logo;
     }
 
-    public function getLogo()
+    public function getText()
     {
-        return $this->logo;
+        return $this->text;
     }
 
     public function setText($text)
@@ -66,9 +72,9 @@ class TbkTpwdCreateRequest
         $this->apiParas["text"] = $text;
     }
 
-    public function getText()
+    public function getUrl()
     {
-        return $this->text;
+        return $this->url;
     }
 
     public function setUrl($url)
@@ -77,20 +83,15 @@ class TbkTpwdCreateRequest
         $this->apiParas["url"] = $url;
     }
 
-    public function getUrl()
+    public function getUserId()
     {
-        return $this->url;
+        return $this->userId;
     }
 
     public function setUserId($userId)
     {
         $this->userId = $userId;
         $this->apiParas["user_id"] = $userId;
-    }
-
-    public function getUserId()
-    {
-        return $this->userId;
     }
 
     public function getApiMethodName()
@@ -106,8 +107,8 @@ class TbkTpwdCreateRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->text, "text");
-        RequestCheckUtil::checkNotNull ($this->url, "url");
+        RequestCheckUtil::checkNotNull($this->text, "text");
+        RequestCheckUtil::checkNotNull($this->url, "url");
     }
 
     public function putOtherTextParam($key, $value)

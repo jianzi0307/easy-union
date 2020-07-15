@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.item.coupon.get request
  *
@@ -43,15 +44,20 @@ class TbkItemCouponGetRequest
 
     private $apiParas = array();
 
+    public function getCat()
+    {
+        return $this->cat;
+    }
+
     public function setCat($cat)
     {
         $this->cat = $cat;
         $this->apiParas["cat"] = $cat;
     }
 
-    public function getCat()
+    public function getPageNo()
     {
-        return $this->cat;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -60,9 +66,9 @@ class TbkItemCouponGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -71,9 +77,9 @@ class TbkItemCouponGetRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getPid()
     {
-        return $this->pageSize;
+        return $this->pid;
     }
 
     public function setPid($pid)
@@ -82,9 +88,9 @@ class TbkItemCouponGetRequest
         $this->apiParas["pid"] = $pid;
     }
 
-    public function getPid()
+    public function getPlatform()
     {
-        return $this->pid;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
@@ -93,20 +99,15 @@ class TbkItemCouponGetRequest
         $this->apiParas["platform"] = $platform;
     }
 
-    public function getPlatform()
+    public function getQ()
     {
-        return $this->platform;
+        return $this->q;
     }
 
     public function setQ($q)
     {
         $this->q = $q;
         $this->apiParas["q"] = $q;
-    }
-
-    public function getQ()
-    {
-        return $this->q;
     }
 
     public function getApiMethodName()
@@ -121,8 +122,7 @@ class TbkItemCouponGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->pid, "pid");
+        RequestCheckUtil::checkNotNull($this->pid, "pid");
     }
 
     public function putOtherTextParam($key, $value)

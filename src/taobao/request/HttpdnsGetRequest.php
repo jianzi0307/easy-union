@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.httpdns.get request
  *
@@ -11,7 +10,6 @@ use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
  */
 class HttpdnsGetRequest
 {
-
     private $apiParas = array();
 
     public function getApiMethodName()

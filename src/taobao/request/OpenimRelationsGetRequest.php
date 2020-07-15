@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.relations.get request
  *
@@ -28,15 +29,20 @@ class OpenimRelationsGetRequest
 
     private $apiParas = array();
 
+    public function getBegDate()
+    {
+        return $this->begDate;
+    }
+
     public function setBegDate($begDate)
     {
         $this->begDate = $begDate;
         $this->apiParas["beg_date"] = $begDate;
     }
 
-    public function getBegDate()
+    public function getEndDate()
     {
-        return $this->begDate;
+        return $this->endDate;
     }
 
     public function setEndDate($endDate)
@@ -45,20 +51,15 @@ class OpenimRelationsGetRequest
         $this->apiParas["end_date"] = $endDate;
     }
 
-    public function getEndDate()
+    public function getUser()
     {
-        return $this->endDate;
+        return $this->user;
     }
 
     public function setUser($user)
     {
         $this->user = $user;
         $this->apiParas["user"] = $user;
-    }
-
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function getApiMethodName()
@@ -73,9 +74,8 @@ class OpenimRelationsGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->begDate, "begDate");
-        RequestCheckUtil::checkNotNull ($this->endDate, "endDate");
+        RequestCheckUtil::checkNotNull($this->begDate, "begDate");
+        RequestCheckUtil::checkNotNull($this->endDate, "endDate");
     }
 
     public function putOtherTextParam($key, $value)

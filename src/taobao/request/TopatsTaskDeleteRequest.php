@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.topats.task.delete request
  *
@@ -18,15 +19,15 @@ class TopatsTaskDeleteRequest
 
     private $apiParas = array();
 
+    public function getTaskId()
+    {
+        return $this->taskId;
+    }
+
     public function setTaskId($taskId)
     {
         $this->taskId = $taskId;
         $this->apiParas["task_id"] = $taskId;
-    }
-
-    public function getTaskId()
-    {
-        return $this->taskId;
     }
 
     public function getApiMethodName()
@@ -42,7 +43,7 @@ class TopatsTaskDeleteRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->taskId, "taskId");
+        RequestCheckUtil::checkNotNull($this->taskId, "taskId");
     }
 
     public function putOtherTextParam($key, $value)

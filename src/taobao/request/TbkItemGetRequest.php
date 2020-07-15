@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.item.get request
  *
@@ -83,15 +84,20 @@ class TbkItemGetRequest
 
     private $apiParas = array();
 
+    public function getCat()
+    {
+        return $this->cat;
+    }
+
     public function setCat($cat)
     {
         $this->cat = $cat;
         $this->apiParas["cat"] = $cat;
     }
 
-    public function getCat()
+    public function getEndPrice()
     {
-        return $this->cat;
+        return $this->endPrice;
     }
 
     public function setEndPrice($endPrice)
@@ -100,9 +106,9 @@ class TbkItemGetRequest
         $this->apiParas["end_price"] = $endPrice;
     }
 
-    public function getEndPrice()
+    public function getEndTkRate()
     {
-        return $this->endPrice;
+        return $this->endTkRate;
     }
 
     public function setEndTkRate($endTkRate)
@@ -111,9 +117,9 @@ class TbkItemGetRequest
         $this->apiParas["end_tk_rate"] = $endTkRate;
     }
 
-    public function getEndTkRate()
+    public function getFields()
     {
-        return $this->endTkRate;
+        return $this->fields;
     }
 
     public function setFields($fields)
@@ -122,9 +128,9 @@ class TbkItemGetRequest
         $this->apiParas["fields"] = $fields;
     }
 
-    public function getFields()
+    public function getIsOverseas()
     {
-        return $this->fields;
+        return $this->isOverseas;
     }
 
     public function setIsOverseas($isOverseas)
@@ -133,9 +139,9 @@ class TbkItemGetRequest
         $this->apiParas["is_overseas"] = $isOverseas;
     }
 
-    public function getIsOverseas()
+    public function getIsTmall()
     {
-        return $this->isOverseas;
+        return $this->isTmall;
     }
 
     public function setIsTmall($isTmall)
@@ -144,9 +150,9 @@ class TbkItemGetRequest
         $this->apiParas["is_tmall"] = $isTmall;
     }
 
-    public function getIsTmall()
+    public function getItemloc()
     {
-        return $this->isTmall;
+        return $this->itemloc;
     }
 
     public function setItemloc($itemloc)
@@ -155,9 +161,9 @@ class TbkItemGetRequest
         $this->apiParas["itemloc"] = $itemloc;
     }
 
-    public function getItemloc()
+    public function getPageNo()
     {
-        return $this->itemloc;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -166,9 +172,9 @@ class TbkItemGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -177,9 +183,9 @@ class TbkItemGetRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getPlatform()
     {
-        return $this->pageSize;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
@@ -188,9 +194,9 @@ class TbkItemGetRequest
         $this->apiParas["platform"] = $platform;
     }
 
-    public function getPlatform()
+    public function getQ()
     {
-        return $this->platform;
+        return $this->q;
     }
 
     public function setQ($q)
@@ -199,9 +205,9 @@ class TbkItemGetRequest
         $this->apiParas["q"] = $q;
     }
 
-    public function getQ()
+    public function getSort()
     {
-        return $this->q;
+        return $this->sort;
     }
 
     public function setSort($sort)
@@ -210,9 +216,9 @@ class TbkItemGetRequest
         $this->apiParas["sort"] = $sort;
     }
 
-    public function getSort()
+    public function getStartPrice()
     {
-        return $this->sort;
+        return $this->startPrice;
     }
 
     public function setStartPrice($startPrice)
@@ -221,20 +227,15 @@ class TbkItemGetRequest
         $this->apiParas["start_price"] = $startPrice;
     }
 
-    public function getStartPrice()
+    public function getStartTkRate()
     {
-        return $this->startPrice;
+        return $this->startTkRate;
     }
 
     public function setStartTkRate($startTkRate)
     {
         $this->startTkRate = $startTkRate;
         $this->apiParas["start_tk_rate"] = $startTkRate;
-    }
-
-    public function getStartTkRate()
-    {
-        return $this->startTkRate;
     }
 
     public function getApiMethodName()
@@ -249,8 +250,7 @@ class TbkItemGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->fields, "fields");
+        RequestCheckUtil::checkNotNull($this->fields, "fields");
     }
 
     public function putOtherTextParam($key, $value)

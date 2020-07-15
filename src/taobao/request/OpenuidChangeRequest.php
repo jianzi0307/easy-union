@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openuid.change request
  *
@@ -23,26 +24,26 @@ class OpenuidChangeRequest
 
     private $apiParas = array();
 
+    public function getOpenUid()
+    {
+        return $this->openUid;
+    }
+
     public function setOpenUid($openUid)
     {
         $this->openUid = $openUid;
         $this->apiParas["open_uid"] = $openUid;
     }
 
-    public function getOpenUid()
+    public function getTargetAppKey()
     {
-        return $this->openUid;
+        return $this->targetAppKey;
     }
 
     public function setTargetAppKey($targetAppKey)
     {
         $this->targetAppKey = $targetAppKey;
         $this->apiParas["target_app_key"] = $targetAppKey;
-    }
-
-    public function getTargetAppKey()
-    {
-        return $this->targetAppKey;
     }
 
     public function getApiMethodName()
@@ -57,9 +58,8 @@ class OpenuidChangeRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->openUid, "openUid");
-        RequestCheckUtil::checkNotNull ($this->targetAppKey, "targetAppKey");
+        RequestCheckUtil::checkNotNull($this->openUid, "openUid");
+        RequestCheckUtil::checkNotNull($this->targetAppKey, "targetAppKey");
     }
 
     public function putOtherTextParam($key, $value)

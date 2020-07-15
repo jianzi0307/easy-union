@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.tribe.modifytribeinfo request
  *
@@ -33,15 +34,20 @@ class OpenimTribeModifytribeinfoRequest
 
     private $apiParas = array();
 
+    public function getNotice()
+    {
+        return $this->notice;
+    }
+
     public function setNotice($notice)
     {
         $this->notice = $notice;
         $this->apiParas["notice"] = $notice;
     }
 
-    public function getNotice()
+    public function getTribeId()
     {
-        return $this->notice;
+        return $this->tribeId;
     }
 
     public function setTribeId($tribeId)
@@ -50,9 +56,9 @@ class OpenimTribeModifytribeinfoRequest
         $this->apiParas["tribe_id"] = $tribeId;
     }
 
-    public function getTribeId()
+    public function getTribeName()
     {
-        return $this->tribeId;
+        return $this->tribeName;
     }
 
     public function setTribeName($tribeName)
@@ -61,20 +67,15 @@ class OpenimTribeModifytribeinfoRequest
         $this->apiParas["tribe_name"] = $tribeName;
     }
 
-    public function getTribeName()
+    public function getUser()
     {
-        return $this->tribeName;
+        return $this->user;
     }
 
     public function setUser($user)
     {
         $this->user = $user;
         $this->apiParas["user"] = $user;
-    }
-
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function getApiMethodName()
@@ -89,10 +90,9 @@ class OpenimTribeModifytribeinfoRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->notice, "notice");
-        RequestCheckUtil::checkNotNull ($this->tribeId, "tribeId");
-        RequestCheckUtil::checkNotNull ($this->tribeName, "tribeName");
+        RequestCheckUtil::checkNotNull($this->notice, "notice");
+        RequestCheckUtil::checkNotNull($this->tribeId, "tribeId");
+        RequestCheckUtil::checkNotNull($this->tribeName, "tribeName");
     }
 
     public function putOtherTextParam($key, $value)

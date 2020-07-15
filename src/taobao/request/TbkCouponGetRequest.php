@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.tbk.coupon.get request
  *
@@ -28,15 +27,20 @@ class TbkCouponGetRequest
 
     private $apiParas = array();
 
+    public function getActivityId()
+    {
+        return $this->activityId;
+    }
+
     public function setActivityId($activityId)
     {
         $this->activityId = $activityId;
         $this->apiParas["activity_id"] = $activityId;
     }
 
-    public function getActivityId()
+    public function getItemId()
     {
-        return $this->activityId;
+        return $this->itemId;
     }
 
     public function setItemId($itemId)
@@ -45,20 +49,15 @@ class TbkCouponGetRequest
         $this->apiParas["item_id"] = $itemId;
     }
 
-    public function getItemId()
+    public function getMe()
     {
-        return $this->itemId;
+        return $this->me;
     }
 
     public function setMe($me)
     {
         $this->me = $me;
         $this->apiParas["me"] = $me;
-    }
-
-    public function getMe()
-    {
-        return $this->me;
     }
 
     public function getApiMethodName()

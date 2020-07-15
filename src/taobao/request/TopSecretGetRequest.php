@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.top.secret.get request
  *
@@ -28,15 +29,20 @@ class TopSecretGetRequest
 
     private $apiParas = array();
 
+    public function getCustomerUserId()
+    {
+        return $this->customerUserId;
+    }
+
     public function setCustomerUserId($customerUserId)
     {
         $this->customerUserId = $customerUserId;
         $this->apiParas["customer_user_id"] = $customerUserId;
     }
 
-    public function getCustomerUserId()
+    public function getRandomNum()
     {
-        return $this->customerUserId;
+        return $this->randomNum;
     }
 
     public function setRandomNum($randomNum)
@@ -45,20 +51,15 @@ class TopSecretGetRequest
         $this->apiParas["random_num"] = $randomNum;
     }
 
-    public function getRandomNum()
+    public function getSecretVersion()
     {
-        return $this->randomNum;
+        return $this->secretVersion;
     }
 
     public function setSecretVersion($secretVersion)
     {
         $this->secretVersion = $secretVersion;
         $this->apiParas["secret_version"] = $secretVersion;
-    }
-
-    public function getSecretVersion()
-    {
-        return $this->secretVersion;
     }
 
     public function getApiMethodName()
@@ -74,7 +75,7 @@ class TopSecretGetRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->randomNum, "randomNum");
+        RequestCheckUtil::checkNotNull($this->randomNum, "randomNum");
     }
 
     public function putOtherTextParam($key, $value)

@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.ju.tqg.get request
  *
@@ -43,15 +44,20 @@ class TbkJuTqgGetRequest
 
     private $apiParas = array();
 
+    public function getAdzoneId()
+    {
+        return $this->adzoneId;
+    }
+
     public function setAdzoneId($adzoneId)
     {
         $this->adzoneId = $adzoneId;
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getEndTime()
     {
-        return $this->adzoneId;
+        return $this->endTime;
     }
 
     public function setEndTime($endTime)
@@ -60,9 +66,9 @@ class TbkJuTqgGetRequest
         $this->apiParas["end_time"] = $endTime;
     }
 
-    public function getEndTime()
+    public function getFields()
     {
-        return $this->endTime;
+        return $this->fields;
     }
 
     public function setFields($fields)
@@ -71,9 +77,9 @@ class TbkJuTqgGetRequest
         $this->apiParas["fields"] = $fields;
     }
 
-    public function getFields()
+    public function getPageNo()
     {
-        return $this->fields;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -82,9 +88,9 @@ class TbkJuTqgGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -93,20 +99,15 @@ class TbkJuTqgGetRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getStartTime()
     {
-        return $this->pageSize;
+        return $this->startTime;
     }
 
     public function setStartTime($startTime)
     {
         $this->startTime = $startTime;
         $this->apiParas["start_time"] = $startTime;
-    }
-
-    public function getStartTime()
-    {
-        return $this->startTime;
     }
 
     public function getApiMethodName()
@@ -121,11 +122,10 @@ class TbkJuTqgGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->adzoneId, "adzoneId");
-        RequestCheckUtil::checkNotNull ($this->endTime, "endTime");
-        RequestCheckUtil::checkNotNull ($this->fields, "fields");
-        RequestCheckUtil::checkNotNull ($this->startTime, "startTime");
+        RequestCheckUtil::checkNotNull($this->adzoneId, "adzoneId");
+        RequestCheckUtil::checkNotNull($this->endTime, "endTime");
+        RequestCheckUtil::checkNotNull($this->fields, "fields");
+        RequestCheckUtil::checkNotNull($this->startTime, "startTime");
     }
 
     public function putOtherTextParam($key, $value)

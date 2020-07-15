@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.openim.chatlogs.import request
  *
@@ -18,15 +17,15 @@ class OpenimChatlogsImportRequest
 
     private $apiParas = array();
 
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
     public function setMessages($messages)
     {
         $this->messages = $messages;
         $this->apiParas["messages"] = $messages;
-    }
-
-    public function getMessages()
-    {
-        return $this->messages;
     }
 
     public function getApiMethodName()

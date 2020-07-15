@@ -1,25 +1,28 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao;
+namespace com\pv138\easyUnion\taobao;
 
 class HttpdnsGetRequest
 {
-	private $apiParas = array();
+    private $apiParas = array();
 
-	public function getApiMethodName()
-	{
-		return "taobao.httpdns.get";
-	}
+    public function getApiMethodName()
+    {
+        return "taobao.httpdns.get";
+    }
 
-	public function getApiParas()
-	{
-		return $this->apiParas;
-	}
+    public function getApiParas()
+    {
+        return $this->apiParas;
+    }
 
-	public function check(){}
+    public function check()
+    {
+    }
 
-	public function putOtherTextParam($key, $value) {
-		$this->apiParas[$key] = $value;
-		$this->$key = $value;
-	}
+    public function putOtherTextParam($key, $value)
+    {
+        $this->apiParas[$key] = $value;
+        $this->$key = $value;
+    }
 }

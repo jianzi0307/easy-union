@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.content.get request
  *
@@ -53,15 +54,20 @@ class TbkContentGetRequest
 
     private $apiParas = array();
 
+    public function getAdzoneId()
+    {
+        return $this->adzoneId;
+    }
+
     public function setAdzoneId($adzoneId)
     {
         $this->adzoneId = $adzoneId;
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getBeforeTimestamp()
     {
-        return $this->adzoneId;
+        return $this->beforeTimestamp;
     }
 
     public function setBeforeTimestamp($beforeTimestamp)
@@ -70,9 +76,9 @@ class TbkContentGetRequest
         $this->apiParas["before_timestamp"] = $beforeTimestamp;
     }
 
-    public function getBeforeTimestamp()
+    public function getCid()
     {
-        return $this->beforeTimestamp;
+        return $this->cid;
     }
 
     public function setCid($cid)
@@ -81,9 +87,9 @@ class TbkContentGetRequest
         $this->apiParas["cid"] = $cid;
     }
 
-    public function getCid()
+    public function getContentSet()
     {
-        return $this->cid;
+        return $this->contentSet;
     }
 
     public function setContentSet($contentSet)
@@ -92,9 +98,9 @@ class TbkContentGetRequest
         $this->apiParas["content_set"] = $contentSet;
     }
 
-    public function getContentSet()
+    public function getCount()
     {
-        return $this->contentSet;
+        return $this->count;
     }
 
     public function setCount($count)
@@ -103,9 +109,9 @@ class TbkContentGetRequest
         $this->apiParas["count"] = $count;
     }
 
-    public function getCount()
+    public function getImageHeight()
     {
-        return $this->count;
+        return $this->imageHeight;
     }
 
     public function setImageHeight($imageHeight)
@@ -114,9 +120,9 @@ class TbkContentGetRequest
         $this->apiParas["image_height"] = $imageHeight;
     }
 
-    public function getImageHeight()
+    public function getImageWidth()
     {
-        return $this->imageHeight;
+        return $this->imageWidth;
     }
 
     public function setImageWidth($imageWidth)
@@ -125,20 +131,15 @@ class TbkContentGetRequest
         $this->apiParas["image_width"] = $imageWidth;
     }
 
-    public function getImageWidth()
+    public function getType()
     {
-        return $this->imageWidth;
+        return $this->type;
     }
 
     public function setType($type)
     {
         $this->type = $type;
         $this->apiParas["type"] = $type;
-    }
-
-    public function getType()
-    {
-        return $this->type;
     }
 
     public function getApiMethodName()
@@ -153,12 +154,11 @@ class TbkContentGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->adzoneId, "adzoneId");
-        RequestCheckUtil::checkMaxValue ($this->imageHeight, 1000, "imageHeight");
-        RequestCheckUtil::checkMinValue ($this->imageHeight, 10, "imageHeight");
-        RequestCheckUtil::checkMaxValue ($this->imageWidth, 1000, "imageWidth");
-        RequestCheckUtil::checkMinValue ($this->imageWidth, 10, "imageWidth");
+        RequestCheckUtil::checkNotNull($this->adzoneId, "adzoneId");
+        RequestCheckUtil::checkMaxValue($this->imageHeight, 1000, "imageHeight");
+        RequestCheckUtil::checkMinValue($this->imageHeight, 10, "imageHeight");
+        RequestCheckUtil::checkMaxValue($this->imageWidth, 1000, "imageWidth");
+        RequestCheckUtil::checkMinValue($this->imageWidth, 10, "imageWidth");
     }
 
     public function putOtherTextParam($key, $value)

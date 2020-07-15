@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.top.auth.token.refresh request
  *
@@ -18,15 +19,15 @@ class TopAuthTokenRefreshRequest
 
     private $apiParas = array();
 
+    public function getRefreshToken()
+    {
+        return $this->refreshToken;
+    }
+
     public function setRefreshToken($refreshToken)
     {
         $this->refreshToken = $refreshToken;
         $this->apiParas["refresh_token"] = $refreshToken;
-    }
-
-    public function getRefreshToken()
-    {
-        return $this->refreshToken;
     }
 
     public function getApiMethodName()
@@ -42,7 +43,7 @@ class TopAuthTokenRefreshRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->refreshToken, "refreshToken");
+        RequestCheckUtil::checkNotNull($this->refreshToken, "refreshToken");
     }
 
     public function putOtherTextParam($key, $value)

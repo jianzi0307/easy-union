@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.files.get request
  *
@@ -28,15 +29,20 @@ class FilesGetRequest
 
     private $apiParas = array();
 
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
     public function setEndDate($endDate)
     {
         $this->endDate = $endDate;
         $this->apiParas["end_date"] = $endDate;
     }
 
-    public function getEndDate()
+    public function getStartDate()
     {
-        return $this->endDate;
+        return $this->startDate;
     }
 
     public function setStartDate($startDate)
@@ -45,20 +51,15 @@ class FilesGetRequest
         $this->apiParas["start_date"] = $startDate;
     }
 
-    public function getStartDate()
+    public function getStatus()
     {
-        return $this->startDate;
+        return $this->status;
     }
 
     public function setStatus($status)
     {
         $this->status = $status;
         $this->apiParas["status"] = $status;
-    }
-
-    public function getStatus()
-    {
-        return $this->status;
     }
 
     public function getApiMethodName()
@@ -73,9 +74,8 @@ class FilesGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->endDate, "endDate");
-        RequestCheckUtil::checkNotNull ($this->startDate, "startDate");
+        RequestCheckUtil::checkNotNull($this->endDate, "endDate");
+        RequestCheckUtil::checkNotNull($this->startDate, "startDate");
     }
 
     public function putOtherTextParam($key, $value)

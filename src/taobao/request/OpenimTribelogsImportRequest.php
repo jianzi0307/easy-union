@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.tribelogs.import request
  *
@@ -23,26 +24,26 @@ class OpenimTribelogsImportRequest
 
     private $apiParas = array();
 
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
     public function setMessages($messages)
     {
         $this->messages = $messages;
         $this->apiParas["messages"] = $messages;
     }
 
-    public function getMessages()
+    public function getTribeId()
     {
-        return $this->messages;
+        return $this->tribeId;
     }
 
     public function setTribeId($tribeId)
     {
         $this->tribeId = $tribeId;
         $this->apiParas["tribe_id"] = $tribeId;
-    }
-
-    public function getTribeId()
-    {
-        return $this->tribeId;
     }
 
     public function getApiMethodName()
@@ -57,8 +58,7 @@ class OpenimTribelogsImportRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->tribeId, "tribeId");
+        RequestCheckUtil::checkNotNull($this->tribeId, "tribeId");
     }
 
     public function putOtherTextParam($key, $value)

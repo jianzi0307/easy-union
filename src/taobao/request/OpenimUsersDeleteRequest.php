@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.users.delete request
  *
@@ -18,15 +19,15 @@ class OpenimUsersDeleteRequest
 
     private $apiParas = array();
 
+    public function getUserids()
+    {
+        return $this->userids;
+    }
+
     public function setUserids($userids)
     {
         $this->userids = $userids;
         $this->apiParas["userids"] = $userids;
-    }
-
-    public function getUserids()
-    {
-        return $this->userids;
     }
 
     public function getApiMethodName()
@@ -41,9 +42,8 @@ class OpenimUsersDeleteRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->userids, "userids");
-        RequestCheckUtil::checkMaxListSize ($this->userids, 100, "userids");
+        RequestCheckUtil::checkNotNull($this->userids, "userids");
+        RequestCheckUtil::checkMaxListSize($this->userids, 100, "userids");
     }
 
     public function putOtherTextParam($key, $value)

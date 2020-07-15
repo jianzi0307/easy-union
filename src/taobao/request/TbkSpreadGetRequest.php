@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.tbk.spread.get request
  *
@@ -18,15 +17,15 @@ class TbkSpreadGetRequest
 
     private $apiParas = array();
 
+    public function getRequests()
+    {
+        return $this->requests;
+    }
+
     public function setRequests($requests)
     {
         $this->requests = $requests;
         $this->apiParas["requests"] = $requests;
-    }
-
-    public function getRequests()
-    {
-        return $this->requests;
     }
 
     public function getApiMethodName()

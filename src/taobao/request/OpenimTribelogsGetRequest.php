@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.tribelogs.get request
  *
@@ -38,15 +39,20 @@ class OpenimTribelogsGetRequest
 
     private $apiParas = array();
 
+    public function getBegin()
+    {
+        return $this->begin;
+    }
+
     public function setBegin($begin)
     {
         $this->begin = $begin;
         $this->apiParas["begin"] = $begin;
     }
 
-    public function getBegin()
+    public function getCount()
     {
-        return $this->begin;
+        return $this->count;
     }
 
     public function setCount($count)
@@ -55,9 +61,9 @@ class OpenimTribelogsGetRequest
         $this->apiParas["count"] = $count;
     }
 
-    public function getCount()
+    public function getEnd()
     {
-        return $this->count;
+        return $this->end;
     }
 
     public function setEnd($end)
@@ -66,9 +72,9 @@ class OpenimTribelogsGetRequest
         $this->apiParas["end"] = $end;
     }
 
-    public function getEnd()
+    public function getNext()
     {
-        return $this->end;
+        return $this->next;
     }
 
     public function setNext($next)
@@ -77,20 +83,15 @@ class OpenimTribelogsGetRequest
         $this->apiParas["next"] = $next;
     }
 
-    public function getNext()
+    public function getTribeId()
     {
-        return $this->next;
+        return $this->tribeId;
     }
 
     public function setTribeId($tribeId)
     {
         $this->tribeId = $tribeId;
         $this->apiParas["tribe_id"] = $tribeId;
-    }
-
-    public function getTribeId()
-    {
-        return $this->tribeId;
     }
 
     public function getApiMethodName()
@@ -105,11 +106,10 @@ class OpenimTribelogsGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->begin, "begin");
-        RequestCheckUtil::checkNotNull ($this->count, "count");
-        RequestCheckUtil::checkNotNull ($this->end, "end");
-        RequestCheckUtil::checkNotNull ($this->tribeId, "tribeId");
+        RequestCheckUtil::checkNotNull($this->begin, "begin");
+        RequestCheckUtil::checkNotNull($this->count, "count");
+        RequestCheckUtil::checkNotNull($this->end, "end");
+        RequestCheckUtil::checkNotNull($this->tribeId, "tribeId");
     }
 
     public function putOtherTextParam($key, $value)

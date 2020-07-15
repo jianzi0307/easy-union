@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.snfilterword.setfilter request
  *
@@ -28,15 +29,20 @@ class OpenimSnfilterwordSetfilterRequest
 
     private $apiParas = array();
 
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
     public function setCreator($creator)
     {
         $this->creator = $creator;
         $this->apiParas["creator"] = $creator;
     }
 
-    public function getCreator()
+    public function getDesc()
     {
-        return $this->creator;
+        return $this->desc;
     }
 
     public function setDesc($desc)
@@ -45,20 +51,15 @@ class OpenimSnfilterwordSetfilterRequest
         $this->apiParas["desc"] = $desc;
     }
 
-    public function getDesc()
+    public function getFilterword()
     {
-        return $this->desc;
+        return $this->filterword;
     }
 
     public function setFilterword($filterword)
     {
         $this->filterword = $filterword;
         $this->apiParas["filterword"] = $filterword;
-    }
-
-    public function getFilterword()
-    {
-        return $this->filterword;
     }
 
     public function getApiMethodName()
@@ -73,9 +74,8 @@ class OpenimSnfilterwordSetfilterRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->creator, "creator");
-        RequestCheckUtil::checkNotNull ($this->filterword, "filterword");
+        RequestCheckUtil::checkNotNull($this->creator, "creator");
+        RequestCheckUtil::checkNotNull($this->filterword, "filterword");
     }
 
     public function putOtherTextParam($key, $value)

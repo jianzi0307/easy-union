@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.item.recommend.get request
  *
@@ -33,15 +34,20 @@ class TbkItemRecommendGetRequest
 
     private $apiParas = array();
 
+    public function getCount()
+    {
+        return $this->count;
+    }
+
     public function setCount($count)
     {
         $this->count = $count;
         $this->apiParas["count"] = $count;
     }
 
-    public function getCount()
+    public function getFields()
     {
-        return $this->count;
+        return $this->fields;
     }
 
     public function setFields($fields)
@@ -50,9 +56,9 @@ class TbkItemRecommendGetRequest
         $this->apiParas["fields"] = $fields;
     }
 
-    public function getFields()
+    public function getNumIid()
     {
-        return $this->fields;
+        return $this->numIid;
     }
 
     public function setNumIid($numIid)
@@ -61,20 +67,15 @@ class TbkItemRecommendGetRequest
         $this->apiParas["num_iid"] = $numIid;
     }
 
-    public function getNumIid()
+    public function getPlatform()
     {
-        return $this->numIid;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
     {
         $this->platform = $platform;
         $this->apiParas["platform"] = $platform;
-    }
-
-    public function getPlatform()
-    {
-        return $this->platform;
     }
 
     public function getApiMethodName()
@@ -89,9 +90,8 @@ class TbkItemRecommendGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->fields, "fields");
-        RequestCheckUtil::checkNotNull ($this->numIid, "numIid");
+        RequestCheckUtil::checkNotNull($this->fields, "fields");
+        RequestCheckUtil::checkNotNull($this->numIid, "numIid");
     }
 
     public function putOtherTextParam($key, $value)

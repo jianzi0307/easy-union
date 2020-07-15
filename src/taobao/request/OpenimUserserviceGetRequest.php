@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.userservice.get request
  *
@@ -28,15 +29,20 @@ class OpenimUserserviceGetRequest
 
     private $apiParas = array();
 
+    public function getDate()
+    {
+        return $this->date;
+    }
+
     public function setDate($date)
     {
         $this->date = $date;
         $this->apiParas["date"] = $date;
     }
 
-    public function getDate()
+    public function getPageNo()
     {
-        return $this->date;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -45,20 +51,15 @@ class OpenimUserserviceGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
         $this->apiParas["page_size"] = $pageSize;
-    }
-
-    public function getPageSize()
-    {
-        return $this->pageSize;
     }
 
     public function getApiMethodName()
@@ -73,8 +74,7 @@ class OpenimUserserviceGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->date, "date");
+        RequestCheckUtil::checkNotNull($this->date, "date");
     }
 
     public function putOtherTextParam($key, $value)

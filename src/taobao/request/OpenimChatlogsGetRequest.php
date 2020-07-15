@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.chatlogs.get request
  *
@@ -43,15 +44,20 @@ class OpenimChatlogsGetRequest
 
     private $apiParas = array();
 
+    public function getBegin()
+    {
+        return $this->begin;
+    }
+
     public function setBegin($begin)
     {
         $this->begin = $begin;
         $this->apiParas["begin"] = $begin;
     }
 
-    public function getBegin()
+    public function getCount()
     {
-        return $this->begin;
+        return $this->count;
     }
 
     public function setCount($count)
@@ -60,9 +66,9 @@ class OpenimChatlogsGetRequest
         $this->apiParas["count"] = $count;
     }
 
-    public function getCount()
+    public function getEnd()
     {
-        return $this->count;
+        return $this->end;
     }
 
     public function setEnd($end)
@@ -71,9 +77,9 @@ class OpenimChatlogsGetRequest
         $this->apiParas["end"] = $end;
     }
 
-    public function getEnd()
+    public function getNextKey()
     {
-        return $this->end;
+        return $this->nextKey;
     }
 
     public function setNextKey($nextKey)
@@ -82,9 +88,9 @@ class OpenimChatlogsGetRequest
         $this->apiParas["next_key"] = $nextKey;
     }
 
-    public function getNextKey()
+    public function getUser1()
     {
-        return $this->nextKey;
+        return $this->user1;
     }
 
     public function setUser1($user1)
@@ -93,20 +99,15 @@ class OpenimChatlogsGetRequest
         $this->apiParas["user1"] = $user1;
     }
 
-    public function getUser1()
+    public function getUser2()
     {
-        return $this->user1;
+        return $this->user2;
     }
 
     public function setUser2($user2)
     {
         $this->user2 = $user2;
         $this->apiParas["user2"] = $user2;
-    }
-
-    public function getUser2()
-    {
-        return $this->user2;
     }
 
     public function getApiMethodName()
@@ -121,10 +122,9 @@ class OpenimChatlogsGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->begin, "begin");
-        RequestCheckUtil::checkNotNull ($this->count, "count");
-        RequestCheckUtil::checkNotNull ($this->end, "end");
+        RequestCheckUtil::checkNotNull($this->begin, "begin");
+        RequestCheckUtil::checkNotNull($this->count, "count");
+        RequestCheckUtil::checkNotNull($this->end, "end");
     }
 
     public function putOtherTextParam($key, $value)

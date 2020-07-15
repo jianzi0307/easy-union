@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.privilege.get request
  *
@@ -44,15 +45,20 @@ class TbkPrivilegeGetRequest
 
     private $apiParas = array();
 
+    public function getAdzoneId()
+    {
+        return $this->adzoneId;
+    }
+
     public function setAdzoneId($adzoneId)
     {
         $this->adzoneId = $adzoneId;
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getItemId()
     {
-        return $this->adzoneId;
+        return $this->itemId;
     }
 
     public function setItemId($itemId)
@@ -61,9 +67,9 @@ class TbkPrivilegeGetRequest
         $this->apiParas["item_id"] = $itemId;
     }
 
-    public function getItemId()
+    public function getMe()
     {
-        return $this->itemId;
+        return $this->me;
     }
 
     public function setMe($me)
@@ -72,9 +78,9 @@ class TbkPrivilegeGetRequest
         $this->apiParas["me"] = $me;
     }
 
-    public function getMe()
+    public function getPlatform()
     {
-        return $this->me;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
@@ -83,20 +89,15 @@ class TbkPrivilegeGetRequest
         $this->apiParas["platform"] = $platform;
     }
 
-    public function getPlatform()
+    public function getSiteId()
     {
-        return $this->platform;
+        return $this->siteId;
     }
 
     public function setSiteId($siteId)
     {
         $this->siteId = $siteId;
         $this->apiParas["site_id"] = $siteId;
-    }
-
-    public function getSiteId()
-    {
-        return $this->siteId;
     }
 
     /**
@@ -129,10 +130,9 @@ class TbkPrivilegeGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->adzoneId, "adzoneId");
-        RequestCheckUtil::checkNotNull ($this->itemId, "itemId");
-        RequestCheckUtil::checkNotNull ($this->siteId, "siteId");
+        RequestCheckUtil::checkNotNull($this->adzoneId, "adzoneId");
+        RequestCheckUtil::checkNotNull($this->itemId, "itemId");
+        RequestCheckUtil::checkNotNull($this->siteId, "siteId");
     }
 
     public function putOtherTextParam($key, $value)

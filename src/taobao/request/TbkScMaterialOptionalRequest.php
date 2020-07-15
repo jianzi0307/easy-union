@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.sc.material.optional request
  *
@@ -134,15 +135,20 @@ class TbkScMaterialOptionalRequest
 
     private $apiParas = array();
 
+    public function getAdzoneId()
+    {
+        return $this->adzoneId;
+    }
+
     public function setAdzoneId($adzoneId)
     {
         $this->adzoneId = $adzoneId;
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getCat()
     {
-        return $this->adzoneId;
+        return $this->cat;
     }
 
     public function setCat($cat)
@@ -151,9 +157,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["cat"] = $cat;
     }
 
-    public function getCat()
+    public function getEndPrice()
     {
-        return $this->cat;
+        return $this->endPrice;
     }
 
     public function setEndPrice($endPrice)
@@ -162,9 +168,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["end_price"] = $endPrice;
     }
 
-    public function getEndPrice()
+    public function getEndTkRate()
     {
-        return $this->endPrice;
+        return $this->endTkRate;
     }
 
     public function setEndTkRate($endTkRate)
@@ -173,9 +179,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["end_tk_rate"] = $endTkRate;
     }
 
-    public function getEndTkRate()
+    public function getHasCoupon()
     {
-        return $this->endTkRate;
+        return $this->hasCoupon;
     }
 
     public function setHasCoupon($hasCoupon)
@@ -184,9 +190,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["has_coupon"] = $hasCoupon;
     }
 
-    public function getHasCoupon()
+    public function getIncludeGoodRate()
     {
-        return $this->hasCoupon;
+        return $this->includeGoodRate;
     }
 
     public function setIncludeGoodRate($includeGoodRate)
@@ -195,9 +201,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["include_good_rate"] = $includeGoodRate;
     }
 
-    public function getIncludeGoodRate()
+    public function getIncludePayRate30()
     {
-        return $this->includeGoodRate;
+        return $this->includePayRate30;
     }
 
     public function setIncludePayRate30($includePayRate30)
@@ -206,9 +212,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["include_pay_rate_30"] = $includePayRate30;
     }
 
-    public function getIncludePayRate30()
+    public function getIncludeRfdRate()
     {
-        return $this->includePayRate30;
+        return $this->includeRfdRate;
     }
 
     public function setIncludeRfdRate($includeRfdRate)
@@ -217,9 +223,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["include_rfd_rate"] = $includeRfdRate;
     }
 
-    public function getIncludeRfdRate()
+    public function getIp()
     {
-        return $this->includeRfdRate;
+        return $this->ip;
     }
 
     public function setIp($ip)
@@ -228,9 +234,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["ip"] = $ip;
     }
 
-    public function getIp()
+    public function getIsOverseas()
     {
-        return $this->ip;
+        return $this->isOverseas;
     }
 
     public function setIsOverseas($isOverseas)
@@ -239,9 +245,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["is_overseas"] = $isOverseas;
     }
 
-    public function getIsOverseas()
+    public function getIsTmall()
     {
-        return $this->isOverseas;
+        return $this->isTmall;
     }
 
     public function setIsTmall($isTmall)
@@ -250,9 +256,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["is_tmall"] = $isTmall;
     }
 
-    public function getIsTmall()
+    public function getItemloc()
     {
-        return $this->isTmall;
+        return $this->itemloc;
     }
 
     public function setItemloc($itemloc)
@@ -261,9 +267,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["itemloc"] = $itemloc;
     }
 
-    public function getItemloc()
+    public function getNeedFreeShipment()
     {
-        return $this->itemloc;
+        return $this->needFreeShipment;
     }
 
     public function setNeedFreeShipment($needFreeShipment)
@@ -272,9 +278,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["need_free_shipment"] = $needFreeShipment;
     }
 
-    public function getNeedFreeShipment()
+    public function getNeedPrepay()
     {
-        return $this->needFreeShipment;
+        return $this->needPrepay;
     }
 
     public function setNeedPrepay($needPrepay)
@@ -283,9 +289,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["need_prepay"] = $needPrepay;
     }
 
-    public function getNeedPrepay()
+    public function getNpxLevel()
     {
-        return $this->needPrepay;
+        return $this->npxLevel;
     }
 
     public function setNpxLevel($npxLevel)
@@ -294,9 +300,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["npx_level"] = $npxLevel;
     }
 
-    public function getNpxLevel()
+    public function getPageNo()
     {
-        return $this->npxLevel;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -305,9 +311,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -316,9 +322,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getPlatform()
     {
-        return $this->pageSize;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
@@ -327,9 +333,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["platform"] = $platform;
     }
 
-    public function getPlatform()
+    public function getQ()
     {
-        return $this->platform;
+        return $this->q;
     }
 
     public function setQ($q)
@@ -338,9 +344,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["q"] = $q;
     }
 
-    public function getQ()
+    public function getSiteId()
     {
-        return $this->q;
+        return $this->siteId;
     }
 
     public function setSiteId($siteId)
@@ -349,11 +355,10 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["site_id"] = $siteId;
     }
 
-    public function getSiteId()
+    public function getMaterialId()
     {
-        return $this->siteId;
+        return $this->MaterialId;
     }
-
 
     public function setMaterialId($MaterialId)
     {
@@ -361,11 +366,10 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["material_id"] = $MaterialId;
     }
 
-    public function getMaterialId()
+    public function getSort()
     {
-        return $this->MaterialId;
+        return $this->sort;
     }
-
 
     public function setSort($sort)
     {
@@ -373,9 +377,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["sort"] = $sort;
     }
 
-    public function getSort()
+    public function getStartDsr()
     {
-        return $this->sort;
+        return $this->startDsr;
     }
 
     public function setStartDsr($startDsr)
@@ -384,9 +388,9 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["start_dsr"] = $startDsr;
     }
 
-    public function getStartDsr()
+    public function getStartPrice()
     {
-        return $this->startDsr;
+        return $this->startPrice;
     }
 
     public function setStartPrice($startPrice)
@@ -395,20 +399,15 @@ class TbkScMaterialOptionalRequest
         $this->apiParas["start_price"] = $startPrice;
     }
 
-    public function getStartPrice()
+    public function getStartTkRate()
     {
-        return $this->startPrice;
+        return $this->startTkRate;
     }
 
     public function setStartTkRate($startTkRate)
     {
         $this->startTkRate = $startTkRate;
         $this->apiParas["start_tk_rate"] = $startTkRate;
-    }
-
-    public function getStartTkRate()
-    {
-        return $this->startTkRate;
     }
 
     public function getApiMethodName()
@@ -424,9 +423,9 @@ class TbkScMaterialOptionalRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->adzoneId, "adzoneId");
-        RequestCheckUtil::checkNotNull ($this->siteId, "siteId");
-        RequestCheckUtil::checkMaxValue ($this->startDsr, 50000, "startDsr");
+        RequestCheckUtil::checkNotNull($this->adzoneId, "adzoneId");
+        RequestCheckUtil::checkNotNull($this->siteId, "siteId");
+        RequestCheckUtil::checkMaxValue($this->startDsr, 50000, "startDsr");
     }
 
     public function putOtherTextParam($key, $value)

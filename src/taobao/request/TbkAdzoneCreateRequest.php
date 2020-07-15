@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.adzone.create request
  *
@@ -23,26 +24,26 @@ class TbkAdzoneCreateRequest
 
     private $apiParas = array();
 
+    public function getAdzoneName()
+    {
+        return $this->adzoneName;
+    }
+
     public function setAdzoneName($adzoneName)
     {
         $this->adzoneName = $adzoneName;
         $this->apiParas["adzone_name"] = $adzoneName;
     }
 
-    public function getAdzoneName()
+    public function getSiteId()
     {
-        return $this->adzoneName;
+        return $this->siteId;
     }
 
     public function setSiteId($siteId)
     {
         $this->siteId = $siteId;
         $this->apiParas["site_id"] = $siteId;
-    }
-
-    public function getSiteId()
-    {
-        return $this->siteId;
     }
 
     public function getApiMethodName()
@@ -58,9 +59,9 @@ class TbkAdzoneCreateRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->adzoneName, "adzoneName");
-        RequestCheckUtil::checkMaxLength ($this->adzoneName, 64, "adzoneName");
-        RequestCheckUtil::checkNotNull ($this->siteId, "siteId");
+        RequestCheckUtil::checkNotNull($this->adzoneName, "adzoneName");
+        RequestCheckUtil::checkMaxLength($this->adzoneName, 64, "adzoneName");
+        RequestCheckUtil::checkNotNull($this->siteId, "siteId");
     }
 
     public function putOtherTextParam($key, $value)

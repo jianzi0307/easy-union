@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.dg.newuser.order.get request
  *
@@ -43,15 +44,20 @@ class TbkDgNewuserOrderGetRequest
 
     private $apiParas = array();
 
+    public function getActivityId()
+    {
+        return $this->activityId;
+    }
+
     public function setActivityId($activityId)
     {
         $this->activityId = $activityId;
         $this->apiParas["activity_id"] = $activityId;
     }
 
-    public function getActivityId()
+    public function getAdzoneId()
     {
-        return $this->activityId;
+        return $this->adzoneId;
     }
 
     public function setAdzoneId($adzoneId)
@@ -60,9 +66,9 @@ class TbkDgNewuserOrderGetRequest
         $this->apiParas["adzone_id"] = $adzoneId;
     }
 
-    public function getAdzoneId()
+    public function getEndTime()
     {
-        return $this->adzoneId;
+        return $this->endTime;
     }
 
     public function setEndTime($endTime)
@@ -71,9 +77,9 @@ class TbkDgNewuserOrderGetRequest
         $this->apiParas["end_time"] = $endTime;
     }
 
-    public function getEndTime()
+    public function getPageNo()
     {
-        return $this->endTime;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -82,9 +88,9 @@ class TbkDgNewuserOrderGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -93,20 +99,15 @@ class TbkDgNewuserOrderGetRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getStartTime()
     {
-        return $this->pageSize;
+        return $this->startTime;
     }
 
     public function setStartTime($startTime)
     {
         $this->startTime = $startTime;
         $this->apiParas["start_time"] = $startTime;
-    }
-
-    public function getStartTime()
-    {
-        return $this->startTime;
     }
 
     public function getApiMethodName()
@@ -121,10 +122,9 @@ class TbkDgNewuserOrderGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->activityId, "activityId");
-        RequestCheckUtil::checkMaxValue ($this->pageSize, 100, "pageSize");
-        RequestCheckUtil::checkMinValue ($this->pageSize, 1, "pageSize");
+        RequestCheckUtil::checkNotNull($this->activityId, "activityId");
+        RequestCheckUtil::checkMaxValue($this->pageSize, 100, "pageSize");
+        RequestCheckUtil::checkMinValue($this->pageSize, 1, "pageSize");
     }
 
     public function putOtherTextParam($key, $value)

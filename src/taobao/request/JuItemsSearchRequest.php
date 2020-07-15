@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.ju.items.search request
  *
@@ -18,15 +17,15 @@ class JuItemsSearchRequest
 
     private $apiParas = array();
 
+    public function getParamTopItemQuery()
+    {
+        return $this->paramTopItemQuery;
+    }
+
     public function setParamTopItemQuery($paramTopItemQuery)
     {
         $this->paramTopItemQuery = $paramTopItemQuery;
         $this->apiParas["param_top_item_query"] = $paramTopItemQuery;
-    }
-
-    public function getParamTopItemQuery()
-    {
-        return $this->paramTopItemQuery;
     }
 
     public function getApiMethodName()

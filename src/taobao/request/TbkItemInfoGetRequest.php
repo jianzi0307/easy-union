@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.item.info.get request
  *
@@ -28,15 +29,20 @@ class TbkItemInfoGetRequest
 
     private $apiParas = array();
 
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
     public function setIp($ip)
     {
         $this->ip = $ip;
         $this->apiParas["ip"] = $ip;
     }
 
-    public function getIp()
+    public function getNumIids()
     {
-        return $this->ip;
+        return $this->numIids;
     }
 
     public function setNumIids($numIids)
@@ -45,20 +51,15 @@ class TbkItemInfoGetRequest
         $this->apiParas["num_iids"] = $numIids;
     }
 
-    public function getNumIids()
+    public function getPlatform()
     {
-        return $this->numIids;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
     {
         $this->platform = $platform;
         $this->apiParas["platform"] = $platform;
-    }
-
-    public function getPlatform()
-    {
-        return $this->platform;
     }
 
     public function getApiMethodName()
@@ -73,8 +74,7 @@ class TbkItemInfoGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->numIids, "numIids");
+        RequestCheckUtil::checkNotNull($this->numIids, "numIids");
     }
 
     public function putOtherTextParam($key, $value)

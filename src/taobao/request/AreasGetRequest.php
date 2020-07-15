@@ -1,8 +1,10 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.areas.get request
  *
@@ -18,15 +20,15 @@ class AreasGetRequest
 
     private $apiParas = array();
 
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
     public function setFields($fields)
     {
         $this->fields = $fields;
         $this->apiParas["fields"] = $fields;
-    }
-
-    public function getFields()
-    {
-        return $this->fields;
     }
 
     public function getApiMethodName()
@@ -41,8 +43,7 @@ class AreasGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->fields, "fields");
+        RequestCheckUtil::checkNotNull($this->fields, "fields");
     }
 
     public function putOtherTextParam($key, $value)

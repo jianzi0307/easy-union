@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.top.sdk.feedback.upload request
  *
@@ -23,26 +24,26 @@ class TopSdkFeedbackUploadRequest
 
     private $apiParas = array();
 
+    public function getContent()
+    {
+        return $this->content;
+    }
+
     public function setContent($content)
     {
         $this->content = $content;
         $this->apiParas["content"] = $content;
     }
 
-    public function getContent()
+    public function getType()
     {
-        return $this->content;
+        return $this->type;
     }
 
     public function setType($type)
     {
         $this->type = $type;
         $this->apiParas["type"] = $type;
-    }
-
-    public function getType()
-    {
-        return $this->type;
     }
 
     public function getApiMethodName()
@@ -58,7 +59,7 @@ class TopSdkFeedbackUploadRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->type, "type");
+        RequestCheckUtil::checkNotNull($this->type, "type");
     }
 
     public function putOtherTextParam($key, $value)

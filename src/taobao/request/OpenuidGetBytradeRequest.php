@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openuid.get.bytrade request
  *
@@ -18,15 +19,15 @@ class OpenuidGetBytradeRequest
 
     private $apiParas = array();
 
+    public function getTid()
+    {
+        return $this->tid;
+    }
+
     public function setTid($tid)
     {
         $this->tid = $tid;
         $this->apiParas["tid"] = $tid;
-    }
-
-    public function getTid()
-    {
-        return $this->tid;
     }
 
     public function getApiMethodName()
@@ -41,8 +42,7 @@ class OpenuidGetBytradeRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->tid, "tid");
+        RequestCheckUtil::checkNotNull($this->tid, "tid");
     }
 
     public function putOtherTextParam($key, $value)

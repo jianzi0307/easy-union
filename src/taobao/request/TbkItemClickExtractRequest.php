@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.item.click.extract
  *
@@ -16,28 +17,34 @@ class TbkItemClickExtractRequest
      **/
     private $ClickUrl;
     private $apiParas = array();
+
+    public function getClickUrl()
+    {
+        return $this->ClickUrl;
+    }
+
     public function setClickUrl($ClickUrl)
     {
         $this->ClickUrl = $ClickUrl;
         $this->apiParas["click_url"] = $ClickUrl;
     }
-    public function getClickUrl()
-    {
-        return $this->ClickUrl;
-    }
+
     public function getApiMethodName()
     {
         return "taobao.tbk.item.click.extract";
     }
+
     public function getApiParas()
     {
         $re = $this->apiParas;
         return $this->apiParas;
     }
+
     public function check()
     {
         RequestCheckUtil::checkNotNull($this->ClickUrl, "click_url");
     }
+
     public function putOtherTextParam($key, $value)
     {
         $this->apiParas[$key] = $value;

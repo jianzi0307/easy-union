@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.track.getsummary request
  *
@@ -23,26 +24,26 @@ class OpenimTrackGetsummaryRequest
 
     private $apiParas = array();
 
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
     public function setPrefix($prefix)
     {
         $this->prefix = $prefix;
         $this->apiParas["prefix"] = $prefix;
     }
 
-    public function getPrefix()
+    public function getUid()
     {
-        return $this->prefix;
+        return $this->uid;
     }
 
     public function setUid($uid)
     {
         $this->uid = $uid;
         $this->apiParas["uid"] = $uid;
-    }
-
-    public function getUid()
-    {
-        return $this->uid;
     }
 
     public function getApiMethodName()
@@ -57,8 +58,7 @@ class OpenimTrackGetsummaryRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->uid, "uid");
+        RequestCheckUtil::checkNotNull($this->uid, "uid");
     }
 
     public function putOtherTextParam($key, $value)

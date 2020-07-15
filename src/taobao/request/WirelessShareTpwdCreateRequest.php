@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.wireless.share.tpwd.create request
  *
@@ -18,15 +17,15 @@ class WirelessShareTpwdCreateRequest
 
     private $apiParas = array();
 
+    public function getTpwdParam()
+    {
+        return $this->tpwdParam;
+    }
+
     public function setTpwdParam($tpwdParam)
     {
         $this->tpwdParam = $tpwdParam;
         $this->apiParas["tpwd_param"] = $tpwdParam;
-    }
-
-    public function getTpwdParam()
-    {
-        return $this->tpwdParam;
     }
 
     public function getApiMethodName()

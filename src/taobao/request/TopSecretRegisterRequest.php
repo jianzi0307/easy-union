@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.top.secret.register request
  *
@@ -18,15 +17,15 @@ class TopSecretRegisterRequest
 
     private $apiParas = array();
 
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
     public function setUserId($userId)
     {
         $this->userId = $userId;
         $this->apiParas["user_id"] = $userId;
-    }
-
-    public function getUserId()
-    {
-        return $this->userId;
     }
 
     public function getApiMethodName()

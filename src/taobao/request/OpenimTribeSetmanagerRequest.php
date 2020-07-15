@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.tribe.setmanager request
  *
@@ -28,15 +29,20 @@ class OpenimTribeSetmanagerRequest
 
     private $apiParas = array();
 
+    public function getMember()
+    {
+        return $this->member;
+    }
+
     public function setMember($member)
     {
         $this->member = $member;
         $this->apiParas["member"] = $member;
     }
 
-    public function getMember()
+    public function getTid()
     {
-        return $this->member;
+        return $this->tid;
     }
 
     public function setTid($tid)
@@ -45,20 +51,15 @@ class OpenimTribeSetmanagerRequest
         $this->apiParas["tid"] = $tid;
     }
 
-    public function getTid()
+    public function getUser()
     {
-        return $this->tid;
+        return $this->user;
     }
 
     public function setUser($user)
     {
         $this->user = $user;
         $this->apiParas["user"] = $user;
-    }
-
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function getApiMethodName()
@@ -73,8 +74,7 @@ class OpenimTribeSetmanagerRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->tid, "tid");
+        RequestCheckUtil::checkNotNull($this->tid, "tid");
     }
 
     public function putOtherTextParam($key, $value)

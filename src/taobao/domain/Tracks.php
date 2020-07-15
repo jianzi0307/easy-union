@@ -1,6 +1,6 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Domain;
+namespace com\pv138\easyUnion\taobao\domain;
 
 /**
  * 用户轨迹
@@ -8,30 +8,29 @@ namespace NiuGengYun\EasyTBK\TaoBao\Domain;
  */
 class Tracks
 {
-	
-	/** 
-	 * 轨迹发生的时间，即用户进入页面的时间
-	 **/
-	public $enter_time;
-	
-	/** 
-	 * referer_keyword
-	 **/
-	public $referer_keyword;
-	
-	/** 
-	 * referer_url
-	 **/
-	public $referer_url;
-	
-	/** 
-	 * 标题
-	 **/
-	public $title;
-	
-	/** 
-	 * url
-	 **/
-	public $url;	
+
+    /**
+     * 轨迹发生的时间，即用户进入页面的时间
+     **/
+    public $enter_time;
+
+    /**
+     * referer_keyword
+     **/
+    public $referer_keyword;
+
+    /**
+     * referer_url
+     **/
+    public $referer_url;
+
+    /**
+     * 标题
+     **/
+    public $title;
+
+    /**
+     * url
+     **/
+    public $url;
 }
-?>

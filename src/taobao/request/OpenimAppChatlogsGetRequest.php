@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.app.chatlogs.get request
  *
@@ -33,15 +34,20 @@ class OpenimAppChatlogsGetRequest
 
     private $apiParas = array();
 
+    public function getBeg()
+    {
+        return $this->beg;
+    }
+
     public function setBeg($beg)
     {
         $this->beg = $beg;
         $this->apiParas["beg"] = $beg;
     }
 
-    public function getBeg()
+    public function getCount()
     {
-        return $this->beg;
+        return $this->count;
     }
 
     public function setCount($count)
@@ -50,9 +56,9 @@ class OpenimAppChatlogsGetRequest
         $this->apiParas["count"] = $count;
     }
 
-    public function getCount()
+    public function getEnd()
     {
-        return $this->count;
+        return $this->end;
     }
 
     public function setEnd($end)
@@ -61,20 +67,15 @@ class OpenimAppChatlogsGetRequest
         $this->apiParas["end"] = $end;
     }
 
-    public function getEnd()
+    public function getNext()
     {
-        return $this->end;
+        return $this->next;
     }
 
     public function setNext($next)
     {
         $this->next = $next;
         $this->apiParas["next"] = $next;
-    }
-
-    public function getNext()
-    {
-        return $this->next;
     }
 
     public function getApiMethodName()
@@ -89,12 +90,11 @@ class OpenimAppChatlogsGetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->beg, "beg");
-        RequestCheckUtil::checkNotNull ($this->count, "count");
-        RequestCheckUtil::checkMaxValue ($this->count, 1000, "count");
-        RequestCheckUtil::checkMinValue ($this->count, 1, "count");
-        RequestCheckUtil::checkNotNull ($this->end, "end");
+        RequestCheckUtil::checkNotNull($this->beg, "beg");
+        RequestCheckUtil::checkNotNull($this->count, "count");
+        RequestCheckUtil::checkMaxValue($this->count, 1000, "count");
+        RequestCheckUtil::checkMinValue($this->count, 1, "count");
+        RequestCheckUtil::checkNotNull($this->end, "end");
     }
 
     public function putOtherTextParam($key, $value)

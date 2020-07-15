@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.tribe.getalltribes request
  *
@@ -23,26 +24,26 @@ class OpenimTribeGetalltribesRequest
 
     private $apiParas = array();
 
+    public function getTribeTypes()
+    {
+        return $this->tribeTypes;
+    }
+
     public function setTribeTypes($tribeTypes)
     {
         $this->tribeTypes = $tribeTypes;
         $this->apiParas["tribe_types"] = $tribeTypes;
     }
 
-    public function getTribeTypes()
+    public function getUser()
     {
-        return $this->tribeTypes;
+        return $this->user;
     }
 
     public function setUser($user)
     {
         $this->user = $user;
         $this->apiParas["user"] = $user;
-    }
-
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function getApiMethodName()
@@ -57,9 +58,8 @@ class OpenimTribeGetalltribesRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->tribeTypes, "tribeTypes");
-        RequestCheckUtil::checkMaxListSize ($this->tribeTypes, 20, "tribeTypes");
+        RequestCheckUtil::checkNotNull($this->tribeTypes, "tribeTypes");
+        RequestCheckUtil::checkMaxListSize($this->tribeTypes, 20, "tribeTypes");
     }
 
     public function putOtherTextParam($key, $value)

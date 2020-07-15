@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.item.get request
  *
@@ -12,6 +13,16 @@ use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 class TbkItemConvertRequest
 {
     private $Fields;
+    private $NumIids;
+    private $AdzoneId;
+    private $Platform;
+    private $Unid;
+    private $Dx;
+
+    public function getFields()
+    {
+        return $this->Fields;
+    }
 
     public function setFields($Fields)
     {
@@ -19,13 +30,10 @@ class TbkItemConvertRequest
         $this->apiParas["fields"] = $Fields;
     }
 
-    public function getFields()
+    public function getNumIids()
     {
-        return $this->Fields;
+        return $this->NumIids;
     }
-
-
-    private $NumIids;
 
     public function setNumIids($NumIids)
     {
@@ -33,12 +41,10 @@ class TbkItemConvertRequest
         $this->apiParas["num_iids"] = $NumIids;
     }
 
-    public function getNumIids()
+    public function getAdzoneId()
     {
-        return $this->NumIids;
+        return $this->AdzoneId;
     }
-
-    private $AdzoneId;
 
     public function setAdzoneId($AdzoneId)
     {
@@ -46,12 +52,10 @@ class TbkItemConvertRequest
         $this->apiParas["adzone_id"] = $AdzoneId;
     }
 
-    public function getAdzoneId()
+    public function getPlatform()
     {
-        return $this->AdzoneId;
+        return $this->Platform;
     }
-
-    private $Platform;
 
     public function setPlatform($Platform)
     {
@@ -59,12 +63,10 @@ class TbkItemConvertRequest
         $this->apiParas["platform"] = $Platform;
     }
 
-    public function getPlatform()
+    public function getUnid()
     {
-        return $this->Platform;
+        return $this->Unid;
     }
-
-    private $Unid;
 
     public function setUnid($Unid)
     {
@@ -72,22 +74,15 @@ class TbkItemConvertRequest
         $this->apiParas["unid"] = $Unid;
     }
 
-    public function getUnid()
+    public function getDx()
     {
-        return $this->Unid;
+        return $this->Dx;
     }
-
-    private $Dx;
 
     public function setDx($Dx)
     {
         $this->Dx = $Dx;
         $this->apiParas["dx"] = $Dx;
-    }
-
-    public function getDx()
-    {
-        return $this->Dx;
     }
 
     public function getApiMethodName()
@@ -103,8 +98,7 @@ class TbkItemConvertRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->Fields, "fields");
+        RequestCheckUtil::checkNotNull($this->Fields, "fields");
     }
 
     public function putOtherTextParam($key, $value)

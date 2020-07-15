@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.shop.get request
  *
@@ -88,15 +89,20 @@ class TbkShopGetRequest
 
     private $apiParas = array();
 
+    public function getEndAuctionCount()
+    {
+        return $this->endAuctionCount;
+    }
+
     public function setEndAuctionCount($endAuctionCount)
     {
         $this->endAuctionCount = $endAuctionCount;
         $this->apiParas["end_auction_count"] = $endAuctionCount;
     }
 
-    public function getEndAuctionCount()
+    public function getEndCommissionRate()
     {
-        return $this->endAuctionCount;
+        return $this->endCommissionRate;
     }
 
     public function setEndCommissionRate($endCommissionRate)
@@ -105,9 +111,9 @@ class TbkShopGetRequest
         $this->apiParas["end_commission_rate"] = $endCommissionRate;
     }
 
-    public function getEndCommissionRate()
+    public function getEndCredit()
     {
-        return $this->endCommissionRate;
+        return $this->endCredit;
     }
 
     public function setEndCredit($endCredit)
@@ -116,9 +122,9 @@ class TbkShopGetRequest
         $this->apiParas["end_credit"] = $endCredit;
     }
 
-    public function getEndCredit()
+    public function getEndTotalAction()
     {
-        return $this->endCredit;
+        return $this->endTotalAction;
     }
 
     public function setEndTotalAction($endTotalAction)
@@ -127,9 +133,9 @@ class TbkShopGetRequest
         $this->apiParas["end_total_action"] = $endTotalAction;
     }
 
-    public function getEndTotalAction()
+    public function getFields()
     {
-        return $this->endTotalAction;
+        return $this->fields;
     }
 
     public function setFields($fields)
@@ -138,9 +144,9 @@ class TbkShopGetRequest
         $this->apiParas["fields"] = $fields;
     }
 
-    public function getFields()
+    public function getIsTmall()
     {
-        return $this->fields;
+        return $this->isTmall;
     }
 
     public function setIsTmall($isTmall)
@@ -149,9 +155,9 @@ class TbkShopGetRequest
         $this->apiParas["is_tmall"] = $isTmall;
     }
 
-    public function getIsTmall()
+    public function getPageNo()
     {
-        return $this->isTmall;
+        return $this->pageNo;
     }
 
     public function setPageNo($pageNo)
@@ -160,9 +166,9 @@ class TbkShopGetRequest
         $this->apiParas["page_no"] = $pageNo;
     }
 
-    public function getPageNo()
+    public function getPageSize()
     {
-        return $this->pageNo;
+        return $this->pageSize;
     }
 
     public function setPageSize($pageSize)
@@ -171,9 +177,9 @@ class TbkShopGetRequest
         $this->apiParas["page_size"] = $pageSize;
     }
 
-    public function getPageSize()
+    public function getPlatform()
     {
-        return $this->pageSize;
+        return $this->platform;
     }
 
     public function setPlatform($platform)
@@ -182,9 +188,9 @@ class TbkShopGetRequest
         $this->apiParas["platform"] = $platform;
     }
 
-    public function getPlatform()
+    public function getQ()
     {
-        return $this->platform;
+        return $this->q;
     }
 
     public function setQ($q)
@@ -193,9 +199,9 @@ class TbkShopGetRequest
         $this->apiParas["q"] = $q;
     }
 
-    public function getQ()
+    public function getSort()
     {
-        return $this->q;
+        return $this->sort;
     }
 
     public function setSort($sort)
@@ -204,9 +210,9 @@ class TbkShopGetRequest
         $this->apiParas["sort"] = $sort;
     }
 
-    public function getSort()
+    public function getStartAuctionCount()
     {
-        return $this->sort;
+        return $this->startAuctionCount;
     }
 
     public function setStartAuctionCount($startAuctionCount)
@@ -215,9 +221,9 @@ class TbkShopGetRequest
         $this->apiParas["start_auction_count"] = $startAuctionCount;
     }
 
-    public function getStartAuctionCount()
+    public function getStartCommissionRate()
     {
-        return $this->startAuctionCount;
+        return $this->startCommissionRate;
     }
 
     public function setStartCommissionRate($startCommissionRate)
@@ -226,9 +232,9 @@ class TbkShopGetRequest
         $this->apiParas["start_commission_rate"] = $startCommissionRate;
     }
 
-    public function getStartCommissionRate()
+    public function getStartCredit()
     {
-        return $this->startCommissionRate;
+        return $this->startCredit;
     }
 
     public function setStartCredit($startCredit)
@@ -237,20 +243,15 @@ class TbkShopGetRequest
         $this->apiParas["start_credit"] = $startCredit;
     }
 
-    public function getStartCredit()
+    public function getStartTotalAction()
     {
-        return $this->startCredit;
+        return $this->startTotalAction;
     }
 
     public function setStartTotalAction($startTotalAction)
     {
         $this->startTotalAction = $startTotalAction;
         $this->apiParas["start_total_action"] = $startTotalAction;
-    }
-
-    public function getStartTotalAction()
-    {
-        return $this->startTotalAction;
     }
 
     public function getApiMethodName()
@@ -266,8 +267,8 @@ class TbkShopGetRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->fields, "fields");
-        RequestCheckUtil::checkNotNull ($this->q, "q");
+        RequestCheckUtil::checkNotNull($this->fields, "fields");
+        RequestCheckUtil::checkNotNull($this->q, "q");
     }
 
     public function putOtherTextParam($key, $value)

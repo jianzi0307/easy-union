@@ -1,6 +1,6 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Domain;
+namespace com\pv138\easyUnion\taobao\domain;
 
 /**
  * 请求列表，内部包含多个url
@@ -8,10 +8,9 @@ namespace NiuGengYun\EasyTBK\TaoBao\Domain;
  */
 class TbkSpreadRequest
 {
-	
-	/** 
-	 * 原始url, 只支持uland.taobao.com，s.click.taobao.com， ai.taobao.com，temai.taobao.com的域名转换，否则判错
-	 **/
-	public $url;	
+
+    /**
+     * 原始url, 只支持uland.taobao.com，s.click.taobao.com， ai.taobao.com，temai.taobao.com的域名转换，否则判错
+     **/
+    public $url;
 }
-?>

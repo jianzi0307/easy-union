@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.top.auth.token.create request
  *
@@ -23,26 +24,26 @@ class TopAuthTokenCreateRequest
 
     private $apiParas = array();
 
+    public function getCode()
+    {
+        return $this->code;
+    }
+
     public function setCode($code)
     {
         $this->code = $code;
         $this->apiParas["code"] = $code;
     }
 
-    public function getCode()
+    public function getUuid()
     {
-        return $this->code;
+        return $this->uuid;
     }
 
     public function setUuid($uuid)
     {
         $this->uuid = $uuid;
         $this->apiParas["uuid"] = $uuid;
-    }
-
-    public function getUuid()
-    {
-        return $this->uuid;
     }
 
     public function getApiMethodName()
@@ -58,7 +59,7 @@ class TopAuthTokenCreateRequest
     public function check()
     {
 
-        RequestCheckUtil::checkNotNull ($this->code, "code");
+        RequestCheckUtil::checkNotNull($this->code, "code");
     }
 
     public function putOtherTextParam($key, $value)

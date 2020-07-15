@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.track.getdetails request
  *
@@ -33,15 +34,20 @@ class OpenimTrackGetdetailsRequest
 
     private $apiParas = array();
 
+    public function getEndtime()
+    {
+        return $this->endtime;
+    }
+
     public function setEndtime($endtime)
     {
         $this->endtime = $endtime;
         $this->apiParas["endtime"] = $endtime;
     }
 
-    public function getEndtime()
+    public function getPrefix()
     {
-        return $this->endtime;
+        return $this->prefix;
     }
 
     public function setPrefix($prefix)
@@ -50,9 +56,9 @@ class OpenimTrackGetdetailsRequest
         $this->apiParas["prefix"] = $prefix;
     }
 
-    public function getPrefix()
+    public function getStarttime()
     {
-        return $this->prefix;
+        return $this->starttime;
     }
 
     public function setStarttime($starttime)
@@ -61,20 +67,15 @@ class OpenimTrackGetdetailsRequest
         $this->apiParas["starttime"] = $starttime;
     }
 
-    public function getStarttime()
+    public function getUid()
     {
-        return $this->starttime;
+        return $this->uid;
     }
 
     public function setUid($uid)
     {
         $this->uid = $uid;
         $this->apiParas["uid"] = $uid;
-    }
-
-    public function getUid()
-    {
-        return $this->uid;
     }
 
     public function getApiMethodName()
@@ -89,10 +90,9 @@ class OpenimTrackGetdetailsRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->endtime, "endtime");
-        RequestCheckUtil::checkNotNull ($this->starttime, "starttime");
-        RequestCheckUtil::checkNotNull ($this->uid, "uid");
+        RequestCheckUtil::checkNotNull($this->endtime, "endtime");
+        RequestCheckUtil::checkNotNull($this->starttime, "starttime");
+        RequestCheckUtil::checkNotNull($this->uid, "uid");
     }
 
     public function putOtherTextParam($key, $value)

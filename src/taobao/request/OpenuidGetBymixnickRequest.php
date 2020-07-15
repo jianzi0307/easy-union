@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openuid.get.bymixnick request
  *
@@ -18,15 +19,15 @@ class OpenuidGetBymixnickRequest
 
     private $apiParas = array();
 
+    public function getMixNick()
+    {
+        return $this->mixNick;
+    }
+
     public function setMixNick($mixNick)
     {
         $this->mixNick = $mixNick;
         $this->apiParas["mix_nick"] = $mixNick;
-    }
-
-    public function getMixNick()
-    {
-        return $this->mixNick;
     }
 
     public function getApiMethodName()
@@ -41,8 +42,7 @@ class OpenuidGetBymixnickRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->mixNick, "mixNick");
+        RequestCheckUtil::checkNotNull($this->mixNick, "mixNick");
     }
 
     public function putOtherTextParam($key, $value)

@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.openim.ioscert.sandbox.set request
  *
@@ -23,26 +24,26 @@ class OpenimIoscertSandboxSetRequest
 
     private $apiParas = array();
 
+    public function getCert()
+    {
+        return $this->cert;
+    }
+
     public function setCert($cert)
     {
         $this->cert = $cert;
         $this->apiParas["cert"] = $cert;
     }
 
-    public function getCert()
+    public function getPassword()
     {
-        return $this->cert;
+        return $this->password;
     }
 
     public function setPassword($password)
     {
         $this->password = $password;
         $this->apiParas["password"] = $password;
-    }
-
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     public function getApiMethodName()
@@ -57,8 +58,7 @@ class OpenimIoscertSandboxSetRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->cert, "cert");
+        RequestCheckUtil::checkNotNull($this->cert, "cert");
     }
 
     public function putOtherTextParam($key, $value)

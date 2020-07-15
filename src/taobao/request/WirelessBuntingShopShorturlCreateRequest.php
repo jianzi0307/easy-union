@@ -1,6 +1,6 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
 /**
  * TOP API: taobao.wireless.bunting.shop.shorturl.create request
@@ -10,41 +10,42 @@ namespace NiuGengYun\EasyTBK\TaoBao\Request;
  */
 class WirelessBuntingShopShorturlCreateRequest
 {
-	/**
-	 * 商店id
-	 **/
-	private $shopId;
+    /**
+     * 商店id
+     **/
+    private $shopId;
 
-	private $apiParas = array();
+    private $apiParas = array();
 
-	public function setShopId($shopId)
-	{
-		$this->shopId = $shopId;
-		$this->apiParas["shop_id"] = $shopId;
-	}
+    public function getShopId()
+    {
+        return $this->shopId;
+    }
 
-	public function getShopId()
-	{
-		return $this->shopId;
-	}
+    public function setShopId($shopId)
+    {
+        $this->shopId = $shopId;
+        $this->apiParas["shop_id"] = $shopId;
+    }
 
-	public function getApiMethodName()
-	{
-		return "taobao.wireless.bunting.shop.shorturl.create";
-	}
+    public function getApiMethodName()
+    {
+        return "taobao.wireless.bunting.shop.shorturl.create";
+    }
 
-	public function getApiParas()
-	{
-		return $this->apiParas;
-	}
+    public function getApiParas()
+    {
+        return $this->apiParas;
+    }
 
-	public function check()
-	{
+    public function check()
+    {
 
-	}
+    }
 
-	public function putOtherTextParam($key, $value) {
-		$this->apiParas[$key] = $value;
-		$this->$key = $value;
-	}
+    public function putOtherTextParam($key, $value)
+    {
+        $this->apiParas[$key] = $value;
+        $this->$key = $value;
+    }
 }

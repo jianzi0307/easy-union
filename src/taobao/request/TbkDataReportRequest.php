@@ -1,8 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.data.report request
  *
@@ -23,26 +24,26 @@ class TbkDataReportRequest
 
     private $apiParas = array();
 
+    public function getData()
+    {
+        return $this->data;
+    }
+
     public function setData($data)
     {
         $this->data = $data;
         $this->apiParas["data"] = $data;
     }
 
-    public function getData()
+    public function getType()
     {
-        return $this->data;
+        return $this->type;
     }
 
     public function setType($type)
     {
         $this->type = $type;
         $this->apiParas["type"] = $type;
-    }
-
-    public function getType()
-    {
-        return $this->type;
     }
 
     public function getApiMethodName()
@@ -57,8 +58,7 @@ class TbkDataReportRequest
 
     public function check()
     {
-
-        RequestCheckUtil::checkNotNull ($this->data, "data");
+        RequestCheckUtil::checkNotNull($this->data, "data");
     }
 
     public function putOtherTextParam($key, $value)

@@ -1,263 +1,265 @@
 <?php
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+
+namespace com\pv138\easyUnion\taobao\request;
+
+use com\pv138\easyUnion\taobao\RequestCheckUtil;
+
 /**
  * TOP API: taobao.tbk.item.guess.like request
- * 
+ *
  * @author auto create
  * @since 1.0, 2018.11.09
  */
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
-
 class TbkItemGuessLikeRequest
 {
-	/** 
-	 * 广告位ID
-	 **/
-	private $adzoneId;
-	
-	/** 
-	 * 应用包名
-	 **/
-	private $apnm;
-	
-	/** 
-	 * ios广告跟踪id
-	 **/
-	private $idfa;
-	
-	/** 
-	 * android设备imei
-	 **/
-	private $imei;
-	
-	/** 
-	 * android设备imeiMD5值，32位小写
-	 **/
-	private $imeiMd5;
-	
-	/** 
-	 * 客户端ip
-	 **/
-	private $ip;
-	
-	/** 
-	 * 设备型号
-	 **/
-	private $mn;
-	
-	/** 
-	 * 联网方式，wifi, cell, unknown
-	 **/
-	private $net;
-	
-	/** 
-	 * 系统类型，ios, android, other
-	 **/
-	private $os;
-	
-	/** 
-	 * 第几页
-	 **/
-	private $pageNo;
-	
-	/** 
-	 * 页大小
-	 **/
-	private $pageSize;
-	
-	/** 
-	 * userAgent
-	 **/
-	private $ua;
-	
-	/** 
-	 * 用户数字ID，from cookie : unb
-	 **/
-	private $userId;
-	
-	/** 
-	 * 用户昵称，from cookie : _nk_或者tracknick ; from百川sdk : nick
-	 **/
-	private $userNick;
-	
-	private $apiParas = array();
-	
-	public function setAdzoneId($adzoneId)
-	{
-		$this->adzoneId = $adzoneId;
-		$this->apiParas["adzone_id"] = $adzoneId;
-	}
+    /**
+     * 广告位ID
+     **/
+    private $adzoneId;
 
-	public function getAdzoneId()
-	{
-		return $this->adzoneId;
-	}
+    /**
+     * 应用包名
+     **/
+    private $apnm;
 
-	public function setApnm($apnm)
-	{
-		$this->apnm = $apnm;
-		$this->apiParas["apnm"] = $apnm;
-	}
+    /**
+     * ios广告跟踪id
+     **/
+    private $idfa;
 
-	public function getApnm()
-	{
-		return $this->apnm;
-	}
+    /**
+     * android设备imei
+     **/
+    private $imei;
 
-	public function setIdfa($idfa)
-	{
-		$this->idfa = $idfa;
-		$this->apiParas["idfa"] = $idfa;
-	}
+    /**
+     * android设备imeiMD5值，32位小写
+     **/
+    private $imeiMd5;
 
-	public function getIdfa()
-	{
-		return $this->idfa;
-	}
+    /**
+     * 客户端ip
+     **/
+    private $ip;
 
-	public function setImei($imei)
-	{
-		$this->imei = $imei;
-		$this->apiParas["imei"] = $imei;
-	}
+    /**
+     * 设备型号
+     **/
+    private $mn;
 
-	public function getImei()
-	{
-		return $this->imei;
-	}
+    /**
+     * 联网方式，wifi, cell, unknown
+     **/
+    private $net;
 
-	public function setImeiMd5($imeiMd5)
-	{
-		$this->imeiMd5 = $imeiMd5;
-		$this->apiParas["imei_md5"] = $imeiMd5;
-	}
+    /**
+     * 系统类型，ios, android, other
+     **/
+    private $os;
 
-	public function getImeiMd5()
-	{
-		return $this->imeiMd5;
-	}
+    /**
+     * 第几页
+     **/
+    private $pageNo;
 
-	public function setIp($ip)
-	{
-		$this->ip = $ip;
-		$this->apiParas["ip"] = $ip;
-	}
+    /**
+     * 页大小
+     **/
+    private $pageSize;
 
-	public function getIp()
-	{
-		return $this->ip;
-	}
+    /**
+     * userAgent
+     **/
+    private $ua;
 
-	public function setMn($mn)
-	{
-		$this->mn = $mn;
-		$this->apiParas["mn"] = $mn;
-	}
+    /**
+     * 用户数字ID，from cookie : unb
+     **/
+    private $userId;
 
-	public function getMn()
-	{
-		return $this->mn;
-	}
+    /**
+     * 用户昵称，from cookie : _nk_或者tracknick ; from百川sdk : nick
+     **/
+    private $userNick;
 
-	public function setNet($net)
-	{
-		$this->net = $net;
-		$this->apiParas["net"] = $net;
-	}
+    private $apiParas = array();
 
-	public function getNet()
-	{
-		return $this->net;
-	}
+    public function getAdzoneId()
+    {
+        return $this->adzoneId;
+    }
 
-	public function setOs($os)
-	{
-		$this->os = $os;
-		$this->apiParas["os"] = $os;
-	}
+    public function setAdzoneId($adzoneId)
+    {
+        $this->adzoneId = $adzoneId;
+        $this->apiParas["adzone_id"] = $adzoneId;
+    }
 
-	public function getOs()
-	{
-		return $this->os;
-	}
+    public function getApnm()
+    {
+        return $this->apnm;
+    }
 
-	public function setPageNo($pageNo)
-	{
-		$this->pageNo = $pageNo;
-		$this->apiParas["page_no"] = $pageNo;
-	}
+    public function setApnm($apnm)
+    {
+        $this->apnm = $apnm;
+        $this->apiParas["apnm"] = $apnm;
+    }
 
-	public function getPageNo()
-	{
-		return $this->pageNo;
-	}
+    public function getIdfa()
+    {
+        return $this->idfa;
+    }
 
-	public function setPageSize($pageSize)
-	{
-		$this->pageSize = $pageSize;
-		$this->apiParas["page_size"] = $pageSize;
-	}
+    public function setIdfa($idfa)
+    {
+        $this->idfa = $idfa;
+        $this->apiParas["idfa"] = $idfa;
+    }
 
-	public function getPageSize()
-	{
-		return $this->pageSize;
-	}
+    public function getImei()
+    {
+        return $this->imei;
+    }
 
-	public function setUa($ua)
-	{
-		$this->ua = $ua;
-		$this->apiParas["ua"] = $ua;
-	}
+    public function setImei($imei)
+    {
+        $this->imei = $imei;
+        $this->apiParas["imei"] = $imei;
+    }
 
-	public function getUa()
-	{
-		return $this->ua;
-	}
+    public function getImeiMd5()
+    {
+        return $this->imeiMd5;
+    }
 
-	public function setUserId($userId)
-	{
-		$this->userId = $userId;
-		$this->apiParas["user_id"] = $userId;
-	}
+    public function setImeiMd5($imeiMd5)
+    {
+        $this->imeiMd5 = $imeiMd5;
+        $this->apiParas["imei_md5"] = $imeiMd5;
+    }
 
-	public function getUserId()
-	{
-		return $this->userId;
-	}
+    public function getIp()
+    {
+        return $this->ip;
+    }
 
-	public function setUserNick($userNick)
-	{
-		$this->userNick = $userNick;
-		$this->apiParas["user_nick"] = $userNick;
-	}
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+        $this->apiParas["ip"] = $ip;
+    }
 
-	public function getUserNick()
-	{
-		return $this->userNick;
-	}
+    public function getMn()
+    {
+        return $this->mn;
+    }
 
-	public function getApiMethodName()
-	{
-		return "taobao.tbk.item.guess.like";
-	}
-	
-	public function getApiParas()
-	{
-		return $this->apiParas;
-	}
-	
-	public function check()
-	{
-		
-		RequestCheckUtil::checkNotNull($this->adzoneId,"adzoneId");
-		RequestCheckUtil::checkNotNull($this->ip,"ip");
-		RequestCheckUtil::checkNotNull($this->net,"net");
-		RequestCheckUtil::checkNotNull($this->os,"os");
-		RequestCheckUtil::checkNotNull($this->ua,"ua");
-	}
-	
-	public function putOtherTextParam($key, $value) {
-		$this->apiParas[$key] = $value;
-		$this->$key = $value;
-	}
+    public function setMn($mn)
+    {
+        $this->mn = $mn;
+        $this->apiParas["mn"] = $mn;
+    }
+
+    public function getNet()
+    {
+        return $this->net;
+    }
+
+    public function setNet($net)
+    {
+        $this->net = $net;
+        $this->apiParas["net"] = $net;
+    }
+
+    public function getOs()
+    {
+        return $this->os;
+    }
+
+    public function setOs($os)
+    {
+        $this->os = $os;
+        $this->apiParas["os"] = $os;
+    }
+
+    public function getPageNo()
+    {
+        return $this->pageNo;
+    }
+
+    public function setPageNo($pageNo)
+    {
+        $this->pageNo = $pageNo;
+        $this->apiParas["page_no"] = $pageNo;
+    }
+
+    public function getPageSize()
+    {
+        return $this->pageSize;
+    }
+
+    public function setPageSize($pageSize)
+    {
+        $this->pageSize = $pageSize;
+        $this->apiParas["page_size"] = $pageSize;
+    }
+
+    public function getUa()
+    {
+        return $this->ua;
+    }
+
+    public function setUa($ua)
+    {
+        $this->ua = $ua;
+        $this->apiParas["ua"] = $ua;
+    }
+
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+        $this->apiParas["user_id"] = $userId;
+    }
+
+    public function getUserNick()
+    {
+        return $this->userNick;
+    }
+
+    public function setUserNick($userNick)
+    {
+        $this->userNick = $userNick;
+        $this->apiParas["user_nick"] = $userNick;
+    }
+
+    public function getApiMethodName()
+    {
+        return "taobao.tbk.item.guess.like";
+    }
+
+    public function getApiParas()
+    {
+        return $this->apiParas;
+    }
+
+    public function check()
+    {
+        RequestCheckUtil::checkNotNull($this->adzoneId, "adzoneId");
+        RequestCheckUtil::checkNotNull($this->ip, "ip");
+        RequestCheckUtil::checkNotNull($this->net, "net");
+        RequestCheckUtil::checkNotNull($this->os, "os");
+        RequestCheckUtil::checkNotNull($this->ua, "ua");
+    }
+
+    public function putOtherTextParam($key, $value)
+    {
+        $this->apiParas[$key] = $value;
+        $this->$key = $value;
+    }
 }

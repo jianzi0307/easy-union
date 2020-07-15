@@ -1,8 +1,7 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Request;
+namespace com\pv138\easyUnion\taobao\request;
 
-use NiuGengYun\EasyTBK\TaoBao\RequestCheckUtil;
 /**
  * TOP API: taobao.openim.users.update request
  *
@@ -18,15 +17,15 @@ class OpenimUsersUpdateRequest
 
     private $apiParas = array();
 
+    public function getUserinfos()
+    {
+        return $this->userinfos;
+    }
+
     public function setUserinfos($userinfos)
     {
         $this->userinfos = $userinfos;
         $this->apiParas["userinfos"] = $userinfos;
-    }
-
-    public function getUserinfos()
-    {
-        return $this->userinfos;
     }
 
     public function getApiMethodName()

@@ -1,6 +1,6 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Domain;
+namespace com\pv138\easyUnion\taobao\domain;
 
 /**
  * 埋点信息
@@ -8,10 +8,9 @@ namespace NiuGengYun\EasyTBK\TaoBao\Domain;
  */
 class Trackparams
 {
-	
-	/** 
-	 * empty
-	 **/
-	public $empty;	
+
+    /**
+     * empty
+     **/
+    public $empty;
 }
-?>

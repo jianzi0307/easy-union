@@ -1,6 +1,6 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\TaoBao\Domain;
+namespace com\pv138\easyUnion\taobao\domain;
 
 /**
  * result
@@ -8,10 +8,9 @@ namespace NiuGengYun\EasyTBK\TaoBao\Domain;
  */
 class RpcResult
 {
-	
-	/** 
-	 * data
-	 **/
-	public $data;	
+
+    /**
+     * data
+     **/
+    public $data;
 }
-?>
