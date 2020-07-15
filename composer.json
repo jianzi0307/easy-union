@@ -7,7 +7,7 @@
     "京东联盟",
     "淘宝客"
   ],
-  "homepage": "https://github.com/jianzi0307/easytbk",
+  "homepage": "https://github.com/jianzi0307/easy-union",
   "license": "MIT",
   "authors": [
     {
@@ -29,7 +29,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "NiuGengYun\\EasyTBK\\ServiceProvider"
+        "com\\pv138\\easy-union\\ServiceProvider"
       ]
     }
   }
