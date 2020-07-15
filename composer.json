@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "com\\pv138\\easy-union\\": "src/"
+      "com\\pv138\\easyUnion\\": "src/"
     }
   },
   "extra": {
