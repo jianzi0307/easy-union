@@ -1,17 +1,15 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
+
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
 class DdkOauthGoodsPidGenerateRequest implements RequestInterface
 {
     private $type = 'pdd.ddk.oauth.goods.pid.generate';
-
     private $number;
-
     private $name;
-
 
     public function setNumber($number)
     {
@@ -23,7 +21,6 @@ class DdkOauthGoodsPidGenerateRequest implements RequestInterface
         return $this->number;
     }
 
-
     public function setName($name)
     {
         $this->name = $name;
@@ -34,12 +31,11 @@ class DdkOauthGoodsPidGenerateRequest implements RequestInterface
         return $this->name;
     }
 
-
     public function getParams()
     {
         $params = [
-            'type'      => $this->type,
-            'p_id_name_list'      => $this->name,
+            'type' => $this->type,
+            'p_id_name_list' => $this->name,
             'number' => $this->number,
         ];
         return array_filter($params);

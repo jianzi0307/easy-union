@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: manbinzheng
- * Date: 2020-03-17
- * Time: 12:12
- */
 
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
-
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
 class DdkOrderListRangeGetRequest implements RequestInterface
 {
@@ -18,13 +11,9 @@ class DdkOrderListRangeGetRequest implements RequestInterface
      * @var string
      */
     private $type = 'pdd.ddk.order.list.range.get';
-
     private $startPayTime;
-
     private $endPayTime;
-
     private $pageSize;
-
     private $lastOrderId;
 
     public function setStartPayTime($startPayTime)

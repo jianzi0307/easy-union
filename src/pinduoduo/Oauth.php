@@ -1,17 +1,13 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo;
 
+namespace com\pv138\easyUnion\pinduoduo;
 
 class Oauth
 {
     private $sellerCodeUrl = 'http://mms.pinduoduo.com/open.html';
-
     private $ddkCodeUrl = 'http://jinbao.pinduoduo.com/open.html';
-
     private $tokenUrl = 'http://open-api.pinduoduo.com/oauth/token';
-
     private $clientId;
-
     private $redirectUri;
 
     public function __construct()

@@ -1,10 +1,11 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
 
-class DdkMallUrlGenRequest implements  RequestInterface
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
+
+class DdkMallUrlGenRequest implements RequestInterface
 {
 
     /**
@@ -48,7 +49,6 @@ class DdkMallUrlGenRequest implements  RequestInterface
      * @var
      */
     private $customParameters;
-
 
 
     public function setMallId($mallId)
@@ -114,13 +114,13 @@ class DdkMallUrlGenRequest implements  RequestInterface
     public function getParams()
     {
         $params = [
-            'type'                   => $this->type,
-            'mall_id'                => $this->mallId,
-            'pid'                    => $this->pid,
+            'type' => $this->type,
+            'mall_id' => $this->mallId,
+            'pid' => $this->pid,
             'generate_weapp_webview' => $this->generateWeappWebview,
-            'generate_short_url'     => $this->generateShortUrl,
-            'multi_group'            => $this->multiGroup,
-            'custom_parameters'      => $this->customParameters,
+            'generate_short_url' => $this->generateShortUrl,
+            'multi_group' => $this->multiGroup,
+            'custom_parameters' => $this->customParameters,
         ];
         return array_filter($params);
     }

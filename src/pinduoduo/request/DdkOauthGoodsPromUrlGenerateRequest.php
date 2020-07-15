@@ -1,8 +1,9 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
+
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
 class DdkOauthGoodsPromUrlGenerateRequest implements RequestInterface
 {
@@ -61,7 +62,6 @@ class DdkOauthGoodsPromUrlGenerateRequest implements RequestInterface
      * @var
      */
     private $generateWeApp;
-
 
 
     public function setPid($pid)
@@ -157,16 +157,16 @@ class DdkOauthGoodsPromUrlGenerateRequest implements RequestInterface
     public function getParams()
     {
         $params = [
-            'type'                   => $this->type,
-            'p_id'                   => $this->pid,
-            'goods_id_list'          => $this->goodsIdList,
-            'generate_short_url'     => $this->generateShortUrl,
-            'multi_group'            => $this->multiGroup,
-            'custom_parameters'      => $this->customParameters,
-            'pull_new'               => $this->pullNew,
+            'type' => $this->type,
+            'p_id' => $this->pid,
+            'goods_id_list' => $this->goodsIdList,
+            'generate_short_url' => $this->generateShortUrl,
+            'multi_group' => $this->multiGroup,
+            'custom_parameters' => $this->customParameters,
+            'pull_new' => $this->pullNew,
             'generate_weapp_webview' => $this->generateWeappWebview,
-            'zs_duo_id'              => $this->zsduoId,
-            'generate_we_app'        => $this->generateWeApp,
+            'zs_duo_id' => $this->zsduoId,
+            'generate_we_app' => $this->generateWeApp,
         ];
         return array_filter($params);
     }

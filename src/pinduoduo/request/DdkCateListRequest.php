@@ -1,10 +1,10 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
-class DdkCateListRequest implements  RequestInterface
+class DdkCateListRequest implements RequestInterface
 {
     /**
      * 获得拼多多商品标签列表
@@ -31,7 +31,7 @@ class DdkCateListRequest implements  RequestInterface
     public function getParams()
     {
         $params = [
-            'type'          => $this->type,
+            'type' => $this->type,
             'parent_opt_id' => $this->parent_opt_id
         ];
         return $params;

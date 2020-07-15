@@ -1,8 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
 class DdkGoodsDetailRequest implements RequestInterface
 {

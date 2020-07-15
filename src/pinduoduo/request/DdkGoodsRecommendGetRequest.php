@@ -1,21 +1,15 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
-class DdkGoodsRecommendGetRequest implements  RequestInterface
+class DdkGoodsRecommendGetRequest implements RequestInterface
 {
-
     private $type = 'pdd.ddk.goods.recommend.get';
-
     private $offset;
-
     private $limit;
-
     private $channelType;
-
-
 
     public function setOffset($offset)
     {
@@ -50,9 +44,9 @@ class DdkGoodsRecommendGetRequest implements  RequestInterface
     public function getParams()
     {
         $params = [
-            'type'         => $this->type,
-            'offset'       => $this->offset,
-            'limit'        => $this->limit,
+            'type' => $this->type,
+            'offset' => $this->offset,
+            'limit' => $this->limit,
             'channel_type' => intval($this->channelType),
         ];
         return $params;

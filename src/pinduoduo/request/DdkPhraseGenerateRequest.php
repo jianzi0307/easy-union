@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: niugengyun
- * Date: 2018/11/20
- * Time: 下午6:45
- */
 
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
-
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
 class DdkPhraseGenerateRequest implements RequestInterface
 {
@@ -54,9 +47,6 @@ class DdkPhraseGenerateRequest implements RequestInterface
      * @var
      */
     private $style;
-
-
-
 
     public function setPid($pid)
     {

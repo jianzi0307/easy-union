@@ -1,19 +1,15 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
+
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
 class DdkOauthGoodsPidQueryRequest implements RequestInterface
 {
     private $type = 'pdd.ddk.oauth.goods.pid.query';
-
-
     private $page;
-
     private $pageSize;
-
-
 
     public function setPage($page)
     {
@@ -25,7 +21,6 @@ class DdkOauthGoodsPidQueryRequest implements RequestInterface
         return $this->page;
     }
 
-
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
@@ -36,13 +31,12 @@ class DdkOauthGoodsPidQueryRequest implements RequestInterface
         return $this->pageSize;
     }
 
-
     public function getParams()
     {
         $params = [
-            'type'      => $this->type,
+            'type' => $this->type,
             'page_size' => $this->pageSize,
-            'page'      => $this->page,
+            'page' => $this->page,
         ];
         return array_filter($params);
     }

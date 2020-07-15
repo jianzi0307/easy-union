@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: niugengyun
- * Date: 2019/1/8
- * Time: 15:43
- */
 
-namespace NiuGengYun\EasyTBK\PinDuoDuo;
-
+namespace com\pv138\easyUnion\pinduoduo;
 
 interface RequestInterface
 {

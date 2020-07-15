@@ -1,10 +1,11 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
 
-class DdkGoodsPromotionUrlGenerateRequest implements  RequestInterface
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
+
+class DdkGoodsPromotionUrlGenerateRequest implements RequestInterface
 {
 
     /**
@@ -66,7 +67,6 @@ class DdkGoodsPromotionUrlGenerateRequest implements  RequestInterface
      * @var
      */
     private $generateWeApp;
-
 
 
     public function setPid($pid)
@@ -162,17 +162,17 @@ class DdkGoodsPromotionUrlGenerateRequest implements  RequestInterface
     public function getParams()
     {
         $params = [
-            'type'                   => $this->type,
-            'p_id'                   => $this->pid,
-            'goods_id_list'          => $this->goodsIdList,
-            'generate_short_url'     => $this->generateShortUrl,
-            'multi_group'            => $this->multiGroup,
-            'custom_parameters'      => $this->customParameters,
-            'pull_new'               => $this->pullNew,
+            'type' => $this->type,
+            'p_id' => $this->pid,
+            'goods_id_list' => $this->goodsIdList,
+            'generate_short_url' => $this->generateShortUrl,
+            'multi_group' => $this->multiGroup,
+            'custom_parameters' => $this->customParameters,
+            'pull_new' => $this->pullNew,
             'generate_weapp_webview' => $this->generateWeappWebview,
-            'zs_duo_id'              => $this->zsduoId,
-            'generate_we_app'        => $this->generateWeApp,
-            'generate_schema_url'    => "true"
+            'zs_duo_id' => $this->zsduoId,
+            'generate_we_app' => $this->generateWeApp,
+            'generate_schema_url' => "true"
         ];
         return array_filter($params);
     }

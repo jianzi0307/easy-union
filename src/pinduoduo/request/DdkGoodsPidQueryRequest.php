@@ -1,10 +1,11 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
 
-class DdkGoodsPidQueryRequest implements  RequestInterface
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
+
+class DdkGoodsPidQueryRequest implements RequestInterface
 {
     /**
      * 查询已经生成的推广位信息
@@ -23,7 +24,6 @@ class DdkGoodsPidQueryRequest implements  RequestInterface
      * @var
      */
     private $pageSize;
-
 
 
     public function setPage($page)
@@ -49,8 +49,8 @@ class DdkGoodsPidQueryRequest implements  RequestInterface
     public function getParams()
     {
         $params = [
-            'type'      => $this->type,
-            'page'      => $this->page,
+            'type' => $this->type,
+            'page' => $this->page,
             'page_size' => $this->pageSize
         ];
         return array_filter($params);

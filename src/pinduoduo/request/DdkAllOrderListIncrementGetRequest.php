@@ -1,10 +1,11 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
+
+namespace com\pv138\easyUnion\pinduoduo\request;
 
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
-class DdkAllOrderListIncrementGetRequest implements  RequestInterface
+class DdkAllOrderListIncrementGetRequest implements RequestInterface
 {
     /**
      * 按照时间段获取授权多多客下面所有多多客的推广订单信息(最近6个小时)
@@ -19,7 +20,6 @@ class DdkAllOrderListIncrementGetRequest implements  RequestInterface
     private $pageSize;
 
     private $page;
-
 
 
     public function setStartUpdateTime($startUpdateTime)
@@ -65,11 +65,11 @@ class DdkAllOrderListIncrementGetRequest implements  RequestInterface
     public function getParams()
     {
         $params = [
-            'type'              => $this->type,
+            'type' => $this->type,
             'start_update_time' => $this->startUpdateTime,
-            'end_update_time'   => $this->endUpdateTime,
-            'page_size'         => $this->pageSize,
-            'page'              => $this->page
+            'end_update_time' => $this->endUpdateTime,
+            'page_size' => $this->pageSize,
+            'page' => $this->page
         ];
         return array_filter($params);
     }

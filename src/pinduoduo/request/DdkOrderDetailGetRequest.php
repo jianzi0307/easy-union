@@ -1,9 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
-
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
 class DdkOrderDetailGetRequest implements RequestInterface
 {
@@ -12,10 +11,7 @@ class DdkOrderDetailGetRequest implements RequestInterface
      * @var string
      */
     private $type = 'pdd.ddk.order.detail.get';
-
     private $orderSN;
-
-
 
     public function getOrderSN()
     {

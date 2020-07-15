@@ -1,9 +1,9 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
 
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
 class DdkOrderListIncrementGetRequest implements RequestInterface
 {
@@ -12,16 +12,10 @@ class DdkOrderListIncrementGetRequest implements RequestInterface
      * @var string
      */
     private $type = 'pdd.ddk.order.list.increment.get';
-
     private $startUpdateTime;
-
     private $endUpdateTime;
-
     private $pageSize;
-
     private $page;
-
-
 
     public function setStartUpdateTime($startUpdateTime)
     {
@@ -66,11 +60,11 @@ class DdkOrderListIncrementGetRequest implements RequestInterface
     public function getParams()
     {
         $params = [
-            'type'              => $this->type,
+            'type' => $this->type,
             'start_update_time' => $this->startUpdateTime,
-            'end_update_time'   => $this->endUpdateTime,
-            'page_size'         => $this->pageSize,
-            'page'              => $this->page
+            'end_update_time' => $this->endUpdateTime,
+            'page_size' => $this->pageSize,
+            'page' => $this->page
         ];
         return array_filter($params);
     }

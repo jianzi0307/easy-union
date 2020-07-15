@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: niugengyun
- * Date: 2018/11/20
- * Time: 下午6:45
- */
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
 
-class DdkRpPromUrlGenerateRequest  implements RequestInterface
+class DdkRpPromUrlGenerateRequest implements RequestInterface
 {
     /**
      * 生成红包推广链接接口
@@ -48,7 +42,6 @@ class DdkRpPromUrlGenerateRequest  implements RequestInterface
      * @var
      */
     private $generateWeApp;
-
 
 
     public function setPid($pid)
@@ -104,12 +97,12 @@ class DdkRpPromUrlGenerateRequest  implements RequestInterface
     public function getParams()
     {
         $params = [
-            'type'                   => $this->type,
-            'p_id_list'              => $this->pid,
-            'generate_short_url'     => $this->generateShortUrl,
-            'custom_parameters'      => $this->customParameters,
+            'type' => $this->type,
+            'p_id_list' => $this->pid,
+            'generate_short_url' => $this->generateShortUrl,
+            'custom_parameters' => $this->customParameters,
             'generate_weapp_webview' => $this->generateWeappWebview,
-            'generate_we_app'        => $this->generateWeApp,
+            'generate_we_app' => $this->generateWeApp,
         ];
         return array_filter($params);
     }

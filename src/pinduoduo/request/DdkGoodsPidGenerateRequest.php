@@ -1,10 +1,11 @@
 <?php
-namespace NiuGengYun\EasyTBK\PinDuoDuo\Request;
 
-use NiuGengYun\EasyTBK\PinDuoDuo\RequestInterface;
+namespace com\pv138\easyUnion\pinduoduo\request;
 
 
-class DdkGoodsPidGenerateRequest implements  RequestInterface
+use com\pv138\easyUnion\pinduoduo\RequestInterface;
+
+class DdkGoodsPidGenerateRequest implements RequestInterface
 {
     /**
      * 创建多多进宝推广位
@@ -23,7 +24,6 @@ class DdkGoodsPidGenerateRequest implements  RequestInterface
      * @var
      */
     private $pIdNameList;
-
 
 
     public function setNumber($number)
@@ -49,8 +49,8 @@ class DdkGoodsPidGenerateRequest implements  RequestInterface
     public function getParams()
     {
         $params = [
-            'type'           => $this->type,
-            'number'         => $this->number,
+            'type' => $this->type,
+            'number' => $this->number,
             'p_id_name_list' => $this->pIdNameList,
         ];
         return array_filter($params);
