@@ -1,8 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\JingDong\Request;
+namespace com\pv138\easyUnion\jingdong\request;
 
-use NiuGengYun\EasyTBK\JingDong\RequestInterface;
+use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionOrderQueryRequest
@@ -35,7 +35,7 @@ class JdUnionOrderQueryRequest implements RequestInterface
      * 页码，返回第几页结果
      * @var
      */
-    private $pageNo ;
+    private $pageNo;
 
     /**
      * 页码
@@ -177,11 +177,9 @@ class JdUnionOrderQueryRequest implements RequestInterface
         ];
 
         return json_encode([
-            'orderReq' => array_filter ($params, function ($val) {
+            'orderReq' => array_filter($params, function ($val) {
                 return $val != null;
             })
         ]);
     }
-
-
 }

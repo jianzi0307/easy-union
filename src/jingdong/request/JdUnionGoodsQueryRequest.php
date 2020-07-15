@@ -1,9 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\JingDong\Request;
+namespace com\pv138\easyUnion\jingdong\request;
 
-use NiuGengYun\EasyTBK\JingDong\RequestInterface;
-
+use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionGoodsQueryRequest
@@ -589,11 +588,9 @@ class JdUnionGoodsQueryRequest implements RequestInterface
         ];
 
         return json_encode([
-            'goodsReqDTO' => array_filter ($params, function ($val) {
+            'goodsReqDTO' => array_filter($params, function ($val) {
                 return $val != null;
             })
         ]);
     }
-
-
 }

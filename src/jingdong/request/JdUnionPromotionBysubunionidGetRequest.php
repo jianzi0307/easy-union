@@ -1,9 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\JingDong\Request;
+namespace com\pv138\easyUnion\jingdong\request;
 
-use NiuGengYun\EasyTBK\JingDong\RequestInterface;
-
+use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionPromotionBysubunionidGetRequest
@@ -129,7 +128,6 @@ class JdUnionPromotionBysubunionidGetRequest implements RequestInterface
     }
 
 
-
     /**
      * @return string
      */
@@ -144,19 +142,17 @@ class JdUnionPromotionBysubunionidGetRequest implements RequestInterface
     public function getParamJson()
     {
         $params = [
-            'subUnionId' =>$this->subUnionId,
-            'materialId' =>$this->materialId,
-            'positionId' =>$this->positionId,
-            'pid' =>$this->pid,
-            'couponUrl' =>$this->couponUrl,
+            'subUnionId' => $this->subUnionId,
+            'materialId' => $this->materialId,
+            'positionId' => $this->positionId,
+            'pid' => $this->pid,
+            'couponUrl' => $this->couponUrl,
         ];
 
         return json_encode([
-            'promotionCodeReq' => array_filter ($params, function ($val) {
+            'promotionCodeReq' => array_filter($params, function ($val) {
                 return $val != null;
             })
         ]);
     }
-
-
 }

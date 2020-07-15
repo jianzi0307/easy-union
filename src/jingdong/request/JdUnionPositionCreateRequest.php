@@ -1,9 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\JingDong\Request;
+namespace com\pv138\easyUnion\jingdong\request;
 
-use NiuGengYun\EasyTBK\JingDong\RequestInterface;
 
+use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionPositionCreateRequest
@@ -176,11 +176,9 @@ class JdUnionPositionCreateRequest implements RequestInterface
         ];
 
         return json_encode([
-            'positionReq' => array_filter ($params, function ($val) {
+            'positionReq' => array_filter($params, function ($val) {
                 return $val != null;
             })
         ]);
     }
-
-
 }

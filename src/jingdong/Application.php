@@ -1,14 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: niugengyun
- * Date: 2019/1/8
- * Time: 13:56
- * https://router.jd.com/api?v=1.0&method=jd.union.open.goods.query&access_token=&app_key=ab2ef93a20a5492d8b0dad11ad34b256&sign_method=md5&format=json&timestamp=2019-01-08 14:57:08&sign=B7B42BB545958BBA25DD795FFEDD35E2&param_json={"goodsReqDTO":{"keyword":"女装"}}
- */
 
-namespace NiuGengYun\EasyTBK\JingDong;
-
+namespace com\pv138\easyUnion\jingdong;
 
 class Application
 {
@@ -86,21 +78,13 @@ class Application
         if (null != $access_token) {
             $params["access_token"] = $access_token;
         }
-        $params['param_json'] = $request->getParamJson();;
-
-
+        $params['param_json'] = $request->getParamJson();
         $params['sign'] = $this->generateSign($params);
-
-
         $requestUrl = $this->gatewayUrl . "?";
         foreach ($params as $k => $v) {
             $requestUrl .= "$k=" . urlencode($v) . '&';
         }
-
-
         $requestUrl = substr($requestUrl, 0, -1);
-
-
         $resp = $this->curl_post($requestUrl);
         $respArr = json_decode($resp, true);
         return $respArr;
@@ -110,7 +94,6 @@ class Application
     {
         return new Oauth();
     }
-
 
     /**
      * 生成加密签名
@@ -134,10 +117,10 @@ class Application
 
     /**
      * post请求
-     * @Author: niugengyun
-     * @Date: 2018/4/26
      * @param $url
      * @return mixed
+     * @author  niugengyun
+     * @date 2018/4/26
      */
     public function curl_post($url)
     {
@@ -172,6 +155,4 @@ class Application
         curl_close($ch);
         return $reponse;
     }
-
-
 }

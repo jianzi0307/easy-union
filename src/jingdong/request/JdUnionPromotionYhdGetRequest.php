@@ -1,9 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\JingDong\Request;
+namespace com\pv138\easyUnion\jingdong\request;
 
-use NiuGengYun\EasyTBK\JingDong\RequestInterface;
-
+use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionPromotionYhdGetRequest
@@ -174,11 +173,9 @@ class JdUnionPromotionYhdGetRequest implements RequestInterface
         ];
 
         return json_encode([
-            'promotionCodeReq' => array_filter ($params, function ($val) {
+            'promotionCodeReq' => array_filter($params, function ($val) {
                 return $val != null;
             })
         ]);
     }
-
-
 }

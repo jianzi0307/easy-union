@@ -1,9 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\JingDong\Request;
+namespace com\pv138\easyUnion\jingdong\request;
 
-use NiuGengYun\EasyTBK\JingDong\RequestInterface;
-
+use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionPromotionCommonGetRequest
@@ -217,7 +216,6 @@ class JdUnionPromotionCommonGetRequest implements RequestInterface
     }
 
 
-
     /**
      * @return string
      */
@@ -232,14 +230,14 @@ class JdUnionPromotionCommonGetRequest implements RequestInterface
     public function getParamJson()
     {
         $params = [
-            'subUnionId'    => $this->subUnionId,
-            'protocol'      => $this->protocol,
-            'ext1'          => $this->ext1,
-            'siteId'        => $this->siteId,
-            'materialId'    => $this->materialId,
-            'positionId'    => $this->positionId,
-            'pid'           => $this->pid,
-            'couponUrl'     => $this->couponUrl,
+            'subUnionId' => $this->subUnionId,
+            'protocol' => $this->protocol,
+            'ext1' => $this->ext1,
+            'siteId' => $this->siteId,
+            'materialId' => $this->materialId,
+            'positionId' => $this->positionId,
+            'pid' => $this->pid,
+            'couponUrl' => $this->couponUrl,
             'giftCouponKey' => $this->giftCouponKey
         ];
 
@@ -249,6 +247,4 @@ class JdUnionPromotionCommonGetRequest implements RequestInterface
             })
         ]);
     }
-
-
 }

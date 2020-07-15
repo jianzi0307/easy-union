@@ -1,9 +1,8 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\JingDong\Request;
+namespace com\pv138\easyUnion\jingdong\request;
 
-use NiuGengYun\EasyTBK\JingDong\RequestInterface;
-
+use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionUserPidGetRequest
@@ -151,11 +150,9 @@ class JdUnionUserPidGetRequest implements RequestInterface
         ];
 
         return json_encode([
-            'pidReq' => array_filter ($params, function ($val) {
+            'pidReq' => array_filter($params, function ($val) {
                 return $val != null;
             })
         ]);
     }
-
-
 }
