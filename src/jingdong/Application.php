@@ -30,9 +30,9 @@ class Application
 
     /**
      * 单例获取当前对象
-     * @Author: niugengyun
-     * @Date: 2018/4/26
      * @return static
+     * @author niugengyun
+     * @date 2018/4/26
      */
     public static function getInstance()
     {
@@ -44,11 +44,11 @@ class Application
 
     /**
      * 魔术方法 调用不存在的静态方法时触发
-     * @Author: niugengyun
-     * @Date: 2018/4/26
      * @param $name
      * @param $arguments
      * @return mixed
+     * @author niugengyun
+     * @date 2018/4/26
      */
     public static function __callStatic($name, $arguments)
     {

@@ -1,8 +1,9 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SelectSuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+use com\pv138\easyUnion\suning\RequestCheckUtil;
+use com\pv138\easyUnion\suning\SelectSuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -10,58 +11,65 @@ use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
  * @author suning
  * @date   2017-7-27
  */
-class MerchantcommodityQueryRequest  extends SelectSuningRequest{
+class MerchantcommodityQueryRequest extends SelectSuningRequest
+{
 
-	/**
-	 *
-	 */
-	private $activityId;
-
-
-
-	/**
-	 *
-	 */
-	private $adBookId;
-
-	public function getActivityId() {
-		return $this->activityId;
-	}
-
-	public function setActivityId($activityId) {
-		$this->activityId = $activityId;
-		$this->apiParams["activityId"] = $activityId;
-	}
+    /**
+     *
+     */
+    private $activityId;
 
 
+    /**
+     *
+     */
+    private $adBookId;
 
-	public function getAdBookId() {
-		return $this->adBookId;
-	}
+    public function getActivityId()
+    {
+        return $this->activityId;
+    }
 
-	public function setAdBookId($adBookId) {
-		$this->adBookId = $adBookId;
-		$this->apiParams["adBookId"] = $adBookId;
-	}
+    public function setActivityId($activityId)
+    {
+        $this->activityId = $activityId;
+        $this->apiParams["activityId"] = $activityId;
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.merchantcommodity.query';
-	}
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function getAdBookId()
+    {
+        return $this->adBookId;
+    }
 
-	public function check(){
-		//非空校验
-		RequestCheckUtil::checkNotNull($this->activityId, 'activityId');
-		RequestCheckUtil::checkNotNull($this->adBookId, 'adBookId');
-	}
+    public function setAdBookId($adBookId)
+    {
+        $this->adBookId = $adBookId;
+        $this->apiParams["adBookId"] = $adBookId;
+    }
 
-	public function getBizName(){
-		return "queryMerchantcommodity";
-	}
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.merchantcommodity.query';
+    }
+
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
+
+    public function check()
+    {
+        //非空校验
+        RequestCheckUtil::checkNotNull($this->activityId, 'activityId');
+        RequestCheckUtil::checkNotNull($this->adBookId, 'adBookId');
+    }
+
+    public function getBizName()
+    {
+        return "queryMerchantcommodity";
+    }
 
 }
 
-?>
+

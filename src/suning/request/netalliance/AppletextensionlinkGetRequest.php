@@ -1,8 +1,10 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+
+use com\pv138\easyUnion\suning\RequestCheckUtil;
+use com\pv138\easyUnion\suning\SuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -10,81 +12,93 @@ use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
  * @author suning
  * @date   2019-9-19
  */
-class AppletextensionlinkGetRequest  extends SuningRequest{
+class AppletextensionlinkGetRequest extends SuningRequest
+{
 
-	/**
-	 *
-	 */
-	private $productUrl;
+    /**
+     *
+     */
+    private $productUrl;
 
-	/**
-	 *
-	 */
-	private $promotionId;
+    /**
+     *
+     */
+    private $promotionId;
 
-	/**
-	 *
-	 */
-	private $quanUrl;
+    /**
+     *
+     */
+    private $quanUrl;
 
-	/**
-	 *
-	 */
-	private $subUser;
+    /**
+     *
+     */
+    private $subUser;
 
-	public function getProductUrl() {
-		return $this->productUrl;
-	}
+    public function getProductUrl()
+    {
+        return $this->productUrl;
+    }
 
-	public function setProductUrl($productUrl) {
-		$this->productUrl = $productUrl;
-		$this->apiParams["productUrl"] = $productUrl;
-	}
+    public function setProductUrl($productUrl)
+    {
+        $this->productUrl = $productUrl;
+        $this->apiParams["productUrl"] = $productUrl;
+    }
 
-	public function getPromotionId() {
-		return $this->promotionId;
-	}
+    public function getPromotionId()
+    {
+        return $this->promotionId;
+    }
 
-	public function setPromotionId($promotionId) {
-		$this->promotionId = $promotionId;
-		$this->apiParams["promotionId"] = $promotionId;
-	}
+    public function setPromotionId($promotionId)
+    {
+        $this->promotionId = $promotionId;
+        $this->apiParams["promotionId"] = $promotionId;
+    }
 
-	public function getQuanUrl() {
-		return $this->quanUrl;
-	}
+    public function getQuanUrl()
+    {
+        return $this->quanUrl;
+    }
 
-	public function setQuanUrl($quanUrl) {
-		$this->quanUrl = $quanUrl;
-		$this->apiParams["quanUrl"] = $quanUrl;
-	}
+    public function setQuanUrl($quanUrl)
+    {
+        $this->quanUrl = $quanUrl;
+        $this->apiParams["quanUrl"] = $quanUrl;
+    }
 
-	public function getSubUser() {
-		return $this->subUser;
-	}
+    public function getSubUser()
+    {
+        return $this->subUser;
+    }
 
-	public function setSubUser($subUser) {
-		$this->subUser = $subUser;
-		$this->apiParams["subUser"] = $subUser;
-	}
+    public function setSubUser($subUser)
+    {
+        $this->subUser = $subUser;
+        $this->apiParams["subUser"] = $subUser;
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.appletextensionlink.get';
-	}
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.appletextensionlink.get';
+    }
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
 
-	public function check(){
-		//非空校验
-		RequestCheckUtil::checkNotNull($this->productUrl, 'productUrl');
-	}
+    public function check()
+    {
+        //非空校验
+        RequestCheckUtil::checkNotNull($this->productUrl, 'productUrl');
+    }
 
-	public function getBizName(){
-		return "getAppletextensionlink";
-	}
+    public function getBizName()
+    {
+        return "getAppletextensionlink";
+    }
 
 }
 
-?>

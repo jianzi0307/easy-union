@@ -1,8 +1,9 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+use com\pv138\easyUnion\suning\RequestCheckUtil;
+use com\pv138\easyUnion\suning\SuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -10,39 +11,46 @@ use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
  * @author suning
  * @date   2019-10-28
  */
-class TwittershareurlQueryRequest  extends SuningRequest{
+class TwittershareurlQueryRequest extends SuningRequest
+{
 
-	/**
-	 *
-	 */
-	private $goodsNo;
+    /**
+     *
+     */
+    private $goodsNo;
 
-	public function getGoodsNo() {
-		return $this->goodsNo;
-	}
+    public function getGoodsNo()
+    {
+        return $this->goodsNo;
+    }
 
-	public function setGoodsNo($goodsNo) {
-		$this->goodsNo = $goodsNo;
-		$this->apiParams["goodsNo"] = $goodsNo;
-	}
+    public function setGoodsNo($goodsNo)
+    {
+        $this->goodsNo = $goodsNo;
+        $this->apiParams["goodsNo"] = $goodsNo;
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.twittershareurl.query';
-	}
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.twittershareurl.query';
+    }
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
 
-	public function check(){
-		//非空校验
-		RequestCheckUtil::checkNotNull($this->goodsNo, 'goodsNo');
-	}
+    public function check()
+    {
+        //非空校验
+        RequestCheckUtil::checkNotNull($this->goodsNo, 'goodsNo');
+    }
 
-	public function getBizName(){
-		return "queryTwittershareurl";
-	}
+    public function getBizName()
+    {
+        return "queryTwittershareurl";
+    }
 
 }
 
-?>
+

@@ -1,76 +1,84 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliancetx;
 
-use NiuGengYun\EasyTBK\SuNing\SelectSuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliancetx;
+
+use com\pv138\easyUnion\suning\SelectSuningRequest;
+
 /**
  * 苏宁开放平台接口 - 网盟订单信息批量查询
  *
  * @author suning
  * @date   2014-10-16
  */
-class QueryNetallianceOrderRequest  extends SelectSuningRequest{
+class QueryNetallianceOrderRequest extends SelectSuningRequest
+{
 
-	/**
-	 * 查询开始时间
-	 */
-	private $startTime;
+    /**
+     * 查询开始时间
+     */
+    private $startTime;
 
-	/**
-	 * 查询结束时间
-	 */
-	private $endTime;
+    /**
+     * 查询结束时间
+     */
+    private $endTime;
 
-	/**
-	 * 订单行项目状态
-	 */
-	private $orderLineStatus;
+    /**
+     * 订单行项目状态
+     */
+    private $orderLineStatus;
 
-	public function getStartTime() {
-		return $this->startTime;
-	}
+    public function getStartTime()
+    {
+        return $this->startTime;
+    }
 
-	public function setStartTime($startTime) {
-		$this->startTime = $startTime;
-		$this->apiParams["startTime"] = $startTime;
-	}
+    public function setStartTime($startTime)
+    {
+        $this->startTime = $startTime;
+        $this->apiParams["startTime"] = $startTime;
+    }
 
-	public function getEndTime() {
-		return $this->endTime;
-	}
+    public function getEndTime()
+    {
+        return $this->endTime;
+    }
 
-	public function setEndTime($endTime) {
-		$this->endTime = $endTime;
-		$this->apiParams["endTime"] = $endTime;
-	}
+    public function setEndTime($endTime)
+    {
+        $this->endTime = $endTime;
+        $this->apiParams["endTime"] = $endTime;
+    }
 
 
+    public function getOrderLineStatus()
+    {
+        return $this->orderLineStatus;
+    }
 
-	public function getOrderLineStatus() {
-		return $this->orderLineStatus;
-	}
+    public function setOrderLineStatus($orderLineStatus)
+    {
+        $this->orderLineStatus = $orderLineStatus;
+        $this->apiParams["orderLineStatus"] = $orderLineStatus;
+    }
 
-	public function setOrderLineStatus($orderLineStatus) {
-		$this->orderLineStatus = $orderLineStatus;
-		$this->apiParams["orderLineStatus"] = $orderLineStatus;
-	}
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.order.query';
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.order.query';
-	}
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function check()
+    {
+        //非空校验
+    }
 
-	public function check(){
-		//非空校验
-	}
-
-	public function getBizName(){
-		return "queryOrder";
-	}
-
+    public function getBizName()
+    {
+        return "queryOrder";
+    }
 }
-
-?>

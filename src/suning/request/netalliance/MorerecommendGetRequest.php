@@ -1,8 +1,9 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+use com\pv138\easyUnion\suning\RequestCheckUtil;
+use com\pv138\easyUnion\suning\SuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -10,124 +11,143 @@ use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
  * @author suning
  * @date   2019-10-28
  */
-class MorerecommendGetRequest  extends SuningRequest{
+class MorerecommendGetRequest extends SuningRequest
+{
 
-	/**
-	 *
-	 */
-	private $cityCode;
+    /**
+     *
+     */
+    private $cityCode;
 
-	/**
-	 *
-	 */
-	private $commodityCode;
+    /**
+     *
+     */
+    private $commodityCode;
 
-	/**
-	 *
-	 */
-	private $picHeight;
+    /**
+     *
+     */
+    private $picHeight;
 
-	/**
-	 *
-	 */
-	private $picLocation;
+    /**
+     *
+     */
+    private $picLocation;
 
-	/**
-	 *
-	 */
-	private $picType;
+    /**
+     *
+     */
+    private $picType;
 
-	/**
-	 *
-	 */
-	private $picWidth;
+    /**
+     *
+     */
+    private $picWidth;
 
-	/**
-	 *
-	 */
-	private $supplierCode;
+    /**
+     *
+     */
+    private $supplierCode;
 
-	public function getCityCode() {
-		return $this->cityCode;
-	}
+    public function getCityCode()
+    {
+        return $this->cityCode;
+    }
 
-	public function setCityCode($cityCode) {
-		$this->cityCode = $cityCode;
-		$this->apiParams["cityCode"] = $cityCode;
-	}
+    public function setCityCode($cityCode)
+    {
+        $this->cityCode = $cityCode;
+        $this->apiParams["cityCode"] = $cityCode;
+    }
 
-	public function getCommodityCode() {
-		return $this->commodityCode;
-	}
+    public function getCommodityCode()
+    {
+        return $this->commodityCode;
+    }
 
-	public function setCommodityCode($commodityCode) {
-		$this->commodityCode = $commodityCode;
-		$this->apiParams["commodityCode"] = $commodityCode;
-	}
+    public function setCommodityCode($commodityCode)
+    {
+        $this->commodityCode = $commodityCode;
+        $this->apiParams["commodityCode"] = $commodityCode;
+    }
 
-	public function getPicHeight() {
-		return $this->picHeight;
-	}
+    public function getPicHeight()
+    {
+        return $this->picHeight;
+    }
 
-	public function setPicHeight($picHeight) {
-		$this->picHeight = $picHeight;
-		$this->apiParams["picHeight"] = $picHeight;
-	}
+    public function setPicHeight($picHeight)
+    {
+        $this->picHeight = $picHeight;
+        $this->apiParams["picHeight"] = $picHeight;
+    }
 
-	public function getPicLocation() {
-		return $this->picLocation;
-	}
+    public function getPicLocation()
+    {
+        return $this->picLocation;
+    }
 
-	public function setPicLocation($picLocation) {
-		$this->picLocation = $picLocation;
-		$this->apiParams["picLocation"] = $picLocation;
-	}
+    public function setPicLocation($picLocation)
+    {
+        $this->picLocation = $picLocation;
+        $this->apiParams["picLocation"] = $picLocation;
+    }
 
-	public function getPicType() {
-		return $this->picType;
-	}
+    public function getPicType()
+    {
+        return $this->picType;
+    }
 
-	public function setPicType($picType) {
-		$this->picType = $picType;
-		$this->apiParams["picType"] = $picType;
-	}
+    public function setPicType($picType)
+    {
+        $this->picType = $picType;
+        $this->apiParams["picType"] = $picType;
+    }
 
-	public function getPicWidth() {
-		return $this->picWidth;
-	}
+    public function getPicWidth()
+    {
+        return $this->picWidth;
+    }
 
-	public function setPicWidth($picWidth) {
-		$this->picWidth = $picWidth;
-		$this->apiParams["picWidth"] = $picWidth;
-	}
+    public function setPicWidth($picWidth)
+    {
+        $this->picWidth = $picWidth;
+        $this->apiParams["picWidth"] = $picWidth;
+    }
 
-	public function getSupplierCode() {
-		return $this->supplierCode;
-	}
+    public function getSupplierCode()
+    {
+        return $this->supplierCode;
+    }
 
-	public function setSupplierCode($supplierCode) {
-		$this->supplierCode = $supplierCode;
-		$this->apiParams["supplierCode"] = $supplierCode;
-	}
+    public function setSupplierCode($supplierCode)
+    {
+        $this->supplierCode = $supplierCode;
+        $this->apiParams["supplierCode"] = $supplierCode;
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.morerecommend.get';
-	}
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.morerecommend.get';
+    }
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
 
-	public function check(){
-		//非空校验
-		RequestCheckUtil::checkNotNull($this->commodityCode, 'commodityCode');
-		RequestCheckUtil::checkNotNull($this->supplierCode, 'supplierCode');
-	}
+    public function check()
+    {
+        //非空校验
+        RequestCheckUtil::checkNotNull($this->commodityCode, 'commodityCode');
+        RequestCheckUtil::checkNotNull($this->supplierCode, 'supplierCode');
+    }
 
-	public function getBizName(){
-		return "getMorerecommend";
-	}
+    public function getBizName()
+    {
+        return "getMorerecommend";
+    }
 
 }
 
-?>
+

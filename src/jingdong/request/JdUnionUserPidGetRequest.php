@@ -6,7 +6,7 @@ use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionUserPidGetRequest
- * @package NiuGengYun\EasyTBK\JingDong\Request
+ * @package com\pv138\easyUnion\jingdong\request
  */
 class JdUnionUserPidGetRequest implements RequestInterface
 {

@@ -1,8 +1,8 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+use com\pv138\easyUnion\suning\SuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -10,219 +10,252 @@ use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
  * @author suning
  * @date   2019-11-4
  */
-class SearchcommodityQueryRequest  extends SuningRequest{
+class SearchcommodityQueryRequest extends SuningRequest
+{
 
-	/**
-	 *
-	 */
-	private $branch;
+    /**
+     *
+     */
+    private $branch;
 
-	/**
-	 *
-	 */
-	private $cityCode;
+    /**
+     *
+     */
+    private $cityCode;
 
-	/**
-	 *
-	 */
-	private $endPrice;
+    /**
+     *
+     */
+    private $endPrice;
 
-	/**
-	 *
-	 */
-	private $keyword;
+    /**
+     *
+     */
+    private $keyword;
 
-	/**
-	 *
-	 */
-	private $pageIndex;
+    /**
+     *
+     */
+    private $pageIndex;
 
-	/**
-	 *
-	 */
-	private $pgSearch;
+    /**
+     *
+     */
+    private $pgSearch;
 
-	/**
-	 *
-	 */
-	private $picHeight;
+    /**
+     *
+     */
+    private $picHeight;
 
-	/**
-	 *
-	 */
-	private $picWidth;
+    /**
+     *
+     */
+    private $picWidth;
 
-	/**
-	 *
-	 */
-	private $saleCategoryCode;
+    /**
+     *
+     */
+    private $saleCategoryCode;
 
-	/**
-	 *
-	 */
-	private $size;
+    /**
+     *
+     */
+    private $size;
 
-	/**
-	 *
-	 */
-	private $sortType;
-	/**
-	 *
-	 */
-	private $coupon;
+    /**
+     *
+     */
+    private $sortType;
+    /**
+     *
+     */
+    private $coupon;
 
-	/**
-	 *
-	 */
-	private $startPrice;
+    /**
+     *
+     */
+    private $startPrice;
 
-	/**
-	 *
-	 */
-	private $suningService;
+    /**
+     *
+     */
+    private $suningService;
 
-	public function getBranch() {
-		return $this->branch;
-	}
+    public function getBranch()
+    {
+        return $this->branch;
+    }
 
-	public function setBranch($branch) {
-		$this->branch = $branch;
-		$this->apiParams["branch"] = $branch;
-	}
+    public function setBranch($branch)
+    {
+        $this->branch = $branch;
+        $this->apiParams["branch"] = $branch;
+    }
 
-	public function getCityCode() {
-		return $this->cityCode;
-	}
+    public function getCityCode()
+    {
+        return $this->cityCode;
+    }
 
-	public function setCityCode($cityCode) {
-		$this->cityCode = $cityCode;
-		$this->apiParams["cityCode"] = $cityCode;
-	}
+    public function setCityCode($cityCode)
+    {
+        $this->cityCode = $cityCode;
+        $this->apiParams["cityCode"] = $cityCode;
+    }
 
-	public function getEndPrice() {
-		return $this->endPrice;
-	}
+    public function getEndPrice()
+    {
+        return $this->endPrice;
+    }
 
-	public function setEndPrice($endPrice) {
-		$this->endPrice = $endPrice;
-		$this->apiParams["endPrice"] = $endPrice;
-	}
+    public function setEndPrice($endPrice)
+    {
+        $this->endPrice = $endPrice;
+        $this->apiParams["endPrice"] = $endPrice;
+    }
 
-	public function getKeyword() {
-		return $this->keyword;
-	}
+    public function getKeyword()
+    {
+        return $this->keyword;
+    }
 
-	public function setKeyword($keyword) {
-		$this->keyword = $keyword;
-		$this->apiParams["keyword"] = $keyword;
-	}
+    public function setKeyword($keyword)
+    {
+        $this->keyword = $keyword;
+        $this->apiParams["keyword"] = $keyword;
+    }
 
-	public function getPageIndex() {
-		return $this->pageIndex;
-	}
+    public function getPageIndex()
+    {
+        return $this->pageIndex;
+    }
 
-	public function setPageIndex($pageIndex) {
-		$this->pageIndex = $pageIndex;
-		$this->apiParams["pageIndex"] = $pageIndex;
-	}
+    public function setPageIndex($pageIndex)
+    {
+        $this->pageIndex = $pageIndex;
+        $this->apiParams["pageIndex"] = $pageIndex;
+    }
 
-	public function getPgSearch() {
-		return $this->pgSearch;
-	}
+    public function getPgSearch()
+    {
+        return $this->pgSearch;
+    }
 
-	public function setPgSearch($pgSearch) {
-		$this->pgSearch = $pgSearch;
-		$this->apiParams["pgSearch"] = $pgSearch;
-	}
+    public function setPgSearch($pgSearch)
+    {
+        $this->pgSearch = $pgSearch;
+        $this->apiParams["pgSearch"] = $pgSearch;
+    }
 
-	public function getPicHeight() {
-		return $this->picHeight;
-	}
+    public function getPicHeight()
+    {
+        return $this->picHeight;
+    }
 
-	public function setPicHeight($picHeight) {
-		$this->picHeight = $picHeight;
-		$this->apiParams["picHeight"] = $picHeight;
-	}
+    public function setPicHeight($picHeight)
+    {
+        $this->picHeight = $picHeight;
+        $this->apiParams["picHeight"] = $picHeight;
+    }
 
-	public function getPicWidth() {
-		return $this->picWidth;
-	}
+    public function getPicWidth()
+    {
+        return $this->picWidth;
+    }
 
-	public function setPicWidth($picWidth) {
-		$this->picWidth = $picWidth;
-		$this->apiParams["picWidth"] = $picWidth;
-	}
+    public function setPicWidth($picWidth)
+    {
+        $this->picWidth = $picWidth;
+        $this->apiParams["picWidth"] = $picWidth;
+    }
 
-	public function getSaleCategoryCode() {
-		return $this->saleCategoryCode;
-	}
+    public function getSaleCategoryCode()
+    {
+        return $this->saleCategoryCode;
+    }
 
-	public function setSaleCategoryCode($saleCategoryCode) {
-		$this->saleCategoryCode = $saleCategoryCode;
-		$this->apiParams["saleCategoryCode"] = $saleCategoryCode;
-	}
+    public function setSaleCategoryCode($saleCategoryCode)
+    {
+        $this->saleCategoryCode = $saleCategoryCode;
+        $this->apiParams["saleCategoryCode"] = $saleCategoryCode;
+    }
 
-	public function getSize() {
-		return $this->size;
-	}
+    public function getSize()
+    {
+        return $this->size;
+    }
 
-	public function setSize($size) {
-		$this->size = $size;
-		$this->apiParams["size"] = $size;
-	}
+    public function setSize($size)
+    {
+        $this->size = $size;
+        $this->apiParams["size"] = $size;
+    }
 
-	public function getSortType() {
-		return $this->sortType;
-	}
+    public function getSortType()
+    {
+        return $this->sortType;
+    }
 
-	public function setSortType($sortType) {
-		$this->sortType = $sortType;
-		$this->apiParams["sortType"] = $sortType;
-	}
-	
-	public function getCoupon() {
-		return $this->coupon;
-	}
+    public function setSortType($sortType)
+    {
+        $this->sortType = $sortType;
+        $this->apiParams["sortType"] = $sortType;
+    }
 
-	public function setCoupon($coupon) {
-		$this->coupon = $coupon;
-		$this->apiParams["coupon"] = $coupon;
-	}
+    public function getCoupon()
+    {
+        return $this->coupon;
+    }
 
-	public function getStartPrice() {
-		return $this->startPrice;
-	}
+    public function setCoupon($coupon)
+    {
+        $this->coupon = $coupon;
+        $this->apiParams["coupon"] = $coupon;
+    }
 
-	public function setStartPrice($startPrice) {
-		$this->startPrice = $startPrice;
-		$this->apiParams["startPrice"] = $startPrice;
-	}
+    public function getStartPrice()
+    {
+        return $this->startPrice;
+    }
 
-	public function getSuningService() {
-		return $this->suningService;
-	}
+    public function setStartPrice($startPrice)
+    {
+        $this->startPrice = $startPrice;
+        $this->apiParams["startPrice"] = $startPrice;
+    }
 
-	public function setSuningService($suningService) {
-		$this->suningService = $suningService;
-		$this->apiParams["suningService"] = $suningService;
-	}
+    public function getSuningService()
+    {
+        return $this->suningService;
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.searchcommodity.query';
-	}
+    public function setSuningService($suningService)
+    {
+        $this->suningService = $suningService;
+        $this->apiParams["suningService"] = $suningService;
+    }
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.searchcommodity.query';
+    }
 
-	public function check(){
-		//非空校验
-	}
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
 
-	public function getBizName(){
-		return "querySearchcommodity";
-	}
+    public function check()
+    {
+        //非空校验
+    }
+
+    public function getBizName()
+    {
+        return "querySearchcommodity";
+    }
 
 }
 
-?>
+

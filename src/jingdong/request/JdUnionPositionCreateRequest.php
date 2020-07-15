@@ -7,7 +7,7 @@ use com\pv138\easyUnion\jingdong\RequestInterface;
 
 /**
  * Class JdUnionPositionCreateRequest
- * @package NiuGengYun\EasyTBK\JingDong\Request
+ * @package com\pv138\easyUnion\jingdong\request
  */
 class JdUnionPositionCreateRequest implements RequestInterface
 {

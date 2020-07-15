@@ -6,13 +6,12 @@
  * @date   2015-10-28
  */
 
-namespace NiuGengYun\EasyTBK\SuNing\Request\Union;
+namespace com\pv138\easyUnion\suning\request\union;
 
-use NiuGengYun\EasyTBK\SuNing\SelectSuningRequest;
+use com\pv138\easyUnion\suning\SelectSuningRequest;
 
 class UnionInfomationQueryRequest extends SelectSuningRequest
 {
-
     public function getApiMethodName()
     {
         return 'suning.netalliance.unioninfomation.query';
@@ -32,7 +31,4 @@ class UnionInfomationQueryRequest extends SelectSuningRequest
     {
         return "queryUnionInfomation";
     }
-
 }
-
-?>

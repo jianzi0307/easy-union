@@ -1,8 +1,9 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+use com\pv138\easyUnion\suning\RequestCheckUtil;
+use com\pv138\easyUnion\suning\SuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -10,68 +11,79 @@ use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
  * @author suning
  * @date   2019-12-6
  */
-class QuerypgappletqrcodeurlGetRequest  extends SuningRequest{
+class QuerypgappletqrcodeurlGetRequest extends SuningRequest
+{
 
-	/**
-	 *
-	 */
-	private $activityId;
+    /**
+     *
+     */
+    private $activityId;
 
-	/**
-	 *
-	 */
-	private $page;
+    /**
+     *
+     */
+    private $page;
 
-	/**
-	 *
-	 */
-	private $subPromoter;
+    /**
+     *
+     */
+    private $subPromoter;
 
-	public function getActivityId() {
-		return $this->activityId;
-	}
+    public function getActivityId()
+    {
+        return $this->activityId;
+    }
 
-	public function setActivityId($activityId) {
-		$this->activityId = $activityId;
-		$this->apiParams["activityId"] = $activityId;
-	}
+    public function setActivityId($activityId)
+    {
+        $this->activityId = $activityId;
+        $this->apiParams["activityId"] = $activityId;
+    }
 
-	public function getPage() {
-		return $this->page;
-	}
+    public function getPage()
+    {
+        return $this->page;
+    }
 
-	public function setPage($page) {
-		$this->page = $page;
-		$this->apiParams["page"] = $page;
-	}
+    public function setPage($page)
+    {
+        $this->page = $page;
+        $this->apiParams["page"] = $page;
+    }
 
-	public function getSubPromoter() {
-		return $this->subPromoter;
-	}
+    public function getSubPromoter()
+    {
+        return $this->subPromoter;
+    }
 
-	public function setSubPromoter($subPromoter) {
-		$this->subPromoter = $subPromoter;
-		$this->apiParams["subPromoter"] = $subPromoter;
-	}
+    public function setSubPromoter($subPromoter)
+    {
+        $this->subPromoter = $subPromoter;
+        $this->apiParams["subPromoter"] = $subPromoter;
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.querypgappletqrcodeurl.get';
-	}
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.querypgappletqrcodeurl.get';
+    }
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
 
-	public function check(){
-		//非空校验
-		RequestCheckUtil::checkNotNull($this->activityId, 'activityId');
-		RequestCheckUtil::checkNotNull($this->page, 'page');
-	}
+    public function check()
+    {
+        //非空校验
+        RequestCheckUtil::checkNotNull($this->activityId, 'activityId');
+        RequestCheckUtil::checkNotNull($this->page, 'page');
+    }
 
-	public function getBizName(){
-		return "getQuerypgappletqrcodeurl";
-	}
+    public function getBizName()
+    {
+        return "getQuerypgappletqrcodeurl";
+    }
 
 }
 
-?>
+

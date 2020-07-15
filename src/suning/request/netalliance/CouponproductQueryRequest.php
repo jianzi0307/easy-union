@@ -1,8 +1,8 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SelectSuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+use com\pv138\easyUnion\suning\SelectSuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -98,4 +98,4 @@ class CouponproductQueryRequest extends SelectSuningRequest
 
 }
 
-?>
+

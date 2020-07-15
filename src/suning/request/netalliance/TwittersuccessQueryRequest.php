@@ -1,8 +1,9 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SelectSuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+use com\pv138\easyUnion\suning\RequestCheckUtil;
+use com\pv138\easyUnion\suning\SelectSuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -10,60 +11,67 @@ use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
  * @author suning
  * @date   2019-10-28
  */
-class TwittersuccessQueryRequest  extends SelectSuningRequest{
+class TwittersuccessQueryRequest extends SelectSuningRequest
+{
 
-	/**
-	 *
-	 */
-	private $beginDate;
+    /**
+     *
+     */
+    private $beginDate;
 
-	/**
-	 *
-	 */
-	private $endDate;
-
-
-
-	public function getBeginDate() {
-		return $this->beginDate;
-	}
-
-	public function setBeginDate($beginDate) {
-		$this->beginDate = $beginDate;
-		$this->apiParams["beginDate"] = $beginDate;
-	}
-
-	public function getEndDate() {
-		return $this->endDate;
-	}
-
-	public function setEndDate($endDate) {
-		$this->endDate = $endDate;
-		$this->apiParams["endDate"] = $endDate;
-	}
+    /**
+     *
+     */
+    private $endDate;
 
 
+    public function getBeginDate()
+    {
+        return $this->beginDate;
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.twittersuccess.query';
-	}
+    public function setBeginDate($beginDate)
+    {
+        $this->beginDate = $beginDate;
+        $this->apiParams["beginDate"] = $beginDate;
+    }
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
 
-	public function check(){
-		//非空校验
-		RequestCheckUtil::checkNotNull($this->beginDate, 'beginDate');
-		RequestCheckUtil::checkNotNull($this->endDate, 'endDate');
-		RequestCheckUtil::checkNotNull($this->pageNo, 'pageNo');
-		RequestCheckUtil::checkNotNull($this->pageSize, 'pageSize');
-	}
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+        $this->apiParams["endDate"] = $endDate;
+    }
 
-	public function getBizName(){
-		return "queryTwittersuccess";
-	}
+
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.twittersuccess.query';
+    }
+
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
+
+    public function check()
+    {
+        //非空校验
+        RequestCheckUtil::checkNotNull($this->beginDate, 'beginDate');
+        RequestCheckUtil::checkNotNull($this->endDate, 'endDate');
+        RequestCheckUtil::checkNotNull($this->pageNo, 'pageNo');
+        RequestCheckUtil::checkNotNull($this->pageSize, 'pageSize');
+    }
+
+    public function getBizName()
+    {
+        return "queryTwittersuccess";
+    }
 
 }
 
-?>
+

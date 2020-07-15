@@ -1,8 +1,9 @@
 <?php
-namespace NiuGengYun\EasyTBK\SuNing\Request\Netalliance;
 
-use NiuGengYun\EasyTBK\SuNing\SelectSuningRequest;
-use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
+namespace com\pv138\easyUnion\suning\request\netalliance;
+
+use com\pv138\easyUnion\suning\RequestCheckUtil;
+use com\pv138\easyUnion\suning\SelectSuningRequest;
 
 /**
  * 苏宁开放平台接口 -
@@ -10,45 +11,50 @@ use NiuGengYun\EasyTBK\SuNing\RequestCheckUtil;
  * @author suning
  * @date   2019-7-17
  */
-class CitystrategycorpinfoQueryRequest  extends SelectSuningRequest{
+class CitystrategycorpinfoQueryRequest extends SelectSuningRequest
+{
 
 
-
-	/**
-	 *
-	 */
-	private $strategyNo;
-
+    /**
+     *
+     */
+    private $strategyNo;
 
 
-	public function getStrategyNo() {
-		return $this->strategyNo;
-	}
+    public function getStrategyNo()
+    {
+        return $this->strategyNo;
+    }
 
-	public function setStrategyNo($strategyNo) {
-		$this->strategyNo = $strategyNo;
-		$this->apiParams["strategyNo"] = $strategyNo;
-	}
+    public function setStrategyNo($strategyNo)
+    {
+        $this->strategyNo = $strategyNo;
+        $this->apiParams["strategyNo"] = $strategyNo;
+    }
 
-	public function getApiMethodName(){
-		return 'suning.netalliance.citystrategycorpinfo.query';
-	}
+    public function getApiMethodName()
+    {
+        return 'suning.netalliance.citystrategycorpinfo.query';
+    }
 
-	public function getApiParams(){
-		return $this->apiParams;
-	}
+    public function getApiParams()
+    {
+        return $this->apiParams;
+    }
 
-	public function check(){
-		//非空校验
-		RequestCheckUtil::checkNotNull($this->pageNo, 'pageNo');
-		RequestCheckUtil::checkNotNull($this->pageSize, 'pageSize');
-		RequestCheckUtil::checkNotNull($this->strategyNo, 'strategyNo');
-	}
+    public function check()
+    {
+        //非空校验
+        RequestCheckUtil::checkNotNull($this->pageNo, 'pageNo');
+        RequestCheckUtil::checkNotNull($this->pageSize, 'pageSize');
+        RequestCheckUtil::checkNotNull($this->strategyNo, 'strategyNo');
+    }
 
-	public function getBizName(){
-		return "queryCitystrategycorpinfo";
-	}
+    public function getBizName()
+    {
+        return "queryCitystrategycorpinfo";
+    }
 
 }
 
-?>
+

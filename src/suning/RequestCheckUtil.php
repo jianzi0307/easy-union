@@ -1,6 +1,6 @@
 ﻿<?php
 
-namespace NiuGengYun\EasyTBK\SuNing;
+namespace com\pv138\easyUnion\suning;
 
 class RequestCheckUtil
 {
@@ -271,5 +271,3 @@ class RequestCheckUtil
         }
     }
 }
-
-?>
