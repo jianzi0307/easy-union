@@ -29,7 +29,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "com\\pv138\\easy-union\\ServiceProvider"
+        "com\\pv138\\easyUnion\\ServiceProvider"
       ]
     }
   }
