@@ -1,206 +1,158 @@
 <?php
 
+namespace com\pv138\easyUnion\vip\request;
+
+class VipLinkCheckVO
+{
+    public static $_TSPEC;
+    public $linkType = null;
+    public $landUrl = null;
+    public $goodsId = null;
+    public $brandId = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'linkType'
+                ),
+                2 => array(
+                    'var' => 'landUrl'
+                ),
+                3 => array(
+                    'var' => 'goodsId'
+                ),
+                4 => array(
+                    'var' => 'brandId'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['linkType'])) {
+                $this->linkType = $vals['linkType'];
+            }
 
-/*
-* Copyright (c) 2008-2016 vip.com, All Rights Reserved.
-*
-* Powered by com.vip.osp.osp-idlc-2.5.11.
-*
-*/
 
-namespace NiuGengYun\EasyTBK\Vip\Request;
+            if (isset($vals['landUrl'])) {
+                $this->landUrl = $vals['landUrl'];
+            }
 
-class VipLinkCheckVO {
 
-	static $_TSPEC;
-	public $linkType = null;
-	public $landUrl = null;
-	public $goodsId = null;
-	public $brandId = null;
+            if (isset($vals['goodsId'])) {
+                $this->goodsId = $vals['goodsId'];
+            }
 
-	public function __construct($vals=null){
 
-		if (!isset(self::$_TSPEC)){
+            if (isset($vals['brandId'])) {
+                $this->brandId = $vals['brandId'];
+            }
+        }
+    }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'linkType'
-			),
-			2 => array(
-			'var' => 'landUrl'
-			),
-			3 => array(
-			'var' => 'goodsId'
-			),
-			4 => array(
-			'var' => 'brandId'
-			),
 
-			);
+    public function getName()
+    {
+        return 'VipLinkCheckVO';
+    }
 
-		}
+    public function read($input)
+    {
+        $input->readStructBegin();
+        while (true) {
+            $schemeField = $input->readFieldBegin();
+            if ($schemeField == null) {
+                break;
+            }
+            $needSkip = true;
 
-		if (is_array($vals)){
 
+            if ("linkType" == $schemeField) {
+                $needSkip = false;
 
-			if (isset($vals['linkType'])){
+                $names = VipLinkTypeEnum::$__names;
+                $name = null;
+                $input->readString($name);
+                foreach ($names as $k => $v) {
+                    if ($name == $v) {
+                        $this->linkType = $k;
+                        break;
+                    }
+                }
+            }
 
-				$this->linkType = $vals['linkType'];
-			}
 
+            if ("landUrl" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->landUrl);
+            }
 
-			if (isset($vals['landUrl'])){
 
-				$this->landUrl = $vals['landUrl'];
-			}
+            if ("goodsId" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->goodsId);
+            }
 
 
-			if (isset($vals['goodsId'])){
+            if ("brandId" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->brandId);
+            }
 
-				$this->goodsId = $vals['goodsId'];
-			}
 
+            if ($needSkip) {
+                \Osp\Protocol\ProtocolUtil::skip($input);
+            }
 
-			if (isset($vals['brandId'])){
+            $input->readFieldEnd();
+        }
 
-				$this->brandId = $vals['brandId'];
-			}
+        $input->readStructEnd();
+    }
 
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-		}
+        if ($this->linkType !== null) {
+            $xfer += $output->writeFieldBegin('linkType');
 
-	}
+            $em = new VipLinkTypeEnum();
+            $output->writeString($em::$__names[$this->linkType]);
 
+            $xfer += $output->writeFieldEnd();
+        }
 
-	public function getName(){
 
-		return 'VipLinkCheckVO';
-	}
+        if ($this->landUrl !== null) {
+            $xfer += $output->writeFieldBegin('landUrl');
+            $xfer += $output->writeString($this->landUrl);
 
-	public function read($input){
+            $xfer += $output->writeFieldEnd();
+        }
 
-		$input->readStructBegin();
-		while(true){
 
-			$schemeField = $input->readFieldBegin();
-			if ($schemeField == null) break;
-			$needSkip = true;
+        if ($this->goodsId !== null) {
+            $xfer += $output->writeFieldBegin('goodsId');
+            $xfer += $output->writeString($this->goodsId);
 
+            $xfer += $output->writeFieldEnd();
+        }
 
-			if ("linkType" == $schemeField){
 
-				$needSkip = false;
+        if ($this->brandId !== null) {
+            $xfer += $output->writeFieldBegin('brandId');
+            $xfer += $output->writeString($this->brandId);
 
-				$names = \NiuGengYun\EasyTBK\Vip\Request\VipLinkTypeEnum::$__names;
-				$name = null;
-				$input->readString($name);
-				foreach ($names as $k => $v){
+            $xfer += $output->writeFieldEnd();
+        }
 
-					if($name == $v){
 
-						$this->linkType = $k;
-						break;
-					}
-
-				}
-
-
-			}
-
-
-
-
-			if ("landUrl" == $schemeField){
-
-				$needSkip = false;
-				$input->readString($this->landUrl);
-
-			}
-
-
-
-
-			if ("goodsId" == $schemeField){
-
-				$needSkip = false;
-				$input->readString($this->goodsId);
-
-			}
-
-
-
-
-			if ("brandId" == $schemeField){
-
-				$needSkip = false;
-				$input->readString($this->brandId);
-
-			}
-
-
-
-			if($needSkip){
-
-				\Osp\Protocol\ProtocolUtil::skip($input);
-			}
-
-			$input->readFieldEnd();
-		}
-
-		$input->readStructEnd();
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->linkType !== null) {
-
-			$xfer += $output->writeFieldBegin('linkType');
-
-			$em = new \NiuGengYun\EasyTBK\Vip\Request\VipLinkTypeEnum;
-			$output->writeString($em::$__names[$this->linkType]);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->landUrl !== null) {
-
-			$xfer += $output->writeFieldBegin('landUrl');
-			$xfer += $output->writeString($this->landUrl);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->goodsId !== null) {
-
-			$xfer += $output->writeFieldBegin('goodsId');
-			$xfer += $output->writeString($this->goodsId);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->brandId !== null) {
-
-			$xfer += $output->writeFieldBegin('brandId');
-			$xfer += $output->writeString($this->brandId);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
-
-?>

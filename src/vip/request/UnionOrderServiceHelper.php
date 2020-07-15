@@ -8,14 +8,12 @@
 *
 */
 
-namespace NiuGengYun\EasyTBK\Vip\Request;
-class UnionOrderServiceHelper extends _UnionOrderServiceClient{
+namespace com\pv138\easyUnion\vip\request;
 
-	public function __construct(){
-
-		parent::__construct();
-	}
-
+class UnionOrderServiceHelper extends _UnionOrderServiceClient
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
 }
-
-?>

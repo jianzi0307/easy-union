@@ -23,7 +23,7 @@
  * @package thrift.classloader
  */
 
-namespace NiuGengYun\EasyTBK\Vip\Osp\ClassLoader;
+namespace com\pv138\easyUnion\vip\Osp\ClassLoader;
 
 class ClassLoader
 {
@@ -65,23 +65,23 @@ class ClassLoader
     /**
      * Registers a namespace.
      *
-     * @param string       $namespace The namespace
-     * @param array|string $paths     The location(s) of the namespace
+     * @param string $namespace The namespace
+     * @param array|string $paths The location(s) of the namespace
      */
     public function registerNamespace($namespace, $paths)
     {
-        $this->namespaces[$namespace] = (array) $paths;
+        $this->namespaces[$namespace] = (array)$paths;
     }
 
     /**
      * Registers a Thrift definition namespace.
      *
-     * @param string       $namespace The definition namespace
-     * @param array|string $paths     The location(s) of the definition namespace
+     * @param string $namespace The definition namespace
+     * @param array|string $paths The location(s) of the definition namespace
      */
     public function registerDefinition($namespace, $paths)
     {
-        $this->definitions[$namespace] = (array) $paths;
+        $this->definitions[$namespace] = (array)$paths;
     }
 
     /**
@@ -104,8 +104,7 @@ class ClassLoader
         if (
             (true === $this->apc && ($file = $this->findFileInApc($class))) or
             ($file = $this->findFile($class))
-        )
-        {
+        ) {
             require_once $file;
         }
     }
@@ -117,8 +116,8 @@ class ClassLoader
      */
     protected function findFileInApc($class)
     {
-        if (false === $file = apc_fetch($this->apc_prefix.$class)) {
-            apc_store($this->apc_prefix.$class, $file = $this->findFile($class));
+        if (false === $file = apc_fetch($this->apc_prefix . $class)) {
+            apc_store($this->apc_prefix . $class, $file = $this->findFile($class));
         }
 
         return $file;
@@ -132,36 +131,30 @@ class ClassLoader
     public function findFile($class)
     {
         // Remove first backslash
-        if ('\\' == $class[0])
-        {
+        if ('\\' == $class[0]) {
             $class = substr($class, 1);
         }
 
-        if (false !== $pos = strrpos($class, '\\'))
-        {
+        if (false !== $pos = strrpos($class, '\\')) {
             // Namespaced class name
             $namespace = substr($class, 0, $pos);
 
             // Iterate in normal namespaces
-            foreach ($this->namespaces as $ns => $dirs)
-            {
+            foreach ($this->namespaces as $ns => $dirs) {
                 //Don't interfere with other autoloaders
-                if (0 !== strpos($namespace, $ns))
-                {
+                if (0 !== strpos($namespace, $ns)) {
                     continue;
                 }
 
-                foreach ($dirs as $dir)
-                {
+                foreach ($dirs as $dir) {
                     $className = substr($class, $pos + 1);
 
-                    $file = $dir.DIRECTORY_SEPARATOR.
-                                 str_replace('\\', DIRECTORY_SEPARATOR, $namespace).
-                                 DIRECTORY_SEPARATOR.
-                                 $className.'.php';
+                    $file = $dir . DIRECTORY_SEPARATOR .
+                        str_replace('\\', DIRECTORY_SEPARATOR, $namespace) .
+                        DIRECTORY_SEPARATOR .
+                        $className . '.php';
 
-                    if (file_exists($file))
-                    {
+                    if (file_exists($file)) {
                         return $file;
                     }
                 }
@@ -173,47 +166,39 @@ class ClassLoader
             $m = explode('\\', $class);
 
             // Ignore wrong call
-            if(count($m) <= 1)
-            {
+            if (count($m) <= 1) {
                 return;
             }
 
             $class = array_pop($m);
             $namespace = implode('\\', $m);
 
-            foreach ($this->definitions as $ns => $dirs)
-            {
+            foreach ($this->definitions as $ns => $dirs) {
                 //Don't interfere with other autoloaders
-                if (0 !== strpos($namespace, $ns))
-                {
+                if (0 !== strpos($namespace, $ns)) {
                     continue;
                 }
 
-                foreach ($dirs as $dir)
-                {
+                foreach ($dirs as $dir) {
                     /**
                      * Available in service: Interface, Client, Processor, Rest
                      * And every service methods (_.+)
                      */
-                    if(
+                    if (
                         0 === preg_match('#(.+)(if|client|processor|rest)$#i', $class, $n) and
                         0 === preg_match('#(.+)_[a-z0-9]+_(args|result)$#i', $class, $n)
-                    )
-                    {
+                    ) {
                         $className = 'Types';
-                    }
-                    else
-                    {
+                    } else {
                         $className = $n[1];
                     }
 
-                    $file = $dir.DIRECTORY_SEPARATOR .
-                                 str_replace('\\', DIRECTORY_SEPARATOR, $namespace) .
-                                 DIRECTORY_SEPARATOR .
-                                 $className . '.php';
+                    $file = $dir . DIRECTORY_SEPARATOR .
+                        str_replace('\\', DIRECTORY_SEPARATOR, $namespace) .
+                        DIRECTORY_SEPARATOR .
+                        $className . '.php';
 
-                    if (file_exists($file))
-                    {
+                    if (file_exists($file)) {
                         return $file;
                     }
                 }

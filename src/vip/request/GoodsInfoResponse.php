@@ -1,300 +1,236 @@
 <?php
 
+namespace com\pv138\easyUnion\vip\request;
+
+use com\pv138\easyUnion\vip\Osp\Exception\OspException;
+use com\pv138\easyUnion\vip\Osp\Protocol\ProtocolUtil;
+use Exception;
+
+class GoodsInfoResponse
+{
+    public static $_TSPEC;
+    public $goodsInfoList = null;
+    public $total = null;
+    public $sortFields = null;
+    public $page = null;
+    public $pageSize = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'goodsInfoList'
+                ),
+                2 => array(
+                    'var' => 'total'
+                ),
+                4 => array(
+                    'var' => 'sortFields'
+                ),
+                5 => array(
+                    'var' => 'page'
+                ),
+                6 => array(
+                    'var' => 'pageSize'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['goodsInfoList'])) {
+                $this->goodsInfoList = $vals['goodsInfoList'];
+            }
+
+
+            if (isset($vals['total'])) {
+                $this->total = $vals['total'];
+            }
+
+
+            if (isset($vals['sortFields'])) {
+                $this->sortFields = $vals['sortFields'];
+            }
+
+
+            if (isset($vals['page'])) {
+                $this->page = $vals['page'];
+            }
+
+
+            if (isset($vals['pageSize'])) {
+                $this->pageSize = $vals['pageSize'];
+            }
+        }
+    }
 
-/*
-* Copyright (c) 2008-2016 vip.com, All Rights Reserved.
-*
-* Powered by com.vip.osp.osp-idlc-2.5.11.
-*
-*/
+
+    public function getName()
+    {
+        return 'GoodsInfoResponse';
+    }
+
+    public function read($input)
+    {
+        $input->readStructBegin();
+        while (true) {
+            $schemeField = $input->readFieldBegin();
+            if ($schemeField == null) {
+                break;
+            }
+            $needSkip = true;
 
-namespace NiuGengYun\EasyTBK\Vip\Request;
+
+            if ("goodsInfoList" == $schemeField) {
+                $needSkip = false;
 
-class GoodsInfoResponse {
+                $this->goodsInfoList = array();
+                $_size0 = 0;
+                $input->readListBegin();
+                while (true) {
+                    try {
+                        $elem0 = null;
 
-	static $_TSPEC;
-	public $goodsInfoList = null;
-	public $total = null;
-	public $sortFields = null;
-	public $page = null;
-	public $pageSize = null;
+                        $elem0 = new GoodsInfo();
+                        $elem0->read($input);
 
-	public function __construct($vals=null){
+                        $this->goodsInfoList[$_size0++] = $elem0;
+                    } catch (Exception $e) {
+                        break;
+                    }
+                }
 
-		if (!isset(self::$_TSPEC)){
+                $input->readListEnd();
+            }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'goodsInfoList'
-			),
-			2 => array(
-			'var' => 'total'
-			),
-			4 => array(
-			'var' => 'sortFields'
-			),
-			5 => array(
-			'var' => 'page'
-			),
-			6 => array(
-			'var' => 'pageSize'
-			),
 
-			);
+            if ("total" == $schemeField) {
+                $needSkip = false;
+                $input->readI32($this->total);
+            }
 
-		}
 
-		if (is_array($vals)){
+            if ("sortFields" == $schemeField) {
+                $needSkip = false;
 
+                $this->sortFields = array();
+                $_size1 = 0;
+                $input->readListBegin();
+                while (true) {
+                    try {
+                        $elem1 = null;
 
-			if (isset($vals['goodsInfoList'])){
+                        $elem1 = new SortField();
+                        $elem1->read($input);
 
-				$this->goodsInfoList = $vals['goodsInfoList'];
-			}
+                        $this->sortFields[$_size1++] = $elem1;
+                    } catch (Exception $e) {
+                        break;
+                    }
+                }
 
+                $input->readListEnd();
+            }
 
-			if (isset($vals['total'])){
 
-				$this->total = $vals['total'];
-			}
+            if ("page" == $schemeField) {
+                $needSkip = false;
+                $input->readI32($this->page);
+            }
 
 
-			if (isset($vals['sortFields'])){
+            if ("pageSize" == $schemeField) {
+                $needSkip = false;
+                $input->readI32($this->pageSize);
+            }
 
-				$this->sortFields = $vals['sortFields'];
-			}
 
+            if ($needSkip) {
+                ProtocolUtil::skip($input);
+            }
 
-			if (isset($vals['page'])){
+            $input->readFieldEnd();
+        }
 
-				$this->page = $vals['page'];
-			}
+        $input->readStructEnd();
+    }
 
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-			if (isset($vals['pageSize'])){
+        if ($this->goodsInfoList !== null) {
+            $xfer += $output->writeFieldBegin('goodsInfoList');
 
-				$this->pageSize = $vals['pageSize'];
-			}
+            if (!is_array($this->goodsInfoList)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
+            $output->writeListBegin();
+            foreach ($this->goodsInfoList as $iter0) {
+                if (!is_object($iter0)) {
+                    throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+                }
 
-		}
+                $xfer += $iter0->write($output);
+            }
 
-	}
+            $output->writeListEnd();
 
+            $xfer += $output->writeFieldEnd();
+        }
 
-	public function getName(){
 
-		return 'GoodsInfoResponse';
-	}
+        if ($this->total !== null) {
+            $xfer += $output->writeFieldBegin('total');
+            $xfer += $output->writeI32($this->total);
 
-	public function read($input){
+            $xfer += $output->writeFieldEnd();
+        }
 
-		$input->readStructBegin();
-		while(true){
 
-			$schemeField = $input->readFieldBegin();
-			if ($schemeField == null) break;
-			$needSkip = true;
+        if ($this->sortFields !== null) {
+            $xfer += $output->writeFieldBegin('sortFields');
 
+            if (!is_array($this->sortFields)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			if ("goodsInfoList" == $schemeField){
+            $output->writeListBegin();
+            foreach ($this->sortFields as $iter0) {
+                if (!is_object($iter0)) {
+                    throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+                }
 
-				$needSkip = false;
+                $xfer += $iter0->write($output);
+            }
 
-				$this->goodsInfoList = array();
-				$_size0 = 0;
-				$input->readListBegin();
-				while(true){
+            $output->writeListEnd();
 
-					try{
+            $xfer += $output->writeFieldEnd();
+        }
 
-						$elem0 = null;
 
-						$elem0 = new \NiuGengYun\EasyTBK\Vip\Request\GoodsInfo();
-						$elem0->read($input);
+        if ($this->page !== null) {
+            $xfer += $output->writeFieldBegin('page');
+            $xfer += $output->writeI32($this->page);
 
-						$this->goodsInfoList[$_size0++] = $elem0;
-					}
-					catch(\Exception $e){
+            $xfer += $output->writeFieldEnd();
+        }
 
-						break;
-					}
-				}
 
-				$input->readListEnd();
+        if ($this->pageSize !== null) {
+            $xfer += $output->writeFieldBegin('pageSize');
+            $xfer += $output->writeI32($this->pageSize);
 
-			}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-
-
-			if ("total" == $schemeField){
-
-				$needSkip = false;
-				$input->readI32($this->total);
-
-			}
-
-
-
-
-			if ("sortFields" == $schemeField){
-
-				$needSkip = false;
-
-				$this->sortFields = array();
-				$_size1 = 0;
-				$input->readListBegin();
-				while(true){
-
-					try{
-
-						$elem1 = null;
-
-						$elem1 = new \NiuGengYun\EasyTBK\Vip\Request\SortField();
-						$elem1->read($input);
-
-						$this->sortFields[$_size1++] = $elem1;
-					}
-					catch(\Exception $e){
-
-						break;
-					}
-				}
-
-				$input->readListEnd();
-
-			}
-
-
-
-
-			if ("page" == $schemeField){
-
-				$needSkip = false;
-				$input->readI32($this->page);
-
-			}
-
-
-
-
-			if ("pageSize" == $schemeField){
-
-				$needSkip = false;
-				$input->readI32($this->pageSize);
-
-			}
-
-
-
-			if($needSkip){
-
-				\NiuGengYun\EasyTBK\Vip\Osp\Protocol\ProtocolUtil::skip($input);
-			}
-
-			$input->readFieldEnd();
-		}
-
-		$input->readStructEnd();
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->goodsInfoList !== null) {
-
-			$xfer += $output->writeFieldBegin('goodsInfoList');
-
-			if (!is_array($this->goodsInfoList)){
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$output->writeListBegin();
-			foreach ($this->goodsInfoList as $iter0){
-
-
-				if (!is_object($iter0)) {
-
-					throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException::INVALID_DATA);
-				}
-
-				$xfer += $iter0->write($output);
-
-			}
-
-			$output->writeListEnd();
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->total !== null) {
-
-			$xfer += $output->writeFieldBegin('total');
-			$xfer += $output->writeI32($this->total);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->sortFields !== null) {
-
-			$xfer += $output->writeFieldBegin('sortFields');
-
-			if (!is_array($this->sortFields)){
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$output->writeListBegin();
-			foreach ($this->sortFields as $iter0){
-
-
-				if (!is_object($iter0)) {
-
-					throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException::INVALID_DATA);
-				}
-
-				$xfer += $iter0->write($output);
-
-			}
-
-			$output->writeListEnd();
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->page !== null) {
-
-			$xfer += $output->writeFieldBegin('page');
-			$xfer += $output->writeI32($this->page);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->pageSize !== null) {
-
-			$xfer += $output->writeFieldBegin('pageSize');
-			$xfer += $output->writeI32($this->pageSize);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
-
-?>

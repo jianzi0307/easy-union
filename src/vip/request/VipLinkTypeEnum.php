@@ -1,40 +1,30 @@
 <?php
 
+namespace com\pv138\easyUnion\vip\request;
 
-/*
-* Copyright (c) 2008-2016 vip.com, All Rights Reserved.
-*
-* Powered by com.vip.osp.osp-idlc-2.5.11.
-*
-*/
+final class VipLinkTypeEnum
+{
+    const ILLEGAL_LINK = -1;
 
-namespace NiuGengYun\EasyTBK\Vip\Request;
-final class VipLinkTypeEnum{
+    const NOT_VIPSHOP_LINK = 0;
 
+    const GOODS = 1;
 
-	const ILLEGAL_LINK = -1;
+    const BRAND = 2;
 
-	const NOT_VIPSHOP_LINK = 0;
+    const OTHER = 9;
 
-	const GOODS = 1;
+    public static $__names = array(
 
-	const BRAND = 2;
+        -1 => 'ILLEGAL_LINK',
 
-	const OTHER = 9;
+        0 => 'NOT_VIPSHOP_LINK',
 
-	static public $__names = array(
+        1 => 'GOODS',
 
-	-1 => 'ILLEGAL_LINK',
+        2 => 'BRAND',
 
-	0 => 'NOT_VIPSHOP_LINK',
+        9 => 'OTHER',
 
-	1 => 'GOODS',
-
-	2 => 'BRAND',
-
-	9 => 'OTHER',
-
-	);
+    );
 }
-
-?>

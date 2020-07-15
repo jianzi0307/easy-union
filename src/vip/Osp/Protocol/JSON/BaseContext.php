@@ -20,27 +20,29 @@
  * @package thrift.protocol
  */
 
-namespace NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON;
+namespace com\pv138\easyUnion\vip\Osp\Protocol\JSON;
 
 class BaseContext
 {
-    function escapeNum()
+    public function escapeNum()
     {
         return false;
     }
 
-    function write()
+    public function write()
     {
     }
 
-    function read()
+    public function read()
     {
     }
 
-    function isColon_() {
-		return false;
-	}
+    public function isColon_()
+    {
+        return false;
+    }
 
-	function setColon_($colon_) {
-	}
+    public function setColon_($colon_)
+    {
+    }
 }

@@ -1,90 +1,92 @@
 <?php
-namespace NiuGengYun\EasyTBK\Vip\Osp\Protocol;
 
-abstract class Protocol {
-	public abstract function reset();
+namespace com\pv138\easyUnion\vip\Osp\Protocol;
 
-	public abstract function writeMessageBegin();
+abstract class Protocol
+{
+    abstract public function reset();
 
-	public abstract function writeMessageEnd();
+    abstract public function writeMessageBegin();
 
-	public abstract function writeStructBegin();
+    abstract public function writeMessageEnd();
 
-	public abstract function writeStructEnd();
+    abstract public function writeStructBegin();
 
-	public abstract function writeFieldBegin($name);
+    abstract public function writeStructEnd();
 
-	public abstract function writeFieldEnd();
+    abstract public function writeFieldBegin($name);
 
-	public abstract function writeFieldStop();
+    abstract public function writeFieldEnd();
 
-	public abstract function writeMapBegin();
+    abstract public function writeFieldStop();
 
-	public abstract function writeMapEnd();
+    abstract public function writeMapBegin();
 
-	public abstract function writeListEnd();
+    abstract public function writeMapEnd();
 
-	public abstract function writeSetBegin();
+    abstract public function writeListEnd();
 
-	public abstract function writeSetEnd();
+    abstract public function writeSetBegin();
 
-	public abstract function writeBool($b);
+    abstract public function writeSetEnd();
 
-	public abstract function writeByte($b);
+    abstract public function writeBool($b);
 
-	public abstract function writeI16($i16);
+    abstract public function writeByte($b);
 
-	public abstract function writeI32($i32);
+    abstract public function writeI16($i16);
 
-	public abstract function writeI64($i64);
+    abstract public function writeI32($i32);
 
-	public abstract function writeDouble($dub);
+    abstract public function writeI64($i64);
 
-	public abstract function writeString($str);
+    abstract public function writeDouble($dub);
 
-	public abstract function writeBinary($bin);
+    abstract public function writeString($str);
 
-	public abstract function writeListBegin();
+    abstract public function writeBinary($bin);
 
-	public abstract function readListBegin();
+    abstract public function writeListBegin();
 
-	public abstract function readListEnd();
+    abstract public function readListBegin();
 
-	public abstract function readStructBegin();
+    abstract public function readListEnd();
 
-	public abstract function readStructEnd();
+    abstract public function readStructBegin();
 
-	public abstract function readFieldBegin();
+    abstract public function readStructEnd();
 
-	public abstract function readFieldEnd();
+    abstract public function readFieldBegin();
 
-	public abstract function readI32(&$i32);
+    abstract public function readFieldEnd();
 
-	public abstract function readDouble(&$dub);
+    abstract public function readI32(&$i32);
 
-	public abstract function readString(&$str);
+    abstract public function readDouble(&$dub);
 
-	public abstract function getTransport();
+    abstract public function readString(&$str);
 
-	public abstract function setTransport($trans_);
+    abstract public function getTransport();
 
-	public abstract function readChar();
+    abstract public function setTransport($trans_);
 
-	public abstract function readSetBegin();
+    abstract public function readChar();
 
-	public abstract function readSetEnd();
+    abstract public function readSetBegin();
 
-	public abstract function readMapBegin();
+    abstract public function readSetEnd();
 
-	public abstract function readMapEnd();
+    abstract public function readMapBegin();
 
-	public abstract function readByte(&$byte);
+    abstract public function readMapEnd();
 
-	public abstract function readI64(&$i64);
+    abstract public function readByte(&$byte);
 
-	public abstract function readBool(&$bool);
+    abstract public function readI64(&$i64);
 
-	public abstract function readI16(&$i16);
+    abstract public function readBool(&$bool);
 
-	public abstract function getType();
+    abstract public function readI16(&$i16);
+
+    abstract public function getType();
 }

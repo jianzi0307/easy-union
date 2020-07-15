@@ -19,9 +19,11 @@
  *
  */
 
-namespace NiuGengYun\EasyTBK\Vip\Osp\StringFunc;
+namespace com\pv138\easyUnion\vip\Osp\StringFunc;
 
-interface StringFunc {
+interface StringFunc
+{
     public function substr($str, $start, $length = null);
+
     public function strlen($str);
 }

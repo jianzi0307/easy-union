@@ -1,162 +1,124 @@
 <?php
 
+namespace com\pv138\easyUnion\vip\request;
 
-/*
-* Copyright (c) 2008-2016 vip.com, All Rights Reserved.
-*
-* Powered by com.vip.osp.osp-idlc-2.5.11.
-*
-*/
+class PidInfo
+{
+    public static $_TSPEC;
+    public $pid = null;
+    public $pidName = null;
+    public $createTime = null;
 
-namespace NiuGengYun\EasyTBK\Vip\Request;
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'pid'
+                ),
+                2 => array(
+                    'var' => 'pidName'
+                ),
+                3 => array(
+                    'var' => 'createTime'
+                ),
 
-class PidInfo {
+            );
+        }
 
-	static $_TSPEC;
-	public $pid = null;
-	public $pidName = null;
-	public $createTime = null;
+        if (is_array($vals)) {
+            if (isset($vals['pid'])) {
+                $this->pid = $vals['pid'];
+            }
 
-	public function __construct($vals=null){
 
-		if (!isset(self::$_TSPEC)){
+            if (isset($vals['pidName'])) {
+                $this->pidName = $vals['pidName'];
+            }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'pid'
-			),
-			2 => array(
-			'var' => 'pidName'
-			),
-			3 => array(
-			'var' => 'createTime'
-			),
 
-			);
+            if (isset($vals['createTime'])) {
+                $this->createTime = $vals['createTime'];
+            }
+        }
+    }
 
-		}
 
-		if (is_array($vals)){
+    public function getName()
+    {
+        return 'PidInfo';
+    }
 
+    public function read($input)
+    {
+        $input->readStructBegin();
+        while (true) {
+            $schemeField = $input->readFieldBegin();
+            if ($schemeField == null) {
+                break;
+            }
+            $needSkip = true;
 
-			if (isset($vals['pid'])){
 
-				$this->pid = $vals['pid'];
-			}
+            if ("pid" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->pid);
+            }
 
 
-			if (isset($vals['pidName'])){
+            if ("pidName" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->pidName);
+            }
 
-				$this->pidName = $vals['pidName'];
-			}
 
+            if ("createTime" == $schemeField) {
+                $needSkip = false;
+                $input->readI64($this->createTime);
+            }
 
-			if (isset($vals['createTime'])){
 
-				$this->createTime = $vals['createTime'];
-			}
+            if ($needSkip) {
+                \Osp\Protocol\ProtocolUtil::skip($input);
+            }
 
+            $input->readFieldEnd();
+        }
 
-		}
+        $input->readStructEnd();
+    }
 
-	}
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
+        if ($this->pid !== null) {
+            $xfer += $output->writeFieldBegin('pid');
+            $xfer += $output->writeString($this->pid);
 
-	public function getName(){
+            $xfer += $output->writeFieldEnd();
+        }
 
-		return 'PidInfo';
-	}
 
-	public function read($input){
+        if ($this->pidName !== null) {
+            $xfer += $output->writeFieldBegin('pidName');
+            $xfer += $output->writeString($this->pidName);
 
-		$input->readStructBegin();
-		while(true){
+            $xfer += $output->writeFieldEnd();
+        }
 
-			$schemeField = $input->readFieldBegin();
-			if ($schemeField == null) break;
-			$needSkip = true;
 
+        if ($this->createTime !== null) {
+            $xfer += $output->writeFieldBegin('createTime');
+            $xfer += $output->writeI64($this->createTime);
 
-			if ("pid" == $schemeField){
+            $xfer += $output->writeFieldEnd();
+        }
 
-				$needSkip = false;
-				$input->readString($this->pid);
 
-			}
-
-
-
-
-			if ("pidName" == $schemeField){
-
-				$needSkip = false;
-				$input->readString($this->pidName);
-
-			}
-
-
-
-
-			if ("createTime" == $schemeField){
-
-				$needSkip = false;
-				$input->readI64($this->createTime);
-
-			}
-
-
-
-			if($needSkip){
-
-				\Osp\Protocol\ProtocolUtil::skip($input);
-			}
-
-			$input->readFieldEnd();
-		}
-
-		$input->readStructEnd();
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->pid !== null) {
-
-			$xfer += $output->writeFieldBegin('pid');
-			$xfer += $output->writeString($this->pid);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->pidName !== null) {
-
-			$xfer += $output->writeFieldBegin('pidName');
-			$xfer += $output->writeString($this->pidName);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->createTime !== null) {
-
-			$xfer += $output->writeFieldBegin('createTime');
-			$xfer += $output->writeI64($this->createTime);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
-
-?>

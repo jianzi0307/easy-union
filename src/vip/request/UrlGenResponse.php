@@ -1,144 +1,110 @@
 <?php
 
+namespace com\pv138\easyUnion\vip\request;
 
-/*
-* Copyright (c) 2008-2016 vip.com, All Rights Reserved.
-*
-* Powered by com.vip.osp.osp-idlc-2.5.11.
-*
-*/
+use com\pv138\easyUnion\vip\Osp\Exception\OspException;
+use com\pv138\easyUnion\vip\Osp\Protocol\ProtocolUtil;
 
-namespace NiuGengYun\EasyTBK\Vip\Request;
+class UrlGenResponse
+{
+    public static $_TSPEC;
+    public $urlInfoList = null;
 
-class UrlGenResponse {
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'urlInfoList'
+                ),
 
-	static $_TSPEC;
-	public $urlInfoList = null;
+            );
+        }
 
-	public function __construct($vals=null){
+        if (is_array($vals)) {
+            if (isset($vals['urlInfoList'])) {
+                $this->urlInfoList = $vals['urlInfoList'];
+            }
+        }
+    }
 
-		if (!isset(self::$_TSPEC)){
+    public function getName()
+    {
+        return 'UrlGenResponse';
+    }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'urlInfoList'
-			),
-
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['urlInfoList'])){
-
-				$this->urlInfoList = $vals['urlInfoList'];
-			}
-
-
-		}
-
-	}
-
-
-	public function getName(){
-
-		return 'UrlGenResponse';
-	}
-
-	public function read($input){
-
-		$input->readStructBegin();
-		while(true){
-
-			$schemeField = $input->readFieldBegin();
-			if ($schemeField == null) break;
-			$needSkip = true;
+    public function read($input)
+    {
+        $input->readStructBegin();
+        while (true) {
+            $schemeField = $input->readFieldBegin();
+            if ($schemeField == null) {
+                break;
+            }
+            $needSkip = true;
 
 
-			if ("urlInfoList" == $schemeField){
+            if ("urlInfoList" == $schemeField) {
+                $needSkip = false;
 
-				$needSkip = false;
+                $this->urlInfoList = array();
+                $_size0 = 0;
+                $input->readListBegin();
+                while (true) {
+                    try {
+                        $elem0 = null;
 
-				$this->urlInfoList = array();
-				$_size0 = 0;
-				$input->readListBegin();
-				while(true){
+                        $elem0 = new UrlInfo();
+                        $elem0->read($input);
 
-					try{
+                        $this->urlInfoList[$_size0++] = $elem0;
+                    } catch (\Exception $e) {
+                        break;
+                    }
+                }
 
-						$elem0 = null;
+                $input->readListEnd();
+            }
 
-						$elem0 = new \NiuGengYun\EasyTBK\Vip\Request\UrlInfo();
-						$elem0->read($input);
+            if ($needSkip) {
+                ProtocolUtil::skip($input);
+            }
 
-						$this->urlInfoList[$_size0++] = $elem0;
-					}
-					catch(\Exception $e){
+            $input->readFieldEnd();
+        }
 
-						break;
-					}
-				}
+        $input->readStructEnd();
+    }
 
-				$input->readListEnd();
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-			}
+        if ($this->urlInfoList !== null) {
+            $xfer += $output->writeFieldBegin('urlInfoList');
 
+            if (!is_array($this->urlInfoList)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
+            $output->writeListBegin();
+            foreach ($this->urlInfoList as $iter0) {
+                if (!is_object($iter0)) {
+                    throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+                }
 
-			if($needSkip){
+                $xfer += $iter0->write($output);
+            }
 
-				\Osp\Protocol\ProtocolUtil::skip($input);
-			}
+            $output->writeListEnd();
 
-			$input->readFieldEnd();
-		}
-
-		$input->readStructEnd();
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->urlInfoList !== null) {
-
-			$xfer += $output->writeFieldBegin('urlInfoList');
-
-			if (!is_array($this->urlInfoList)){
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$output->writeListBegin();
-			foreach ($this->urlInfoList as $iter0){
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-				if (!is_object($iter0)) {
-
-					throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-				}
-
-				$xfer += $iter0->write($output);
-
-			}
-
-			$output->writeListEnd();
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
-
-?>

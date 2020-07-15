@@ -20,21 +20,23 @@
  * @package thrift.protocol
  */
 
-namespace NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON;
+namespace com\pv138\easyUnion\vip\Osp\Protocol\JSON;
 
-use NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\BaseContext;
-use NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSONProtocol;
+
+use com\pv138\easyUnion\vip\Osp\Protocol\JSONProtocol;
 
 class OSPListContext extends BaseContext
 {
     private $first_ = true;
     private $p_;
 
-    public function __construct($p) {
+    public function __construct($p)
+    {
         $this->p_ = $p;
     }
 
-    public function write() {
+    public function write()
+    {
         if ($this->first_) {
             $this->first_ = false;
         } else {
@@ -42,7 +44,8 @@ class OSPListContext extends BaseContext
         }
     }
 
-    public function read() {
+    public function read()
+    {
         if ($this->first_) {
             $this->first_ = false;
         } else {

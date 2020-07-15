@@ -20,21 +20,23 @@
  * @package thrift.protocol
  */
 
-namespace NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON;
+namespace com\pv138\easyUnion\vip\Osp\Protocol\JSON;
 
-use NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\BaseContext;
-use NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSONProtocol;
+use com\pv138\easyUnion\vip\Osp\Protocol\JSONProtocol;
 
-class PairContext extends BaseContext {
+class PairContext extends BaseContext
+{
     private $first_ = true;
     private $colon_ = true;
     private $p_ = null;
 
-    public function __construct($p) {
+    public function __construct($p)
+    {
         $this->p_ = $p;
     }
 
-    public function write() {
+    public function write()
+    {
         if ($this->first_) {
             $this->first_ = false;
             $this->colon_ = true;
@@ -44,7 +46,8 @@ class PairContext extends BaseContext {
         }
     }
 
-    public function read() {
+    public function read()
+    {
         if ($this->first_) {
             $this->first_ = false;
             $this->colon_ = true;
@@ -54,15 +57,18 @@ class PairContext extends BaseContext {
         }
     }
 
-    public function escapeNum() {
+    public function escapeNum()
+    {
         return $this->colon_;
     }
 
-    function isColon_() {
-    	return $this->colon_;
+    public function isColon_()
+    {
+        return $this->colon_;
     }
 
-    function setColon_($colon_) {
-    	$this->colon_ = $colon_;
+    public function setColon_($colon_)
+    {
+        $this->colon_ = $colon_;
     }
 }

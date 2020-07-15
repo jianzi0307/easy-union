@@ -1,961 +1,699 @@
 <?php
 
+namespace com\pv138\easyUnion\vip\request;
 
-/*
-* Copyright (c) 2008-2016 vip.com, All Rights Reserved.
-*
-* Powered by com.vip.osp.osp-idlc-2.5.11.
-*
-*/
+use com\pv138\easyUnion\vip\Osp\Base\OspStub;
+use com\pv138\easyUnion\vip\Osp\Exception\OspException;
+use com\vip\hermes\core\health\CheckResult;
 
-namespace NiuGengYun\EasyTBK\Vip\Request;
-interface UnionPidServiceIf{
+interface UnionPidServiceIf
+{
+    public function genPid(PidGenRequest $pidGenRequest);
 
+    public function genPidWithOauth(PidGenRequest $pidGenRequest);
 
-	public function genPid(\NiuGengYun\EasyTBK\Vip\Request\PidGenRequest $pidGenRequest);
+    public function healthCheck();
 
-	public function genPidWithOauth(\NiuGengYun\EasyTBK\Vip\Request\PidGenRequest $pidGenRequest);
+    public function queryPid(PidQueryRequest $pidQueryRequest);
 
-	public function healthCheck();
-
-	public function queryPid(\NiuGengYun\EasyTBK\Vip\Request\PidQueryRequest $pidQueryRequest);
-
-	public function queryPidWithOauth(\NiuGengYun\EasyTBK\Vip\Request\PidQueryRequest $pidQueryRequest);
-
+    public function queryPidWithOauth(PidQueryRequest $pidQueryRequest);
 }
 
-class _UnionPidServiceClient extends \NiuGengYun\EasyTBK\Vip\Osp\Base\OspStub implements \NiuGengYun\EasyTBK\Vip\Request\UnionPidServiceIf{
-
-	public function __construct(){
-
-		parent::__construct("com.vip.adp.api.open.service.UnionPidService", "1.0.0");
-	}
-
-
-	public function genPid(\NiuGengYun\EasyTBK\Vip\Request\PidGenRequest $pidGenRequest){
-
-		$this->send_genPid( $pidGenRequest);
-		return $this->recv_genPid();
-	}
-
-	public function send_genPid(\NiuGengYun\EasyTBK\Vip\Request\PidGenRequest $pidGenRequest){
-
-		$this->initInvocation("genPid");
-		$args = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_genPid_args();
-
-		$args->pidGenRequest = $pidGenRequest;
-
-		$this->send_base($args);
-	}
-
-	public function recv_genPid(){
-
-		$result = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_genPid_result();
-		$this->receive_base($result);
-		if ($result->success !== null){
-
-			return $result->success;
-		}
-
-	}
+class _UnionPidServiceClient extends OspStub implements UnionPidServiceIf
+{
+    public function __construct()
+    {
+        parent::__construct("com.vip.adp.api.open.service.UnionPidService", "1.0.0");
+    }
 
 
-	public function genPidWithOauth(\NiuGengYun\EasyTBK\Vip\Request\PidGenRequest $pidGenRequest){
+    public function genPid(PidGenRequest $pidGenRequest)
+    {
+        $this->send_genPid($pidGenRequest);
+        return $this->recv_genPid();
+    }
 
-		$this->send_genPidWithOauth( $pidGenRequest);
-		return $this->recv_genPidWithOauth();
-	}
+    public function send_genPid(PidGenRequest $pidGenRequest)
+    {
+        $this->initInvocation("genPid");
+        $args = new UnionPidService_genPid_args();
 
-	public function send_genPidWithOauth(\NiuGengYun\EasyTBK\Vip\Request\PidGenRequest $pidGenRequest){
+        $args->pidGenRequest = $pidGenRequest;
 
-		$this->initInvocation("genPidWithOauth");
-		$args = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_genPidWithOauth_args();
+        $this->send_base($args);
+    }
 
-		$args->pidGenRequest = $pidGenRequest;
-		$this->send_base($args);
-	}
-
-	public function recv_genPidWithOauth(){
-
-		$result = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_genPidWithOauth_result();
-		$this->receive_base($result);
-		if ($result->success !== null){
-
-			return $result->success;
-		}
-
-	}
-
-
-	public function healthCheck(){
-
-		$this->send_healthCheck();
-		return $this->recv_healthCheck();
-	}
-
-	public function send_healthCheck(){
-
-		$this->initInvocation("healthCheck");
-		$args = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_healthCheck_args();
-
-		$this->send_base($args);
-	}
-
-	public function recv_healthCheck(){
-
-		$result = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_healthCheck_result();
-		$this->receive_base($result);
-		if ($result->success !== null){
-
-			return $result->success;
-		}
-
-	}
+    public function recv_genPid()
+    {
+        $result = new UnionPidService_genPid_result();
+        $this->receive_base($result);
+        if ($result->success !== null) {
+            return $result->success;
+        }
+    }
 
 
-	public function queryPid(\NiuGengYun\EasyTBK\Vip\Request\PidQueryRequest $pidQueryRequest){
+    public function genPidWithOauth(PidGenRequest $pidGenRequest)
+    {
+        $this->send_genPidWithOauth($pidGenRequest);
+        return $this->recv_genPidWithOauth();
+    }
 
-		$this->send_queryPid( $pidQueryRequest);
-		return $this->recv_queryPid();
-	}
+    public function send_genPidWithOauth(PidGenRequest $pidGenRequest)
+    {
+        $this->initInvocation("genPidWithOauth");
+        $args = new UnionPidService_genPidWithOauth_args();
 
-	public function send_queryPid(\NiuGengYun\EasyTBK\Vip\Request\PidQueryRequest $pidQueryRequest){
+        $args->pidGenRequest = $pidGenRequest;
+        $this->send_base($args);
+    }
 
-		$this->initInvocation("queryPid");
-		$args = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_queryPid_args();
-
-		$args->pidQueryRequest = $pidQueryRequest;
-
-		$this->send_base($args);
-	}
-
-	public function recv_queryPid(){
-
-		$result = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_queryPid_result();
-		$this->receive_base($result);
-		if ($result->success !== null){
-
-			return $result->success;
-		}
-
-	}
+    public function recv_genPidWithOauth()
+    {
+        $result = new UnionPidService_genPidWithOauth_result();
+        $this->receive_base($result);
+        if ($result->success !== null) {
+            return $result->success;
+        }
+    }
 
 
-	public function queryPidWithOauth(\NiuGengYun\EasyTBK\Vip\Request\PidQueryRequest $pidQueryRequest){
+    public function healthCheck()
+    {
+        $this->send_healthCheck();
+        return $this->recv_healthCheck();
+    }
 
-		$this->send_queryPidWithOauth( $pidQueryRequest);
-		return $this->recv_queryPidWithOauth();
-	}
+    public function send_healthCheck()
+    {
+        $this->initInvocation("healthCheck");
+        $args = new UnionPidService_healthCheck_args();
 
-	public function send_queryPidWithOauth(\NiuGengYun\EasyTBK\Vip\Request\PidQueryRequest $pidQueryRequest){
+        $this->send_base($args);
+    }
 
-		$this->initInvocation("queryPidWithOauth");
-		$args = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_queryPidWithOauth_args();
-
-		$args->pidQueryRequest = $pidQueryRequest;
-
-		$this->send_base($args);
-	}
-
-	public function recv_queryPidWithOauth(){
-
-		$result = new \NiuGengYun\EasyTBK\Vip\Request\UnionPidService_queryPidWithOauth_result();
-		$this->receive_base($result);
-		if ($result->success !== null){
-
-			return $result->success;
-		}
-
-	}
+    public function recv_healthCheck()
+    {
+        $result = new UnionPidService_healthCheck_result();
+        $this->receive_base($result);
+        if ($result->success !== null) {
+            return $result->success;
+        }
+    }
 
 
+    public function queryPid(PidQueryRequest $pidQueryRequest)
+    {
+        $this->send_queryPid($pidQueryRequest);
+        return $this->recv_queryPid();
+    }
+
+    public function send_queryPid(PidQueryRequest $pidQueryRequest)
+    {
+        $this->initInvocation("queryPid");
+        $args = new UnionPidService_queryPid_args();
+
+        $args->pidQueryRequest = $pidQueryRequest;
+
+        $this->send_base($args);
+    }
+
+    public function recv_queryPid()
+    {
+        $result = new UnionPidService_queryPid_result();
+        $this->receive_base($result);
+        if ($result->success !== null) {
+            return $result->success;
+        }
+    }
+
+
+    public function queryPidWithOauth(PidQueryRequest $pidQueryRequest)
+    {
+        $this->send_queryPidWithOauth($pidQueryRequest);
+        return $this->recv_queryPidWithOauth();
+    }
+
+    public function send_queryPidWithOauth(PidQueryRequest $pidQueryRequest)
+    {
+        $this->initInvocation("queryPidWithOauth");
+        $args = new UnionPidService_queryPidWithOauth_args();
+
+        $args->pidQueryRequest = $pidQueryRequest;
+
+        $this->send_base($args);
+    }
+
+    public function recv_queryPidWithOauth()
+    {
+        $result = new UnionPidService_queryPidWithOauth_result();
+        $this->receive_base($result);
+        if ($result->success !== null) {
+            return $result->success;
+        }
+    }
 }
 
 
+class UnionPidService_genPid_args
+{
+    public static $_TSPEC;
+    public $pidGenRequest = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'pidGenRequest'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['pidGenRequest'])) {
+                $this->pidGenRequest = $vals['pidGenRequest'];
+            }
+        }
+    }
 
 
-class UnionPidService_genPid_args {
+    public function read($input)
+    {
+        if (true) {
+            $this->pidGenRequest = new PidGenRequest();
+            $this->pidGenRequest->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $pidGenRequest = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->pidGenRequest !== null) {
+            $xfer += $output->writeFieldBegin('pidGenRequest');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->pidGenRequest)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'pidGenRequest'
-			),
+            $xfer += $this->pidGenRequest->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['pidGenRequest'])){
-
-				$this->pidGenRequest = $vals['pidGenRequest'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->pidGenRequest = new \NiuGengYun\EasyTBK\Vip\Request\PidGenRequest();
-			$this->pidGenRequest->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->pidGenRequest !== null) {
-
-			$xfer += $output->writeFieldBegin('pidGenRequest');
-
-			if (!is_object($this->pidGenRequest)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->pidGenRequest->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_genPidWithOauth_args
+{
+    public static $_TSPEC;
+    public $pidGenRequest = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'pidGenRequest'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['pidGenRequest'])) {
+                $this->pidGenRequest = $vals['pidGenRequest'];
+            }
+        }
+    }
 
 
-class UnionPidService_genPidWithOauth_args {
+    public function read($input)
+    {
+        if (true) {
+            $this->pidGenRequest = new PidGenRequest();
+            $this->pidGenRequest->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $pidGenRequest = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->pidGenRequest !== null) {
+            $xfer += $output->writeFieldBegin('pidGenRequest');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->pidGenRequest)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'pidGenRequest'
-			),
+            $xfer += $this->pidGenRequest->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['pidGenRequest'])){
-
-				$this->pidGenRequest = $vals['pidGenRequest'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->pidGenRequest = new \NiuGengYun\EasyTBK\Vip\Request\PidGenRequest();
-			$this->pidGenRequest->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->pidGenRequest !== null) {
-
-			$xfer += $output->writeFieldBegin('pidGenRequest');
-
-			if (!is_object($this->pidGenRequest)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->pidGenRequest->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_healthCheck_args
+{
+    public static $_TSPEC;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array();
+        }
+
+        if (is_array($vals)) {
+        }
+    }
 
 
-class UnionPidService_healthCheck_args {
+    public function read($input)
+    {
+    }
 
-	static $_TSPEC;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
-
-		if (!isset(self::$_TSPEC)){
-
-			self::$_TSPEC = array(
-
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-		}
-
-	}
-
-
-	public function read($input){
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_queryPid_args
+{
+    public static $_TSPEC;
+    public $pidQueryRequest = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'pidQueryRequest'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['pidQueryRequest'])) {
+                $this->pidQueryRequest = $vals['pidQueryRequest'];
+            }
+        }
+    }
 
 
-class UnionPidService_queryPid_args {
+    public function read($input)
+    {
+        if (true) {
+            $this->pidQueryRequest = new PidQueryRequest();
+            $this->pidQueryRequest->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $pidQueryRequest = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->pidQueryRequest !== null) {
+            $xfer += $output->writeFieldBegin('pidQueryRequest');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->pidQueryRequest)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'pidQueryRequest'
-			),
+            $xfer += $this->pidQueryRequest->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['pidQueryRequest'])){
-
-				$this->pidQueryRequest = $vals['pidQueryRequest'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->pidQueryRequest = new \NiuGengYun\EasyTBK\Vip\Request\PidQueryRequest();
-			$this->pidQueryRequest->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->pidQueryRequest !== null) {
-
-			$xfer += $output->writeFieldBegin('pidQueryRequest');
-
-			if (!is_object($this->pidQueryRequest)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->pidQueryRequest->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_queryPidWithOauth_args
+{
+    public static $_TSPEC;
+    public $pidQueryRequest = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'pidQueryRequest'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['pidQueryRequest'])) {
+                $this->pidQueryRequest = $vals['pidQueryRequest'];
+            }
+        }
+    }
 
 
-class UnionPidService_queryPidWithOauth_args {
+    public function read($input)
+    {
+        if (true) {
+            $this->pidQueryRequest = new PidQueryRequest();
+            $this->pidQueryRequest->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $pidQueryRequest = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->pidQueryRequest !== null) {
+            $xfer += $output->writeFieldBegin('pidQueryRequest');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->pidQueryRequest)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'pidQueryRequest'
-			),
+            $xfer += $this->pidQueryRequest->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['pidQueryRequest'])){
-
-				$this->pidQueryRequest = $vals['pidQueryRequest'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->pidQueryRequest = new \NiuGengYun\EasyTBK\Vip\Request\PidQueryRequest();
-			$this->pidQueryRequest->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->pidQueryRequest !== null) {
-
-			$xfer += $output->writeFieldBegin('pidQueryRequest');
-
-			if (!is_object($this->pidQueryRequest)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->pidQueryRequest->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_genPid_result
+{
+    public static $_TSPEC;
+    public $success = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                0 => array(
+                    'var' => 'success'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['success'])) {
+                $this->success = $vals['success'];
+            }
+        }
+    }
 
 
-class UnionPidService_genPid_result {
+    public function read($input)
+    {
+        if (true) {
+            $this->success = new CpsUnionPidGenResponse();
+            $this->success->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $success = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->success !== null) {
+            $xfer += $output->writeFieldBegin('success');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->success)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			0 => array(
-			'var' => 'success'
-			),
+            $xfer += $this->success->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['success'])){
-
-				$this->success = $vals['success'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->success = new \NiuGengYun\EasyTBK\Vip\Request\CpsUnionPidGenResponse();
-			$this->success->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->success !== null) {
-
-			$xfer += $output->writeFieldBegin('success');
-
-			if (!is_object($this->success)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->success->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_genPidWithOauth_result
+{
+    public static $_TSPEC;
+    public $success = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                0 => array(
+                    'var' => 'success'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['success'])) {
+                $this->success = $vals['success'];
+            }
+        }
+    }
 
 
-class UnionPidService_genPidWithOauth_result {
+    public function read($input)
+    {
+        if (true) {
+            $this->success = new CpsUnionPidGenResponse();
+            $this->success->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $success = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->success !== null) {
+            $xfer += $output->writeFieldBegin('success');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->success)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			0 => array(
-			'var' => 'success'
-			),
+            $xfer += $this->success->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['success'])){
-
-				$this->success = $vals['success'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->success = new \NiuGengYun\EasyTBK\Vip\Request\CpsUnionPidGenResponse();
-			$this->success->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->success !== null) {
-
-			$xfer += $output->writeFieldBegin('success');
-
-			if (!is_object($this->success)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->success->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_healthCheck_result
+{
+    public static $_TSPEC;
+    public $success = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                0 => array(
+                    'var' => 'success'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['success'])) {
+                $this->success = $vals['success'];
+            }
+        }
+    }
 
 
-class UnionPidService_healthCheck_result {
+    public function read($input)
+    {
+        if (true) {
+            $this->success = new CheckResult();
+            $this->success->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $success = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->success !== null) {
+            $xfer += $output->writeFieldBegin('success');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->success)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			0 => array(
-			'var' => 'success'
-			),
+            $xfer += $this->success->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['success'])){
-
-				$this->success = $vals['success'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->success = new \com\vip\hermes\core\health\CheckResult();
-			$this->success->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->success !== null) {
-
-			$xfer += $output->writeFieldBegin('success');
-
-			if (!is_object($this->success)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->success->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_queryPid_result
+{
+    public static $_TSPEC;
+    public $success = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                0 => array(
+                    'var' => 'success'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['success'])) {
+                $this->success = $vals['success'];
+            }
+        }
+    }
 
 
-class UnionPidService_queryPid_result {
+    public function read($input)
+    {
+        if (true) {
+            $this->success = new CpsUnionPidQueryResponse();
+            $this->success->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $success = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->success !== null) {
+            $xfer += $output->writeFieldBegin('success');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->success)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			0 => array(
-			'var' => 'success'
-			),
+            $xfer += $this->success->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['success'])){
-
-				$this->success = $vals['success'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->success = new \NiuGengYun\EasyTBK\Vip\Request\CpsUnionPidQueryResponse();
-			$this->success->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->success !== null) {
-
-			$xfer += $output->writeFieldBegin('success');
-
-			if (!is_object($this->success)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->success->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
 
 
+class UnionPidService_queryPidWithOauth_result
+{
+    public static $_TSPEC;
+    public $success = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                0 => array(
+                    'var' => 'success'
+                ),
+
+            );
+        }
+
+        if (is_array($vals)) {
+            if (isset($vals['success'])) {
+                $this->success = $vals['success'];
+            }
+        }
+    }
 
 
-class UnionPidService_queryPidWithOauth_result {
+    public function read($input)
+    {
+        if (true) {
+            $this->success = new CpsUnionPidQueryResponse();
+            $this->success->read($input);
+        }
+    }
 
-	static $_TSPEC;
-	public $success = null;
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function __construct($vals=null){
+        if ($this->success !== null) {
+            $xfer += $output->writeFieldBegin('success');
 
-		if (!isset(self::$_TSPEC)){
+            if (!is_object($this->success)) {
+                throw new OspException('Bad type in structure.', OspException::INVALID_DATA);
+            }
 
-			self::$_TSPEC = array(
-			0 => array(
-			'var' => 'success'
-			),
+            $xfer += $this->success->write($output);
 
-			);
-
-		}
-
-		if (is_array($vals)){
-
-
-			if (isset($vals['success'])){
-
-				$this->success = $vals['success'];
-			}
-
-
-		}
-
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-	public function read($input){
-
-
-
-
-		if(true) {
-
-
-			$this->success = new \NiuGengYun\EasyTBK\Vip\Request\CpsUnionPidQueryResponse();
-			$this->success->read($input);
-
-		}
-
-
-
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->success !== null) {
-
-			$xfer += $output->writeFieldBegin('success');
-
-			if (!is_object($this->success)) {
-
-				throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException('Bad type in structure.', \Osp\Exception\OspException::INVALID_DATA);
-			}
-
-			$xfer += $this->success->write($output);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
-
-
-
-
-?>

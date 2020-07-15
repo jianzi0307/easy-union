@@ -1,27 +1,14 @@
 <?php
 
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements. See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership. The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations
- * under the License.
- *
- * @package thrift.protocol
- */
+namespace com\pv138\easyUnion\vip\Osp\Protocol;
 
-namespace NiuGengYun\EasyTBK\Vip\Osp\Protocol;
+use com\pv138\easyUnion\vip\Osp\Exception\OspException;
+use com\pv138\easyUnion\vip\Osp\Protocol\JSON\BaseContext;
+use com\pv138\easyUnion\vip\Osp\Protocol\JSON\LookaheadReader;
+use com\pv138\easyUnion\vip\Osp\Protocol\JSON\OSPListContext;
+use com\pv138\easyUnion\vip\Osp\Protocol\JSON\OSPPairContext;
+use com\pv138\easyUnion\vip\Osp\Protocol\JSON\PairContext;
+use com\pv138\easyUnion\vip\Osp\StringFunc\StringFuncFactory;
 
 /**
  * JSON implementation of thrift protocol, ported from Java.
@@ -138,8 +125,7 @@ class JSONProtocol extends Protocol
                 case 's':
                     if (substr($name, 1, 1) == 't') {
                         $result = TType::STRING;
-                    }
-                    else if (substr($name, 1, 1) == 'e') {
+                    } elseif (substr($name, 1, 1) == 'e') {
                         $result = TType::SET;
                     }
                     break;
@@ -158,49 +144,55 @@ class JSONProtocol extends Protocol
     public $context_;
     public $reader_;
 
-    private function pushContext($c) {
+    private function pushContext($c)
+    {
         array_push($this->contextStack_, $this->context_);
         $this->context_ = $c;
     }
 
-    private function popContext() {
+    private function popContext()
+    {
         $this->context_ = array_pop($this->contextStack_);
     }
 
-    public function __construct($trans) {
+    public function __construct($trans)
+    {
         //parent::__construct($trans);
-        $this->context_ = new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\BaseContext();
-        $this->reader_ = new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\LookaheadReader($this);
+        $this->context_ = new BaseContext();
+        $this->reader_ = new LookaheadReader($this);
 
         $this->trans_ = $trans;
     }
 
-    public function reset() {
+    public function reset()
+    {
         $this->contextStack_ = array();
-        $this->context_ = new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\BaseContext();
-        $this->reader_ = new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\LookaheadReader($this);
+        $this->context_ = new BaseContext();
+        $this->reader_ = new LookaheadReader($this);
     }
 
     private $tmpbuf_ = array(4);
 
-    public function readJSONSyntaxChar($b) {
-    	/*
+    public function readJSONSyntaxChar($b)
+    {
+        /*
         $ch = $this->reader_->read();
 
         if (substr($ch, 0, 1) != $b) {
             throw new TProtocolException("Unexpected character: " . $ch, TProtocolException::INVALID_DATA);
         }*/
 
-    	$ch = $this->reader_->peek();
+        $ch = $this->reader_->peek();
 
-    	if (substr($ch, 0, 1) == $b) {
-    		$this->reader_->read();
-    	}else{
-    		throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException("Unexpected character: " . $ch);
-    	}
+        if (substr($ch, 0, 1) == $b) {
+            $this->reader_->read();
+        } else {
+            throw new OspException("Unexpected character: " . $ch);
+        }
     }
 
-    private function hexVal($s) {
+    private function hexVal($s)
+    {
         for ($i = 0; $i < strlen($s); $i++) {
             $ch = substr($s, $i, 1);
 
@@ -212,11 +204,13 @@ class JSONProtocol extends Protocol
         return hexdec($s);
     }
 
-    private function hexChar($val) {
+    private function hexChar($val)
+    {
         return dechex($val);
     }
 
-    private function writeJSONString($b) {
+    private function writeJSONString($b)
+    {
         $this->context_->write();
 
         if (is_numeric($b) && $this->context_->escapeNum()) {
@@ -230,8 +224,11 @@ class JSONProtocol extends Protocol
         }
     }
 
-    private function writeJSONInteger($num) {
-    	if($num == null) $num = 0;
+    private function writeJSONInteger($num)
+    {
+        if ($num == null) {
+            $num = 0;
+        }
         $this->context_->write();
 
         if ($this->context_->escapeNum()) {
@@ -245,8 +242,11 @@ class JSONProtocol extends Protocol
         }
     }
 
-    private function writeJSONDouble($num) {
-    	if($num == null) $num = 0;
+    private function writeJSONDouble($num)
+    {
+        if ($num == null) {
+            $num = 0;
+        }
         $this->context_->write();
 
         if ($this->context_->escapeNum()) {
@@ -260,60 +260,67 @@ class JSONProtocol extends Protocol
         }
     }
 
-    private function writeJSONBase64($data) {
+    private function writeJSONBase64($data)
+    {
         $this->context_->write();
         $this->trans_->write(self::QUOTE);
         $this->trans_->write(json_encode(base64_encode($data)));
         $this->trans_->write(self::QUOTE);
     }
 
-    private function writeJSONObjectStart() {
-      $this->context_->write();
-      $this->trans_->write(self::LBRACE);
-      $this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPPairContext($this));
+    private function writeJSONObjectStart()
+    {
+        $this->context_->write();
+        $this->trans_->write(self::LBRACE);
+        $this->pushContext(new OSPPairContext($this));
     }
 
-    private function writeJSONObjectEnd() {
-      $this->popContext();
-      $this->trans_->write(self::RBRACE);
+    private function writeJSONObjectEnd()
+    {
+        $this->popContext();
+        $this->trans_->write(self::RBRACE);
     }
 
-    private function writeJSONArrayStart() {
-      $this->context_->write();
-      $this->trans_->write(self::LBRACKET);
-      $this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPListContext($this));
+    private function writeJSONArrayStart()
+    {
+        $this->context_->write();
+        $this->trans_->write(self::LBRACKET);
+        $this->pushContext(new OSPListContext($this));
     }
 
-    private function writeJSONArrayEnd() {
-      $this->popContext();
-      $this->trans_->write(self::RBRACKET);
+    private function writeJSONArrayEnd()
+    {
+        $this->popContext();
+        $this->trans_->write(self::RBRACKET);
     }
 
-    private function readJSONString($skipContext) {
-      if (!$skipContext) {
-        $this->context_->read();
-      }
-      $this->readJSONSyntaxChar(self::QUOTE);
-      $jsonString = self::QUOTE;
-      $lastChar = self::QUOTE;
-      while (true) {
-        $ch = $this->reader_->read();
-        $jsonString .= $ch;
-        if ($ch == self::QUOTE &&
-          $lastChar !== NULL &&
-            $lastChar !== self::ESCSEQ) {
-          break;
+    private function readJSONString($skipContext)
+    {
+        if (!$skipContext) {
+            $this->context_->read();
         }
-        if ($ch == self::ESCSEQ && $lastChar == self::ESCSEQ) {
-          $lastChar = self::DOUBLEESC;
-        } else {
-          $lastChar = $ch;
+        $this->readJSONSyntaxChar(self::QUOTE);
+        $jsonString = self::QUOTE;
+        $lastChar = self::QUOTE;
+        while (true) {
+            $ch = $this->reader_->read();
+            $jsonString .= $ch;
+            if ($ch == self::QUOTE &&
+                $lastChar !== null &&
+                $lastChar !== self::ESCSEQ) {
+                break;
+            }
+            if ($ch == self::ESCSEQ && $lastChar == self::ESCSEQ) {
+                $lastChar = self::DOUBLEESC;
+            } else {
+                $lastChar = $ch;
+            }
         }
-      }
-      return json_decode($jsonString);
+        return json_decode($jsonString);
     }
 
-    private function isJSONNumeric($b) {
+    private function isJSONNumeric($b)
+    {
         switch ($b) {
             case '+':
             case '-':
@@ -330,12 +337,13 @@ class JSONProtocol extends Protocol
             case '9':
             case 'E':
             case 'e':
-              return true;
-            }
+                return true;
+        }
         return false;
     }
 
-    private function readJSONNumericChars() {
+    private function readJSONNumericChars()
+    {
         $strbld = array();
 
         while (true) {
@@ -351,7 +359,8 @@ class JSONProtocol extends Protocol
         return implode("", $strbld);
     }
 
-    private function readJSONInteger() {
+    private function readJSONInteger()
+    {
         $this->context_->read();
 
         if ($this->context_->escapeNum()) {
@@ -366,7 +375,7 @@ class JSONProtocol extends Protocol
 
         if (!is_numeric($str)) {
             //throw new TProtocolException("Invalid data in numeric: " . $str, TProtocolException::INVALID_DATA);
-            throw new \NiuGengYun\EasyTBK\Vip\Osp\Exception\OspException("Invalid data in numeric: " . $str);
+            throw new OspException("Invalid data in numeric: " . $str);
         }
 
         return intval($str);
@@ -378,7 +387,8 @@ class JSONProtocol extends Protocol
      * separate function?  So we don't have to force the rest of the
      * use cases through the extra conditional.
      */
-    private function readJSONIntegerAsString() {
+    private function readJSONIntegerAsString()
+    {
         $this->context_->read();
 
         if ($this->context_->escapeNum()) {
@@ -398,7 +408,8 @@ class JSONProtocol extends Protocol
         return $str;
     }
 
-    private function readJSONDouble() {
+    private function readJSONDouble()
+    {
         $this->context_->read();
 
         if (substr($this->reader_->peek(), 0, 1) == self::QUOTE) {
@@ -406,11 +417,13 @@ class JSONProtocol extends Protocol
 
             if ($arr == "NaN") {
                 return NAN;
-            } else if ($arr == "Infinity") {
+            } elseif ($arr == "Infinity") {
                 return INF;
-            } else if (!$this->context_->escapeNum()) {
-                throw new TProtocolException("Numeric data unexpectedly quoted " . $arr,
-                                              TProtocolException::INVALID_DATA);
+            } elseif (!$this->context_->escapeNum()) {
+                throw new TProtocolException(
+                    "Numeric data unexpectedly quoted " . $arr,
+                    TProtocolException::INVALID_DATA
+                );
             }
 
             return floatval($arr);
@@ -423,7 +436,8 @@ class JSONProtocol extends Protocol
         }
     }
 
-    private function readJSONBase64() {
+    private function readJSONBase64()
+    {
         $arr = $this->readJSONString(false);
         $data = base64_decode($arr, true);
 
@@ -434,13 +448,15 @@ class JSONProtocol extends Protocol
         return $data;
     }
 
-    private function readJSONObjectStart() {
+    private function readJSONObjectStart()
+    {
         $this->context_->read();
         $this->readJSONSyntaxChar(self::LBRACE);
-        $this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPPairContext($this));
+        $this->pushContext(new OSPPairContext($this));
     }
 
-    private function readJSONObjectEnd() {
+    private function readJSONObjectEnd()
+    {
         $this->readJSONSyntaxChar(self::RBRACE);
         $this->popContext();
     }
@@ -448,11 +464,15 @@ class JSONProtocol extends Protocol
     private function readJSONArrayStart()
     {
         $this->context_->read();
-        $this->readJSONSyntaxChar(self::LBRACKET);
-        $this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPListContext($this));
+        try {
+            $this->readJSONSyntaxChar(self::LBRACKET);
+            $this->pushContext(new OSPListContext($this));
+        } catch (OspException $e) {
+        }
     }
 
-    private function readJSONArrayEnd() {
+    private function readJSONArrayEnd()
+    {
         $this->readJSONSyntaxChar(self::RBRACKET);
         $this->popContext();
     }
@@ -464,8 +484,9 @@ class JSONProtocol extends Protocol
      * @param int $type message type TMessageType::CALL or TMessageType::REPLY
      * @param int $seqid The sequence id of this message
      */
-    public function writeMessageBegin() {
-    	/*
+    public function writeMessageBegin()
+    {
+        /*
         $this->writeJSONArrayStart();
         $this->writeJSONInteger(self::VERSION);
         $this->writeJSONString($name);
@@ -476,146 +497,165 @@ class JSONProtocol extends Protocol
     /**
      * Close the message
      */
-    public function writeMessageEnd() {
+    public function writeMessageEnd()
+    {
         $this->writeJSONArrayEnd();
     }
 
     /**
      * Writes a struct header.
      *
-     * @param string     $name Struct name
-     * @throws TException on write error
+     * @param string $name Struct name
      * @return int How many bytes written
+     * @throws TException on write error
      */
-    public function writeStructBegin() {
+    public function writeStructBegin()
+    {
         //$this->writeJSONObjectStart();
 
-    	$this->context_->write();
-    	$this->trans_->write(self::LBRACE);
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPListContext($this));
+        $this->context_->write();
+        $this->trans_->write(self::LBRACE);
+        $this->pushContext(new OSPListContext($this));
     }
 
     /**
      * Close a struct.
      *
-     * @throws TException on write error
      * @return int How many bytes written
+     * @throws TException on write error
      */
-    public function writeStructEnd() {
+    public function writeStructEnd()
+    {
         //$this->writeJSONObjectEnd();
 
-    	$this->popContext();
-    	$this->trans_->write(self::RBRACE);
+        $this->popContext();
+        $this->trans_->write(self::RBRACE);
     }
 
-    public function writeFieldBegin($name) {
-    	//$this->writeString($name);
-    	/*
+    public function writeFieldBegin($name)
+    {
+        //$this->writeString($name);
+        /*
         $this->writeJSONInteger($fieldId);
         $this->writeJSONObjectStart();
         $this->writeJSONString($this->getTypeNameForTypeID($fieldType));
         */
 
-    	$this->context_->setColon_(!$this->context_->isColon_());
-    	$this->context_->write();
-    	//$this->trans_->write(self::LBRACE);
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\PairContext($this));
-    	$this->writeJSONString($name);
+        $this->context_->setColon_(!$this->context_->isColon_());
+        $this->context_->write();
+        //$this->trans_->write(self::LBRACE);
+        $this->pushContext(new PairContext($this));
+        $this->writeJSONString($name);
     }
 
-    public function writeFieldEnd() {
+    public function writeFieldEnd()
+    {
         //$this->writeJsonObjectEnd();
 
-    	$this->popContext();
+        $this->popContext();
     }
 
-    public function writeFieldStop() {
+    public function writeFieldStop()
+    {
     }
 
-    public function writeMapBegin() {
-    	/*
+    public function writeMapBegin()
+    {
+        /*
         $this->writeJSONArrayStart();
         $this->writeJSONString($this->getTypeNameForTypeID($keyType));
         $this->writeJSONString($this->getTypeNameForTypeID($valType));
         $this->writeJSONInteger($size);
         $this->writeJSONObjectStart();*/
 
-    	$this->context_->write();
-    	$this->trans_->write(self::LBRACE);
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\PairContext($this));
+        $this->context_->write();
+        $this->trans_->write(self::LBRACE);
+        $this->pushContext(new PairContext($this));
     }
 
-    public function writeMapEnd() {
+    public function writeMapEnd()
+    {
         //$this->writeJSONObjectEnd();
         //$this->writeJSONArrayEnd();
 
-    	$this->trans_->write(self::RBRACE);
-    	$this->popContext();
+        $this->trans_->write(self::RBRACE);
+        $this->popContext();
     }
 
-    public function writeListBegin() {
-    	/*
+    public function writeListBegin()
+    {
+        /*
         $this->writeJSONArrayStart();
         $this->writeJSONString($this->getTypeNameForTypeID($elemType));
         $this->writeJSONInteger($size);*/
 
-    	$this->context_->write();
-    	$this->trans_->write(self::LBRACKET);
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPListContext($this));
+        $this->context_->write();
+        $this->trans_->write(self::LBRACKET);
+        $this->pushContext(new OSPListContext($this));
     }
 
-    public function writeListEnd() {
+    public function writeListEnd()
+    {
         //$this->writeJSONArrayEnd();
 
-    	$this->trans_->write(self::RBRACKET);
-    	$this->popContext();
+        $this->trans_->write(self::RBRACKET);
+        $this->popContext();
     }
 
-    public function writeSetBegin() {
-    	/*
+    public function writeSetBegin()
+    {
+        /*
         $this->writeJSONArrayStart();
         $this->writeJSONString($this->getTypeNameForTypeID($elemType));
         $this->writeJSONInteger($size);*/
 
-    	$this->context_->write();
-    	$this->trans_->write(self::LBRACKET);
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPListContext($this));
+        $this->context_->write();
+        $this->trans_->write(self::LBRACKET);
+        $this->pushContext(new OSPListContext($this));
     }
 
-    public function writeSetEnd() {
+    public function writeSetEnd()
+    {
         //$this->writeJSONArrayEnd();
 
-    	$this->trans_->write(self::RBRACKET);
-    	$this->popContext();
+        $this->trans_->write(self::RBRACKET);
+        $this->popContext();
     }
 
-    public function writeBool($bool) {
+    public function writeBool($bool)
+    {
         //$this->writeJSONInteger($bool ? 1 : 0);
-    	$this->context_->write();
-    	$this->trans_->write($bool ? "true" : "false");
+        $this->context_->write();
+        $this->trans_->write($bool ? "true" : "false");
     }
 
-    public function writeByte($byte) {
+    public function writeByte($byte)
+    {
         $this->writeJSONInteger($byte);
     }
 
-    public function writeI16($i16) {
+    public function writeI16($i16)
+    {
         $this->writeJSONInteger($i16);
     }
 
-    public function writeI32($i32) {
+    public function writeI32($i32)
+    {
         $this->writeJSONInteger($i32);
     }
 
-    public function writeI64($i64) {
+    public function writeI64($i64)
+    {
         $this->writeJSONInteger($i64);
     }
 
-    public function writeDouble($dub) {
+    public function writeDouble($dub)
+    {
         $this->writeJSONDouble($dub);
     }
 
-    public function writeString($str) {
+    public function writeString($str)
+    {
         $this->writeJSONString($str);
     }
 
@@ -626,7 +666,8 @@ class JSONProtocol extends Protocol
      * @param int $type message type TMessageType::CALL or TMessageType::REPLY
      * @parem int $seqid The sequence id of this message
      */
-    public function readMessageBegin(&$name, &$type, &$seqid) {
+    public function readMessageBegin(&$name, &$type, &$seqid)
+    {
         $this->readJSONArrayStart();
 
         if ($this->readJSONInteger() != self::VERSION) {
@@ -643,29 +684,36 @@ class JSONProtocol extends Protocol
     /**
      * Read the close of message
      */
-    public function readMessageEnd() {
+    public function readMessageEnd()
+    {
         $this->readJSONArrayEnd();
     }
 
-    public function readStructBegin() {
-    	/*
+    public function readStructBegin()
+    {
+        /*
         $this->readJSONObjectStart();
         return 0;*/
 
-    	$this->context_->read();
-    	$this->readJSONSyntaxChar(self::LBRACE);
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPListContext($this));
+        $this->context_->read();
+        try {
+            $this->readJSONSyntaxChar(self::LBRACE);
+        } catch (OspException $e) {
+        }
+        $this->pushContext(new OSPListContext($this));
     }
 
-    public function readStructEnd() {
+    public function readStructEnd()
+    {
         //$this->readJSONObjectEnd();
 
-    	$this->readJSONSyntaxChar(self::RBRACE);
-    	$this->popContext();
+        $this->readJSONSyntaxChar(self::RBRACE);
+        $this->popContext();
     }
 
-    public function readFieldBegin() {
-    	/*
+    public function readFieldBegin()
+    {
+        /*
         $ch = $this->reader_->peek();
         $name = "";
 
@@ -677,25 +725,25 @@ class JSONProtocol extends Protocol
             $fieldType = $this->getTypeIDForTypeName($this->readJSONString(false));
         }*/
 
-    	$ch = $this->reader_->peek();
+        $ch = $this->reader_->peek();
 
-    	if($ch == self::RBRACE){
-    		return null;
-    	}
+        if ($ch == self::RBRACE) {
+            return null;
+        }
 
-    	$this->context_->read();
-    	//$this->readJSONSyntaxChar(self::LBRACE);
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPPairContext($this));
+        $this->context_->read();
+        //$this->readJSONSyntaxChar(self::LBRACE);
+        $this->pushContext(new OSPPairContext($this));
 
-    	$fieldName = null;
+        $fieldName = null;
 
-    	try {
-    		$fieldName = $this->readJSONString(false);
-    	} catch (\Exception $e) {
-    		//var_dump($e);
-    	}
+        try {
+            $fieldName = $this->readJSONString(false);
+        } catch (\Exception $e) {
+            //var_dump($e);
+        }
 
-    	return $fieldName;
+        return $fieldName;
 
 //     	if (substr($ch, 0, 1) == self::RBRACE) {
 //     		//$fieldType = TType::STOP;
@@ -706,112 +754,124 @@ class JSONProtocol extends Protocol
 //     	}
     }
 
-    public function readFieldEnd() {
+    public function readFieldEnd()
+    {
         //$this->readJSONObjectEnd();
-    	$this->popContext();
+        $this->popContext();
     }
 
-    public function readMapBegin() {
-    	/*
+    public function readMapBegin()
+    {
+        /*
         $this->readJSONArrayStart();
         $keyType = $this->getTypeIDForTypeName($this->readJSONString(false));
         $valType = $this->getTypeIDForTypeName($this->readJSONString(false));
         $size = $this->readJSONInteger();
         $this->readJSONObjectStart();*/
 
-    	$this->context_->read();
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\PairContext($this));
-    	$this->readJSONSyntaxChar(self::LBRACE);
+        $this->context_->read();
+        $this->pushContext(new PairContext($this));
+        $this->readJSONSyntaxChar(self::LBRACE);
     }
 
-    public function readMapEnd() {
+    public function readMapEnd()
+    {
         //$this->readJSONObjectEnd();
         //$this->readJSONArrayEnd();
 
-    	$this->readJSONSyntaxChar(self::RBRACE);
-    	$this->popContext();
+        $this->readJSONSyntaxChar(self::RBRACE);
+        $this->popContext();
     }
 
-    public function readListBegin() {
-    	/*
+    public function readListBegin()
+    {
+        /*
         $this->readJSONArrayStart();
         $elemType = $this->getTypeIDForTypeName($this->readJSONString(false));
         $size = $this->readJSONInteger();
         return true;*/
 
-    	$this->context_->read();
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPListContext($this));
-    	$this->readJSONSyntaxChar(self::LBRACKET);
+        $this->context_->read();
+        $this->pushContext(new OSPListContext($this));
+        $this->readJSONSyntaxChar(self::LBRACKET);
     }
 
-    public function readListEnd() {
+    public function readListEnd()
+    {
         //$this->readJSONArrayEnd();
-    	$this->readJSONSyntaxChar(self::RBRACKET);
-    	$this->popContext();
+        $this->readJSONSyntaxChar(self::RBRACKET);
+        $this->popContext();
     }
 
-    public function readSetBegin() {
-    	/*
+    public function readSetBegin()
+    {
+        /*
         $this->readJSONArrayStart();
         $elemType = $this->getTypeIDForTypeName($this->readJSONString(false));
         $size = $this->readJSONInteger();
         return true;*/
 
-    	$this->context_->read();
-    	$this->pushContext(new \NiuGengYun\EasyTBK\Vip\Osp\Protocol\JSON\OSPListContext($this));
-    	$this->readJSONSyntaxChar(self::LBRACKET);
+        $this->context_->read();
+        $this->pushContext(new OSPListContext($this));
+        $this->readJSONSyntaxChar(self::LBRACKET);
     }
 
-    public function readSetEnd() {
+    public function readSetEnd()
+    {
         //$this->readJSONArrayEnd();
 
-    	$this->readJSONSyntaxChar(self::RBRACKET);
-    	$this->popContext();
+        $this->readJSONSyntaxChar(self::RBRACKET);
+        $this->popContext();
     }
 
-    public function readBool(&$bool) {
+    public function readBool(&$bool)
+    {
         //$bool = $this->readJSONInteger() == 0 ? false : true;
         //return true;
 
-    	$jsonString = null;
-    	$this->context_->read();
+        $jsonString = null;
+        $this->context_->read();
 
-    	$jsonString = '';
-    	$lastChar = NULL;
-    	while (true) {
-    		$ch = $this->reader_->read();
-    		$jsonString .= $ch;
+        $jsonString = '';
+        $lastChar = null;
+        while (true) {
+            $ch = $this->reader_->read();
+            $jsonString .= $ch;
 
-    		if("true" == $jsonString){
-    			$bool = true;
-    			return json_decode($jsonString);
-    		}
+            if ("true" == $jsonString) {
+                $bool = true;
+                return json_decode($jsonString);
+            }
 
-    		if("false" == $jsonString){
-    			$bool = false;
-    			return json_decode($jsonString);
-    		}
-    	}
-    	//return json_decode($jsonString);
+            if ("false" == $jsonString) {
+                $bool = false;
+                return json_decode($jsonString);
+            }
+        }
+        //return json_decode($jsonString);
     }
 
-    public function readByte(&$byte) {
+    public function readByte(&$byte)
+    {
         $byte = $this->readJSONInteger();
         return true;
     }
 
-    public function readI16(&$i16) {
+    public function readI16(&$i16)
+    {
         $i16 = $this->readJSONInteger();
         return true;
     }
 
-    public function readI32(&$i32) {
+    public function readI32(&$i32)
+    {
         $i32 = $this->readJSONInteger();
         return true;
     }
 
-    public function readI64(&$i64) {
-        if ( PHP_INT_SIZE === 4 ) {
+    public function readI64(&$i64)
+    {
+        if (PHP_INT_SIZE === 4) {
             $i64 = $this->readJSONIntegerAsString();
         } else {
             $i64 = $this->readJSONInteger();
@@ -819,107 +879,117 @@ class JSONProtocol extends Protocol
         return true;
     }
 
-    public function readDouble(&$dub) {
+    public function readDouble(&$dub)
+    {
         $dub = $this->readJSONDouble();
         return true;
     }
 
-    public function readString(&$str) {
+    public function readString(&$str)
+    {
         $str = $this->readJSONString(false);
         return true;
     }
 
-    public function writeBinary($bin){
-
+    public function writeBinary($bin)
+    {
     }
 
-    public function readChar(){
-
+    public function readChar()
+    {
     }
 
-    public function getTransport(){
-    	return $this->trans_;
+    public function getTransport()
+    {
+        return $this->trans_;
     }
 
-    public function setTransport($trans_){
-    	$this->trans_ = $trans_;
+    public function setTransport($trans_)
+    {
+        $this->trans_ = $trans_;
     }
 
-    public function getType() {
-    	$result = ProtocolUtil::$UNKNOW;
-    	$buff = $this->trans_->getBuffer();
-    	$b =  \NiuGengYun\EasyTBK\Vip\Osp\StringFunc\StringFuncFactory::create()->substr($buff, 0, 1);
-    	if ($b == self::COLON || $b == self::COMMA) {
-    		$b =  \NiuGengYun\EasyTBK\Vip\Osp\StringFunc\StringFuncFactory::create()->substr($buff, 1, 1);
-    	}
-    	if ($this->isNumber($b)) {
-    		$result = ProtocolUtil::$NUMBER;
-    	} else if($this->isBoolean($b)){
-    		$result = ProtocolUtil::$BOOLEAN;
-    	} else if ($this->isArray($b)) {
-    		$result = ProtocolUtil::$ARRAY;
-    	} else if ($this->isObject($b)) {
-    		$result = ProtocolUtil::$OBJECT;
-    	} else if ($this->isString($b)) {
-    		$result = ProtocolUtil::$STRING;
-    	}
-    	return $result;
+    public function getType()
+    {
+        $result = ProtocolUtil::$UNKNOW;
+        $buff = $this->trans_->getBuffer();
+        $b = StringFuncFactory::create()->substr($buff, 0, 1);
+        if ($b == self::COLON || $b == self::COMMA) {
+            $b = StringFuncFactory::create()->substr($buff, 1, 1);
+        }
+        if ($this->isNumber($b)) {
+            $result = ProtocolUtil::$NUMBER;
+        } elseif ($this->isBoolean($b)) {
+            $result = ProtocolUtil::$BOOLEAN;
+        } elseif ($this->isArray($b)) {
+            $result = ProtocolUtil::$ARRAY;
+        } elseif ($this->isObject($b)) {
+            $result = ProtocolUtil::$OBJECT;
+        } elseif ($this->isString($b)) {
+            $result = ProtocolUtil::$STRING;
+        }
+        return $result;
     }
 
-    private function isObject($b) {
-    	$result = false;
-    	if ($b == self::LBRACE) {
-    		$result = true;
-    	}
-    	return $result;
+    private function isObject($b)
+    {
+        $result = false;
+        if ($b == self::LBRACE) {
+            $result = true;
+        }
+        return $result;
     }
 
-    private function isArray($b) {
-    	$result = false;
-    	if ($b == self::LBRACKET) {
-    		$result = true;
-    	}
-    	return $result;
+    private function isArray($b)
+    {
+        $result = false;
+        if ($b == self::LBRACKET) {
+            $result = true;
+        }
+        return $result;
     }
 
-    private function isString($b) {
-    	$result = false;
-    	if ($b == self::QUOTE) {
-    		$result = true;
-    	}
-    	return $result;
+    private function isString($b)
+    {
+        $result = false;
+        if ($b == self::QUOTE) {
+            $result = true;
+        }
+        return $result;
     }
 
-    private function isNumber($b) {
-    	switch ($b) {
-    		case '+':
-    		case '-':
-    		case '.':
-    		case '0':
-    		case '1':
-    		case '2':
-    		case '3':
-    		case '4':
-    		case '5':
-    		case '6':
-    		case '7':
-    		case '8':
-    		case '9':
-    		case 'E':
-    		case 'e':
-    			return true;
+    private function isNumber($b)
+    {
+        switch ($b) {
+            case '+':
+            case '-':
+            case '.':
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case 'E':
+            case 'e':
+                return true;
 
-    	}
-    	return false;
+        }
+        return false;
     }
 
-    private function isBoolean($b) {
-    	switch ($b) {
-    		case 't':
-    		case 'f':
-    			return true;
+    private function isBoolean($b)
+    {
+        switch ($b) {
+            case 't':
+            case 'f':
+                return true;
 
-    	}
-    	return false;
+        }
+        return false;
     }
 }

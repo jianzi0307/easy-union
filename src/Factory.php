@@ -1,22 +1,17 @@
 <?php
 
-namespace NiuGengYun\EasyTBK;
+namespace com\pv138\easyUnion;
 
-use NiuGengYun\EasyTBK\TaoBao\Application as TaoBao;
-use NiuGengYun\EasyTBK\PinDuoDuo\Application as PinDuoDuo;
-use NiuGengYun\EasyTBK\JingDong\Application as JingDong;
-use NiuGengYun\EasyTBK\Vip\Application as Vip;
-use NiuGengYun\EasyTBK\SuNing\Application as SuNing;
-use NiuGengYun\EasyTBK\Vip\Osp\Context\InvocationContext;
+use com\pv138\easyUnion\taobao\Application as TaoBao;
+use com\pv138\easyUnion\pinduoduo\Application as PinDuoDuo;
+use com\pv138\easyUnion\jingdong\Application as JingDong;
+use com\pv138\easyUnion\vip\Application as Vip;
+use com\pv138\easyUnion\suning\Application as SuNing;
+use com\pv138\easyUnion\vip\Osp\Context\InvocationContext;
 
 /**
- * Class Factory.
- *
- * @method TaoBao taobao()
- * @method PinDuoDuo pinduoduo()
- * @method JingDong jingdong()
- * @method Vip vip()
- * @method SuNing suning()
+ * Class Factory
+ * @package com\pv138\easyUnion
  */
 class Factory
 {
@@ -44,9 +39,9 @@ class Factory
 
     /**
      * 单例获取当前对象
-     * @Author: david
-     * @Date: 2018/4/26
      * @return static
+     * @author  david
+     * @date 2018/4/26
      */
     public static function getInstance()
     {
@@ -77,7 +72,7 @@ class Factory
         }
 
         if (count($config) == 0) {
-            $config = config("{$this->getConfigName ()}.{$name}", []);
+            $config = config("{$this->getConfigName()}.{$name}", []);
         }
         $config = $this->getConfig($name, $config);
 
@@ -92,7 +87,6 @@ class Factory
      *
      * @return string[]
      * @throws \InvalidArgumentException
-     *
      */
     protected function getConfig(string $name, array $config)
     {
@@ -127,7 +121,6 @@ class Factory
             }
             return array_only($config, ['app_key', 'app_secret', 'format']);
         }
-
     }
 
     /**
@@ -140,7 +133,7 @@ class Factory
     protected function getClient(string $name, array $config)
     {
         if ($name == "taobao") {
-            $c = new TaoBao;
+            $c = new TaoBao();
             $c->appkey = (string)$config['app_key'];
             $c->secretKey = $config['app_secret'];
             $c->format = isset($config['format']) ? $config['format'] : 'json';
@@ -176,6 +169,4 @@ class Factory
             return $c;
         }
     }
-
-
 }

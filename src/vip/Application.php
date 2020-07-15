@@ -1,10 +1,9 @@
 <?php
 
-namespace NiuGengYun\EasyTBK\Vip;
+namespace com\pv138\easyUnion\vip;
 
 
 class Application
 {
-
 
 }

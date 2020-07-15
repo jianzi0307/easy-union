@@ -1,249 +1,195 @@
 <?php
 
+namespace com\pv138\easyUnion\vip\request;
+
+use com\pv138\easyUnion\vip\Osp\Protocol\ProtocolUtil;
+
+class RefundOrderDetail
+{
+    public static $_TSPEC;
+    public $goodsId = null;
+    public $sizeId = null;
+    public $goodsPrice = null;
+    public $goodsCount = null;
+    public $commission = null;
+    public $totalCost = null;
+
+    public function __construct($vals = null)
+    {
+        if (!isset(self::$_TSPEC)) {
+            self::$_TSPEC = array(
+                1 => array(
+                    'var' => 'goodsId'
+                ),
+                2 => array(
+                    'var' => 'sizeId'
+                ),
+                3 => array(
+                    'var' => 'goodsPrice'
+                ),
+                4 => array(
+                    'var' => 'goodsCount'
+                ),
+                5 => array(
+                    'var' => 'commission'
+                ),
+                6 => array(
+                    'var' => 'totalCost'
+                ),
 
-/*
-* Copyright (c) 2008-2016 vip.com, All Rights Reserved.
-*
-* Powered by com.vip.osp.osp-idlc-2.5.11.
-*
-*/
+            );
+        }
 
-namespace NiuGengYun\EasyTBK\Vip\Request;
+        if (is_array($vals)) {
+            if (isset($vals['goodsId'])) {
+                $this->goodsId = $vals['goodsId'];
+            }
 
-class RefundOrderDetail {
 
-	static $_TSPEC;
-	public $goodsId = null;
-	public $sizeId = null;
-	public $goodsPrice = null;
-	public $goodsCount = null;
-	public $commission = null;
-	public $totalCost = null;
+            if (isset($vals['sizeId'])) {
+                $this->sizeId = $vals['sizeId'];
+            }
 
-	public function __construct($vals=null){
 
-		if (!isset(self::$_TSPEC)){
+            if (isset($vals['goodsPrice'])) {
+                $this->goodsPrice = $vals['goodsPrice'];
+            }
 
-			self::$_TSPEC = array(
-			1 => array(
-			'var' => 'goodsId'
-			),
-			2 => array(
-			'var' => 'sizeId'
-			),
-			3 => array(
-			'var' => 'goodsPrice'
-			),
-			4 => array(
-			'var' => 'goodsCount'
-			),
-			5 => array(
-			'var' => 'commission'
-			),
-			6 => array(
-			'var' => 'totalCost'
-			),
 
-			);
+            if (isset($vals['goodsCount'])) {
+                $this->goodsCount = $vals['goodsCount'];
+            }
 
-		}
 
-		if (is_array($vals)){
+            if (isset($vals['commission'])) {
+                $this->commission = $vals['commission'];
+            }
 
 
-			if (isset($vals['goodsId'])){
+            if (isset($vals['totalCost'])) {
+                $this->totalCost = $vals['totalCost'];
+            }
+        }
+    }
 
-				$this->goodsId = $vals['goodsId'];
-			}
 
+    public function getName()
+    {
+        return 'RefundOrderDetail';
+    }
 
-			if (isset($vals['sizeId'])){
+    public function read($input)
+    {
+        $input->readStructBegin();
+        while (true) {
+            $schemeField = $input->readFieldBegin();
+            if ($schemeField == null) {
+                break;
+            }
+            $needSkip = true;
 
-				$this->sizeId = $vals['sizeId'];
-			}
 
+            if ("goodsId" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->goodsId);
+            }
 
-			if (isset($vals['goodsPrice'])){
 
-				$this->goodsPrice = $vals['goodsPrice'];
-			}
+            if ("sizeId" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->sizeId);
+            }
 
 
-			if (isset($vals['goodsCount'])){
+            if ("goodsPrice" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->goodsPrice);
+            }
 
-				$this->goodsCount = $vals['goodsCount'];
-			}
 
+            if ("goodsCount" == $schemeField) {
+                $needSkip = false;
+                $input->readI32($this->goodsCount);
+            }
 
-			if (isset($vals['commission'])){
 
-				$this->commission = $vals['commission'];
-			}
+            if ("commission" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->commission);
+            }
 
 
-			if (isset($vals['totalCost'])){
+            if ("totalCost" == $schemeField) {
+                $needSkip = false;
+                $input->readString($this->totalCost);
+            }
 
-				$this->totalCost = $vals['totalCost'];
-			}
 
+            if ($needSkip) {
+                ProtocolUtil::skip($input);
+            }
 
-		}
+            $input->readFieldEnd();
+        }
 
-	}
+        $input->readStructEnd();
+    }
 
+    public function write($output)
+    {
+        $xfer = 0;
+        $xfer += $output->writeStructBegin();
 
-	public function getName(){
+        if ($this->goodsId !== null) {
+            $xfer += $output->writeFieldBegin('goodsId');
+            $xfer += $output->writeString($this->goodsId);
 
-		return 'RefundOrderDetail';
-	}
+            $xfer += $output->writeFieldEnd();
+        }
 
-	public function read($input){
 
-		$input->readStructBegin();
-		while(true){
+        if ($this->sizeId !== null) {
+            $xfer += $output->writeFieldBegin('sizeId');
+            $xfer += $output->writeString($this->sizeId);
 
-			$schemeField = $input->readFieldBegin();
-			if ($schemeField == null) break;
-			$needSkip = true;
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-			if ("goodsId" == $schemeField){
+        if ($this->goodsPrice !== null) {
+            $xfer += $output->writeFieldBegin('goodsPrice');
+            $xfer += $output->writeString($this->goodsPrice);
 
-				$needSkip = false;
-				$input->readString($this->goodsId);
+            $xfer += $output->writeFieldEnd();
+        }
 
-			}
 
+        if ($this->goodsCount !== null) {
+            $xfer += $output->writeFieldBegin('goodsCount');
+            $xfer += $output->writeI32($this->goodsCount);
 
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-			if ("sizeId" == $schemeField){
+        if ($this->commission !== null) {
+            $xfer += $output->writeFieldBegin('commission');
+            $xfer += $output->writeString($this->commission);
 
-				$needSkip = false;
-				$input->readString($this->sizeId);
+            $xfer += $output->writeFieldEnd();
+        }
 
-			}
 
+        if ($this->totalCost !== null) {
+            $xfer += $output->writeFieldBegin('totalCost');
+            $xfer += $output->writeString($this->totalCost);
 
+            $xfer += $output->writeFieldEnd();
+        }
 
 
-			if ("goodsPrice" == $schemeField){
-
-				$needSkip = false;
-				$input->readString($this->goodsPrice);
-
-			}
-
-
-
-
-			if ("goodsCount" == $schemeField){
-
-				$needSkip = false;
-				$input->readI32($this->goodsCount);
-
-			}
-
-
-
-
-			if ("commission" == $schemeField){
-
-				$needSkip = false;
-				$input->readString($this->commission);
-
-			}
-
-
-
-
-			if ("totalCost" == $schemeField){
-
-				$needSkip = false;
-				$input->readString($this->totalCost);
-
-			}
-
-
-
-			if($needSkip){
-
-                \NiuGengYun\EasyTBK\Vip\Osp\Protocol\ProtocolUtil::skip($input);
-			}
-
-			$input->readFieldEnd();
-		}
-
-		$input->readStructEnd();
-
-
-
-	}
-
-	public function write($output){
-
-		$xfer = 0;
-		$xfer += $output->writeStructBegin();
-
-		if($this->goodsId !== null) {
-
-			$xfer += $output->writeFieldBegin('goodsId');
-			$xfer += $output->writeString($this->goodsId);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->sizeId !== null) {
-
-			$xfer += $output->writeFieldBegin('sizeId');
-			$xfer += $output->writeString($this->sizeId);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->goodsPrice !== null) {
-
-			$xfer += $output->writeFieldBegin('goodsPrice');
-			$xfer += $output->writeString($this->goodsPrice);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->goodsCount !== null) {
-
-			$xfer += $output->writeFieldBegin('goodsCount');
-			$xfer += $output->writeI32($this->goodsCount);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->commission !== null) {
-
-			$xfer += $output->writeFieldBegin('commission');
-			$xfer += $output->writeString($this->commission);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		if($this->totalCost !== null) {
-
-			$xfer += $output->writeFieldBegin('totalCost');
-			$xfer += $output->writeString($this->totalCost);
-
-			$xfer += $output->writeFieldEnd();
-		}
-
-
-		$xfer += $output->writeFieldStop();
-		$xfer += $output->writeStructEnd();
-		return $xfer;
-	}
-
+        $xfer += $output->writeFieldStop();
+        $xfer += $output->writeStructEnd();
+        return $xfer;
+    }
 }
-
-?>
