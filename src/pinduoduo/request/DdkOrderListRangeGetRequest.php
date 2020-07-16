@@ -11,9 +11,25 @@ class DdkOrderListRangeGetRequest implements RequestInterface
      * @var string
      */
     private $type = 'pdd.ddk.order.list.range.get';
+    /**
+     * 支付起始时间，格式：yyyy-MM-dd HH:mm:ss
+     * @var
+     */
     private $startPayTime;
+    /**
+     * 支付结束时间，格式：yyyy-MM-dd HH:mm:ss
+     * @var
+     */
     private $endPayTime;
+    /**
+     * 每次请求多少条，建议300
+     * @var
+     */
     private $pageSize;
+    /**
+     * 上一次的迭代器id(第一次不填)
+     * @var
+     */
     private $lastOrderId;
 
     public function setStartPayTime($startPayTime)

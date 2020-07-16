@@ -25,6 +25,28 @@ class DdkGoodsPidQueryRequest implements RequestInterface
      */
     private $pageSize;
 
+    /**
+     * 推广位id列表
+     * @var
+     */
+    private $pidList;
+
+    /**
+     * @return mixed
+     */
+    public function getPidList()
+    {
+        return $this->pidList;
+    }
+
+    /**
+     * @param mixed $pidList
+     */
+    public function setPidList($pidList): void
+    {
+        $this->pidList = $pidList;
+    }
+
 
     public function setPage($page)
     {
@@ -51,7 +73,8 @@ class DdkGoodsPidQueryRequest implements RequestInterface
         $params = [
             'type' => $this->type,
             'page' => $this->page,
-            'page_size' => $this->pageSize
+            'page_size' => $this->pageSize,
+            'pid_list' => $this->pidList
         ];
         return array_filter($params);
     }
