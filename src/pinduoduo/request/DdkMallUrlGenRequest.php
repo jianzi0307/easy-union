@@ -27,6 +27,40 @@ class DdkMallUrlGenRequest implements RequestInterface
     private $pid;
 
     /**
+     * 是否生成店铺收藏券推广链接
+     * @var
+     */
+    private $generateMallCollectCoupon;
+
+    /**
+     * 是否生成qq小程序
+     * @var
+     */
+    private $generateQqApp;
+
+    /**
+     * 是否返回 schema URL
+     * @var
+     */
+    private $generateSchemaUrl;
+
+    /**
+     * @return mixed
+     */
+    public function getGenerateMallCollectCoupon()
+    {
+        return $this->generateMallCollectCoupon;
+    }
+
+    /**
+     * @param mixed $generateMallCollectCoupon
+     */
+    public function setGenerateMallCollectCoupon($generateMallCollectCoupon): void
+    {
+        $this->generateMallCollectCoupon = $generateMallCollectCoupon;
+    }
+
+    /**
      * 是否生成唤起微信客户端链接，true-是，false-否，默认false
      * @var
      */
@@ -121,6 +155,9 @@ class DdkMallUrlGenRequest implements RequestInterface
             'generate_short_url' => $this->generateShortUrl,
             'multi_group' => $this->multiGroup,
             'custom_parameters' => $this->customParameters,
+            'generate_mall_collect_coupon' => $this->generateMallCollectCoupon,
+            'generate_qq_app' => $this->generateQqApp,
+            'generate_schema_url' => $this->generateSchemaUrl
         ];
         return array_filter($params);
     }

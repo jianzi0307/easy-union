@@ -36,6 +36,12 @@ class DdkTopGoodsListQueryRequest implements RequestInterface
      */
     private $sortType;
 
+    /**
+     * 翻页时建议填写前页返回的list_id值
+     * @var
+     */
+    private $listId;
+
     public function setSortType($sortType)
     {
         $this->sortType = $sortType;
@@ -94,6 +100,16 @@ class DdkTopGoodsListQueryRequest implements RequestInterface
         $this->limit = $limit;
     }
 
+    public function setListId($value)
+    {
+        $this->listId = $value;
+    }
+
+    public function getListId()
+    {
+        return $this->listId;
+    }
+
     public function getParams()
     {
         $params = [
@@ -102,6 +118,7 @@ class DdkTopGoodsListQueryRequest implements RequestInterface
             'offset' => $this->offset,
             'sort_type' => $this->sortType,
             'limit' => $this->limit,
+            'list_id' => $this->listId
         ];
 
         return array_filter($params);

@@ -32,6 +32,28 @@ class DdkWeappQrcodeUrlGenRequest implements RequestInterface
     private $customParameters;
 
     /**
+     * 是否生成店铺收藏券推广链接
+     * @var
+     */
+    private $generateMallCollectCoupon;
+
+    /**
+     * @return mixed
+     */
+    public function getGenerateMallCollectCoupon()
+    {
+        return $this->generateMallCollectCoupon;
+    }
+
+    /**
+     * @param mixed $generateMallCollectCoupon
+     */
+    public function setGenerateMallCollectCoupon($generateMallCollectCoupon): void
+    {
+        $this->generateMallCollectCoupon = $generateMallCollectCoupon;
+    }
+
+    /**
      * 招商多多客ID
      * @var
      */
@@ -56,6 +78,7 @@ class DdkWeappQrcodeUrlGenRequest implements RequestInterface
     {
         return $this->goodsIdList;
     }
+
 
     public function setCustomParameters($customParameters)
     {
@@ -85,6 +108,7 @@ class DdkWeappQrcodeUrlGenRequest implements RequestInterface
             'goods_id_list' => $this->goodsIdList,
             'custom_parameters' => $this->customParameters,
             'zs_duo_id' => $this->zsduoId,
+            'generate_mall_collect_coupon' => $this->generateMallCollectCoupon
         ];
         return array_filter($params);
     }
