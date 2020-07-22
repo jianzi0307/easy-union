@@ -15,10 +15,67 @@ class DdkMallGoodsListRequest implements RequestInterface
      */
     private $type = 'pdd.ddk.mall.goods.list.get';
 
+    private $mallId;
+
+    private $pageNumber;
+
+    private $pageSize;
+
+    /**
+     * @return mixed
+     */
+    public function getMallId()
+    {
+        return $this->mallId;
+    }
+
+    /**
+     * @param mixed $mallId
+     */
+    public function setMallId($mallId): void
+    {
+        $this->mallId = $mallId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPageNumber()
+    {
+        return $this->pageNumber;
+    }
+
+    /**
+     * @param mixed $pageNumber
+     */
+    public function setPageNumber($pageNumber): void
+    {
+        $this->pageNumber = $pageNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPageSize()
+    {
+        return $this->pageSize;
+    }
+
+    /**
+     * @param mixed $pageSize
+     */
+    public function setPageSize($pageSize): void
+    {
+        $this->pageSize = $pageSize;
+    }
+
     public function getParams()
     {
         $params = [
-            'type' => $this->type
+            'type' => $this->type,
+            'mall_id' => $this->mallId,
+            'page_number' => $this->pageNumber,
+            'page_size' => $this->pageSize
         ];
         return array_filter($params);
     }
