@@ -39,10 +39,42 @@ class DdkMallUrlGenRequest implements RequestInterface
     private $generateQqApp;
 
     /**
+     * @return mixed
+     */
+    public function getGenerateQqApp()
+    {
+        return $this->generateQqApp;
+    }
+
+    /**
+     * @param mixed $generateQqApp
+     */
+    public function setGenerateQqApp($generateQqApp): void
+    {
+        $this->generateQqApp = $generateQqApp;
+    }
+
+    /**
      * 是否返回 schema URL
      * @var
      */
     private $generateSchemaUrl;
+
+    /**
+     * @return mixed
+     */
+    public function getGenerateSchemaUrl()
+    {
+        return $this->generateSchemaUrl;
+    }
+
+    /**
+     * @param mixed $generateSchemaUrl
+     */
+    public function setGenerateSchemaUrl($generateSchemaUrl): void
+    {
+        $this->generateSchemaUrl = $generateSchemaUrl;
+    }
 
     /**
      * @return mixed
