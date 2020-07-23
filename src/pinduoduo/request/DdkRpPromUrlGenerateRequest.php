@@ -16,7 +16,45 @@ class DdkRpPromUrlGenerateRequest implements RequestInterface
      * 推广位ID
      * @var
      */
-    private $pid;
+    private $pIdList;
+
+    /**
+     * 红包自定义参数
+     * @var
+     */
+    private $diyRedPacketParam;
+
+    /**
+     * @return mixed
+     */
+    public function getDiyRedPacketParam()
+    {
+        return $this->diyRedPacketParam;
+    }
+
+    /**
+     * @param mixed $diyRedPacketParam
+     */
+    public function setDiyRedPacketParam($diyRedPacketParam): void
+    {
+        $this->diyRedPacketParam = $diyRedPacketParam;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPIdList()
+    {
+        return $this->pIdList;
+    }
+
+    /**
+     * @param mixed $pIdList
+     */
+    public function setPIdList($pIdList): void
+    {
+        $this->pIdList = $pIdList;
+    }
 
     /**
      * -1-活动列表，0-默认红包，2–新人红包，3-刮刮卡，5-员工内购，6-购物车，7-大促会场
@@ -106,16 +144,6 @@ class DdkRpPromUrlGenerateRequest implements RequestInterface
     private $generateWeApp;
 
 
-    public function setPid($pid)
-    {
-        $this->pid = $pid;
-    }
-
-    public function getPid()
-    {
-        return $this->pid;
-    }
-
     public function setGenerateShortUrl($generateShortUrl)
     {
         $this->generateShortUrl = $generateShortUrl;
@@ -161,13 +189,13 @@ class DdkRpPromUrlGenerateRequest implements RequestInterface
         $params = [
             'channel_type' => $this->channelType,
             'type' => $this->type,
-            'p_id_list' => $this->pid,
+            'p_id_list' => $this->pIdList,
             'generate_short_url' => $this->generateShortUrl,
             'custom_parameters' => $this->customParameters,
-            // 'generate_weapp_webview' => $this->generateWeappWebview,
             'generate_we_app' => $this->generateWeApp,
             'generate_schema_url' => $this->generateSchemaUrl,
-            'generate_qq_app' => $this->generateQqApp
+            'generate_qq_app' => $this->generateQqApp,
+            'diy_red_packet_param' => $this->diyRedPacketParam
         ];
         return array_filter($params);
     }
