@@ -26,6 +26,72 @@ class DdkLotteryUrlGenRequest implements RequestInterface
     private $generateWeappWebview;
 
     /**
+     * 是否返回 schema URL
+     * @var
+     */
+    private $generateSchemaUrl;
+
+    /**
+     * @return mixed
+     */
+    public function getGenerateSchemaUrl()
+    {
+        return $this->generateSchemaUrl;
+    }
+
+    /**
+     * @param mixed $generateSchemaUrl
+     */
+    public function setGenerateSchemaUrl($generateSchemaUrl): void
+    {
+        $this->generateSchemaUrl = $generateSchemaUrl;
+    }
+
+    /**
+     * 是否生成大转盘和主题的小程序推广链接
+     * @var
+     */
+    private $generateWeApp;
+
+    /**
+     * @return mixed
+     */
+    public function getGenerateWeApp()
+    {
+        return $this->generateWeApp;
+    }
+
+    /**
+     * @param mixed $generateWeApp
+     */
+    public function setGenerateWeApp($generateWeApp): void
+    {
+        $this->generateWeApp = $generateWeApp;
+    }
+
+    /**
+     * 是否生成qq小程序
+     * @var
+     */
+    private $generateQqApp;
+
+    /**
+     * @return mixed
+     */
+    public function getGenerateQqApp()
+    {
+        return $this->generateQqApp;
+    }
+
+    /**
+     * @param mixed $generateQqApp
+     */
+    public function setGenerateQqApp($generateQqApp): void
+    {
+        $this->generateQqApp = $generateQqApp;
+    }
+
+    /**
      * 是否生成短链接，true-是，false-否
      * @var
      */
@@ -130,6 +196,9 @@ class DdkLotteryUrlGenRequest implements RequestInterface
             'type' => $this->type,
             'pid_list' => $this->pidList,
             'generate_weapp_webview' => $this->generateWeappWebview,
+            'generate_schema_url' => $this->generateSchemaUrl,
+            'generate_we_app' => $this->generateWeApp,
+            'generate_qq_app' => $this->generateQqApp,
             'generate_short_url' => $this->generateShortUrl,
             'multi_group' => $this->multiGroup,
             'custom_parameters' => $this->customParameters,
